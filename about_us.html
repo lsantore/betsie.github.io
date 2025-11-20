@@ -4,80 +4,303 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betsie - About Us</title>
-    <!-- Import Montserrat Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
     
-    <!-- Inline CSS using element selectors (since class attributes are forbidden) -->
+    <!-- Font Imports -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    
+    <!-- Embedded Stylesheet (Includes all necessary header and footer styles) -->
     <style>
-        /* Set the default font for the entire body */
+        /* Define the color palette (Required for all styles to work) */
+        :root {
+            --color-primary-red: #f5444e; /* Primary CTA Color, Bold Text Color */
+            --color-secondary-pink: #ffc7ed; /* Light Background Accent */
+            --color-accent-blue: #002cfc; /* Scoreboard/Pattern Accent */
+            --color-accent-yellow: #f7dd24; /* Strong Border/Stroke Color */
+            --color-dark: #333;
+            --color-light-bg: #fff8fc; /* Very light tint of secondary pink for body */
+            --color-soft-bg: #f9e3f4; /* Slightly deeper tint of secondary pink for section backgrounds */
+        }
+        
+        /* Global Styles */
         body {
-            font-family: 'Montserrat', sans-serif; /* Montserrat with safe fallback */
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            margin: 0;
+            /* Ensures content starts below the fixed header */
+            padding-top: 95px; 
+            background-color: var(--color-light-bg); 
+            color: var(--color-dark);
         }
+        
         h1, h2, h3 {
-            font-weight: 700;
-            color: #333; 
+            font-weight: 800;
+            color: var(--color-dark); 
         }
-        ul {
-            list-style: disc;
-            margin-left: 20px;
+
+        /* Highlighted text uses the fun handwriting font */
+        strong {
+            font-family: 'Shadows Into Light', cursive;
+            font-weight: 400;
+            font-size: 1.1em;
+            color: var(--color-primary-red); 
+            text-shadow: 2px 2px 0 var(--color-dark); 
+            text-decoration: none; 
         }
+        
+        /* Layout Container for Content */
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* General Link Styling with Primary Red */
         a {
-            color: #F36D6F; /* Updated link color */
+            color: var(--color-primary-red);
             text-decoration: none;
             padding: 5px 10px;
-            display: inline-block;
+        }
+
+        /* --- Header Styles (Top Menu Bar) --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 50%; 
+            transform: translateX(-50%); 
+            max-width: 900px; 
+            width: 100%; 
+            background-color: white; 
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px; 
+            border-bottom: 3px solid var(--color-secondary-pink); 
+        }
+        
+        header a:first-child {
+            padding: 0;
+        }
+
+        header img {
+            height: 60px; 
+            width: auto;
+            vertical-align: middle;
+        }
+
+        header nav a {
+            margin-left: 20px;
+            font-weight: 700;
+        }
+        
+        /* Download App Button */
+        header nav a:last-child {
+            background-color: var(--color-primary-red);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 0 var(--color-dark); 
+            transition: all 0.1s ease;
+        }
+        header nav a:last-child:hover {
+            box-shadow: 0 2px 0 var(--color-dark);
+            transform: translateY(2px);
+        }
+        
+        /* --- Footer Styles --- */
+        footer {
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 1px solid var(--color-secondary-pink);
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        footer a {
+            margin: 0 10px;
+            font-size: 0.9em;
+        }
+
+        /* --- New Founder Profile Styles (Grid for responsiveness) --- */
+        .founder-profile {
+            display: grid;
+            /* Default layout for desktop: Image (150px) | Text (Remaining Space) */
+            grid-template-columns: 150px 1fr; 
+            gap: 30px;
+            align-items: start;
+            margin-bottom: 50px;
+            padding: 20px;
+            border: 2px solid var(--color-secondary-pink);
+            border-radius: 16px;
+            background-color: white;
+        }
+
+        .founder-photo-wrapper {
+            /* Ensures the wrapper fits the image size for desktop layout */
+            max-width: 150px;
+            margin: 0;
+        }
+
+        .founder-photo {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1; /* Keep image square */
+            object-fit: cover;
+            border-radius: 50%; /* Make photos round */
+            border: 4px solid var(--color-accent-yellow); /* Yellow border accent */
+        }
+
+        .founder-info h3 {
+            margin-top: 0;
+            color: var(--color-primary-red);
+        }
+
+        .founder-info ul {
+            list-style: none; /* Remove default bullet */
+            padding-left: 0;
+            margin-left: 0;
+        }
+        
+        .founder-info ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .founder-info ul li::before {
+            content: '✓'; /* Custom bullet point */
+            color: var(--color-accent-blue);
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            
+            /* Header adjustments for mobile */
+            header nav a:nth-child(1),
+            header nav a:nth-child(2) {
+                display: none; 
+            }
+            
+            /* Change grid layout for mobile: Image (Full Width) stacked above Text */
+            .founder-profile {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center; /* Center everything when stacked */
+            }
+
+            .founder-photo-wrapper {
+                max-width: 150px;
+                margin: 0 auto; /* Center the image */
+            }
+
+            .founder-info {
+                text-align: left; /* Keep text aligned left for readability */
+            }
+            
+            .founder-info ul {
+                text-align: left;
+                padding-left: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Added: Simple navigation back to the homepage -->
-    <p><a href="index.html" style="font-weight: 700;">&lt;&lt; Back to Home</a></p>
 
-    <div>
+    <!-- REUSABLE HEADER BLOCK -->
+    <header>
+        <a href="index.html">
+            <!-- Betsie Logo Placeholder -->
+            <img src="images/logo_betsie_red.png" alt="Betsie Logo" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f5444e/ffffff?text=Betsie';">
+        </a>
+        
+        <nav>
+            <a href="about_us.html">About</a>
+            <a href="support.html">Support</a> 
+            <a href="#">Download App</a> 
+        </nav>
+    </header>
+    <!-- END REUSABLE HEADER BLOCK -->
+
+
+    <!-- PAGE CONTENT SECTION -->
+    <div class="content-container" style="padding-top: 50px; padding-bottom: 80px;">
+        
         <h1>About Betsie</h1>
-        <p>Last Updated: November 17, 2025</p>
-
-        <h2>The Origin Story</h2>
-        <p>Laetitia and Kat met in 2016 and have been friends and colleagues ever since. Working and playing side-by-side led to many friendly bets over the years. One afternoon over coffee they realized they, and the world, needed a product (Betsie) where they could track their bets and keep score of who was ahead in the “I told you so” game of life!</p>
+        <p>Betsie&trade; was founded by a team of experienced tech and gaming leaders who realized social prediction was a huge, untapped opportunity. Their vision was to build a safe, simple, and fun platform for adults to create, track, and resolve social bets without financial risk.</p>
 
         <h2>Meet the Team</h2>
         
-        <!-- Kat's Profile (Now First) -->
-        <div>
-            <h3>Kat Strafford - Co-Founder</h3>
-            <ul>
-                <li>B2B and B2C Tech executive</li>
-                <li>20+ experience in high tech products</li>
-                <li>Held senior design and marketing positions at Unity and BAE Systems</li>
-                <li>Expert in design, creative strategy, marketing, go-to-market, commercialization, SaaS, freemium</li>
-                <li>IPO experience with Unity Technologies (NYSE: U, Sept 2020)</li>
-            </ul>
-            <p>
-                <a href="#">View Profile on LinkedIn >></a>
-            </p>
+        <!-- Kat Strafford Profile -->
+        <div class="founder-profile">
+            <div class="founder-photo-wrapper">
+                <img class="founder-photo" 
+                     src="images/bio_kat-strafford.jpg" 
+                     alt="Photo of Kat Strafford, Co-Founder" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffc7ed/333?text=Kat+S'; this.style.borderRadius='50%';">
+            </div>
+            <div class="founder-info">
+                <h3>Kat Strafford - Co-Founder</h3>
+                <ul>
+                    <li>Tech and Entertainment executive</li>
+                    <li>20+ experience in consumer and B2B products</li>
+                    <li>Held GM and VP roles at Unity and Electronic Arts</li>
+                    <li>Expert in product, marketing, go-to-market, commercialization, SaaS, freemium</li>
+                    <li>Credited in several massive global product franchises including Need for Speed, Plants vs. Zombies, Battlefield, Dead Space</li>
+                    <li>IPO experience with Unity Technologies (NYSE: U, Sept 2020)</li>
+                </ul>
+                <p>
+                    <a href="https://www.linkedin.com/in/katrinastrafford/" target="_blank">View Profile on LinkedIn >></a>
+                </p>
+            </div>
         </div>
 
-        <!-- Laetitia's Profile (Now Second) -->
-        <div>
-            <h3>Laetitia Santore - Co-Founder</h3>
-            <ul>
-                <li>Tech and Entertainment executive</li>
-                <li>20+ experience in consumer and B2B products</li>
-                <li>Held GM and VP roles at Unity and Electronic Arts</li>
-                <li>Expert in product, marketing, go-to-market, commercialization, SaaS, freemium</li>
-                <li>Credited in several massive global product franchises including Need for Speed, Plants vs. Zombies, Battlefield, Dead Space</li>
-                <li>IPO experience with Unity Technologies (NYSE: U, Sept 2020)</li>
-            </ul>
-            <p>
-                <a href="#">View Profile on LinkedIn >></a>
-            </p>
+        <!-- Laetitia Santore Profile -->
+        <div class="founder-profile">
+            <div class="founder-photo-wrapper">
+                <img class="founder-photo" 
+                     src="images/bio_laetitia-santore.jpg" 
+                     alt="Photo of Laetitia Santore, Co-Founder" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffc7ed/333?text=Laetitia+S'; this.style.borderRadius='50%';">
+            </div>
+            <div class="founder-info">
+                <h3>Laetitia Santore - Co-Founder</h3>
+                <ul>
+                    <li>B2B and B2C Tech executive</li>
+                    <li>20+ experience in high tech products</li>
+                    <li>Held senior design and marketing positions at Unity and BAE Systems</li>
+                    <li>Expert in design, creative strategy, marketing, go-to-market, commercialization, SaaS, freemium</li>
+                    <li>IPO experience with Unity Technologies (NYSE: U, Sept 2020)</li>
+                </ul>
+                <p>
+                    <a href="https://www.linkedin.com/in/laetitiasantore/" target="_blank">View Profile on LinkedIn >></a>
+                </p>
+            </div>
         </div>
-
+        
     </div>
+    <!-- END PAGE CONTENT SECTION -->
+
+
+    <!-- REUSABLE FOOTER BLOCK -->
+    <footer>
+        <h3>Site Links</h3>
+        
+        <a href="about_us.html">About Us</a>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+        <a href="community_guidelines.html">Community Guidelines</a>
+        <a href="support.html">Support</a> 
+
+        <p style="font-size: 0.8em; color: #666; margin-top: 20px; padding-top: 10px;">
+            Betsie is a Trademark of Squeaky Cheese, LLC - Site &copy; 2025 Squeaky Cheese, LLC
+        </p>
+    </footer>
+    <!-- END REUSABLE FOOTER BLOCK -->
 
 </body>
 </html>

@@ -4,107 +4,203 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betsie - Privacy Policy</title>
-    <!-- Import Montserrat Font -->
+    
+    <!-- Font Imports -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    
+    <!-- Embedded Stylesheet (Includes all necessary header and footer styles) -->
     <style>
+        /* Define the color palette (Required for all styles to work) */
+        :root {
+            --color-primary-red: #f5444e; /* Primary CTA Color, Bold Text Color */
+            --color-secondary-pink: #ffc7ed; /* Light Background Accent */
+            --color-accent-blue: #002cfc; /* Scoreboard/Pattern Accent */
+            --color-accent-yellow: #f7dd24; /* Strong Border/Stroke Color */
+            --color-dark: #333;
+            --color-light-bg: #fff8fc; /* Very light tint of secondary pink for body */
+            --color-soft-bg: #f9e3f4; /* Slightly deeper tint of secondary pink for section backgrounds */
+        }
+        
+        /* Global Styles */
         body {
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            margin: 0;
+            /* Ensures content starts below the fixed header */
+            padding-top: 95px; 
+            background-color: var(--color-light-bg); 
+            color: var(--color-dark);
         }
+        
         h1, h2, h3 {
-            font-weight: 700;
-            color: #333; 
+            font-weight: 800;
+            color: var(--color-dark); 
         }
-        ul {
+
+        /* The <b> tag will now use the default bold weight of the Montserrat font 
+           (usually 700) and the default text color.
+        */
+        
+        /* Layout Container for Content */
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* General Link Styling with Primary Red */
+        a {
+            color: var(--color-primary-red);
+            text-decoration: none;
+            /* Remove the default padding on links inside paragraphs to fix spacing */
+            padding: 0; 
+            font-weight: 700; /* Keep the linked text bold */
+        }
+        /* Specific Link Styling for Header/Footer to keep necessary padding */
+        header nav a, footer a {
+            padding: 5px 10px;
+        }
+
+        /* --- Header Styles (Top Menu Bar) --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 50%; 
+            transform: translateX(-50%); 
+            max-width: 900px; 
+            width: 100%; 
+            background-color: white; 
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px; 
+            border-bottom: 3px solid var(--color-secondary-pink); 
+        }
+        
+        header a:first-child {
+            padding: 0;
+        }
+
+        header img {
+            height: 60px; 
+            width: auto;
+            vertical-align: middle;
+        }
+
+        header nav a {
+            margin-left: 20px;
+            font-weight: 700;
+        }
+        
+        /* Download App Button */
+        header nav a:last-child {
+            background-color: var(--color-primary-red);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 0 var(--color-dark); 
+            transition: all 0.1s ease;
+        }
+        header nav a:last-child:hover {
+            box-shadow: 0 2px 0 var(--color-dark);
+            transform: translateY(2px);
+        }
+        
+        /* --- Footer Styles --- */
+        footer {
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 1px solid var(--color-secondary-pink);
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        footer a {
+            margin: 0 10px;
+            font-size: 0.9em;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            
+            /* Header adjustments for mobile */
+            header nav a:nth-child(1),
+            header nav a:nth-child(2) {
+                /* Keep the 'About' link, hide 'Support' for space */
+                display: none; 
+            }
+            
+            /* General Content styling for readability */
+            .content-container p, .content-container ul {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+        
+        /* Ensure list styles are kept for legal documents */
+        .content-container ul {
             list-style: disc;
             margin-left: 20px;
+            padding-left: 0;
         }
-        a {
-            color: #F36D6F; 
-            text-decoration: none;
-            padding: 5px 10px;
-            display: inline-block;
-        }
+        
     </style>
 </head>
 <body>
-    <!-- Added: Simple navigation back to the homepage -->
-    <p><a href="index.html" style="font-weight: 700;">&lt;&lt; Back to Home</a></p>
 
-    <div>
-        <div>
+    <!-- REUSABLE HEADER BLOCK -->
+    <header>
+        <a href="index.html">
+            <!-- Betsie Logo Placeholder -->
+            <img src="images/logo_betsie_red.png" alt="Betsie Logo" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f5444e/ffffff?text=Betsie';">
+        </a>
+        
+        <nav>
+            <a href="about_us.html">About</a>
+            <a href="support.html">Support</a> 
+            <a href="#">Download App</a> 
+        </nav>
+    </header>
+    <!-- END REUSABLE HEADER BLOCK -->
+
+
+    <!-- PAGE CONTENT SECTION -->
+    <div class="content-container" style="padding-top: 50px; padding-bottom: 80px;">
+        
+        <div style="background-color: white; padding: 30px; border-radius: 16px; border: 2px solid var(--color-secondary-pink);">
             <h1>Betsie – Privacy Policy</h1>
             <p>Last Updated: November 17, 2025</p>
 
-            <p>Betsie is a social app for friendly, non-monetary predictions shared among adults. Betsie does not support gambling, real-money wagers, or prizes of monetary value.</p>
-            <p>This Privacy Policy explains the information we collect, how we use it—including for advertising—and the choices you have.</p>
+            <p>This Privacy Policy describes how Squeaky Cheese, LLC ("Betsie", "we", "us", or "our") collects, uses, and shares your information when you use the Betsie social prediction application (the "App").</p>
 
             <h2>1. Information We Collect</h2>
-            <p>We collect the following categories of data:</p>
-
-            <div>
-                <h3>A. Account & Profile Information</h3>
-                <ul>
-                    <li>Name or username</li>
-                    <li>Email</li>
-                    <li>Profile photo (optional)</li>
-                    <li>Age confirmation (18+)</li>
-                </ul>
-
-                <h3>B. App Usage Data</h3>
-                <ul>
-                    <li>Predictions and “bets” you create</li>
-                    <li>Outcomes you record</li>
-                    <li>Comments, reactions, social interactions</li>
-                    <li>Activity logs and features you use</li>
-                </ul>
-
-                <h3>C. Device & Technical Information</h3>
-                <ul>
-                    <li>IP address</li>
-                    <li>Device type and OS</li>
-                    <li>App version</li>
-                    <li>Diagnostic and crash data</li>
-                </ul>
-
-                <h3>D. Advertising & Analytics Data</h3>
-                <p>To support our business, we may collect data for:</p>
-                <ul>
-                    <li>App measurement</li>
-                    <li>Ad performance</li>
-                    <li>Basic interest categories</li>
-                    <li>General location (approximate, not precise GPS)</li>
-                </ul>
-                <p>We do not collect sensitive categories (health, race, sexual orientation, political beliefs).</p>
-
-                <h3>E. Optional Integrations</h3>
-                <p>If you link social accounts or contacts, we only collect what’s required to help you find friends.</p>
-            </div>
+            <p>We collect information you provide directly to us, such as:</p>
+            <ul>
+                <li><b>Account Information:</b> Name, email address, and profile photo when you register.</li>
+                <li><b>Content:</b> The content of your social bets, predictions, outcomes, and any associated messages or comments.</li>
+                <li><b>Communications:</b> Any messages you send to other users or to us directly.</li>
+            </ul>
+            <p>We also collect information automatically when you use the App, including:</p>
+            <ul>
+                <li><b>Usage Data:</b> Features you use, time spent in the App, and other interaction data.</li>
+                <li><b>Device Information:</b> Device type, operating system, and unique device identifiers.</li>
+                <li><b>Location:</b> General location derived from your IP address.</li>
+            </ul>
 
             <h2>2. How We Use Your Information</h2>
-            <p>We use your information to:</p>
+            <p>We use the information we collect to:</p>
             <ul>
-                <li>Operate and improve the app</li>
-                <li>Personalize your experience</li>
-                <li>Display predictions and social interactions</li>
-                <li>Provide safety and moderation</li>
-                <li>Show ads, including personalized ads where permitted</li>
-                <li>Measure ad and feature performance</li>
+                <li>Provide, maintain, and improve the App's services and features.</li>
+                <li>Personalize your experience (e.g., showing relevant bets or friends).</li>
+                <li>Communicate with you about updates, security alerts, and support messages.</li>
+                <li>Monitor and analyze trends, usage, and activities in connection with the App.</li>
+                <li>Detect, investigate, and prevent fraudulent or illegal activity.</li>
             </ul>
-            <p>You may opt out of personalized advertising where applicable under local regulations. We do not sell personal information in the traditional “for money” sense.</p>
 
-            <h2>3. Advertising</h2>
-            <p>We may show:</p>
-            <ul>
-                <li>Non-personalized ads</li>
-                <li>Contextual ads</li>
-                <li>Personalized ads (based on your interactions, device info, and ad partner signals)</li>
-            </ul>
-            <p>We partner with advertising service providers who may receive device-level identifiers.</p>
-            <p>We do not allow advertisers access to:</p>
+            <h2>3. Advertising and Analytics</h2>
+            <p>Betsie is ad-supported. We use third-party advertising partners and analytics providers to help us run, measure, and improve the App. We do not allow advertisers access to:</p>
             <ul>
                 <li>Bet content</li>
                 <li>Personal messages</li>
@@ -138,9 +234,27 @@
             </ul>
 
             <h2>8. Contact Us</h2>
-            <p>Privacy questions: <strong><a href="mailto:support@betsie.app">support@betsie.app</a></strong></p>
+            <p>For privacy questions, please reach out to us from our <a href="support.html">Support page</a>.</p>
         </div>
     </div>
+    <!-- END PAGE CONTENT SECTION -->
+
+
+    <!-- REUSABLE FOOTER BLOCK -->
+    <footer>
+        <h3>Site Links</h3>
+        
+        <a href="about_us.html">About Us</a>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+        <a href="community_guidelines.html">Community Guidelines</a>
+        <a href="support.html">Support</a> 
+
+        <p style="font-size: 0.8em; color: #666; margin-top: 20px; padding-top: 10px;">
+            Betsie is a Trademark of Squeaky Cheese, LLC - Site &copy; 2025 Squeaky Cheese, LLC
+        </p>
+    </footer>
+    <!-- END REUSABLE FOOTER BLOCK -->
 
 </body>
 </html>

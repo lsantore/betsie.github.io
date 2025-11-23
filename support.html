@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betsie - Support & Contact</title>
+    
+    <!-- Font Imports -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    
+    <!-- Embedded Stylesheet (Includes all necessary header, footer, and form styles) -->
+    <style>
+        /* Define the color palette (Required for all styles to work) */
+        :root {
+            --color-primary-red: #f5444e; /* Primary CTA Color, Bold Text Color */
+            --color-secondary-pink: #ffc7ed; /* Light Background Accent */
+            --color-accent-blue: #002cfc; /* Scoreboard/Pattern Accent */
+            --color-accent-yellow: #f7dd24; /* Strong Border/Stroke Color */
+            --color-dark: #333;
+            --color-light-bg: #fff8fc; /* Very light tint of secondary pink for body */
+            --color-soft-bg: #f9e3f4; /* Slightly deeper tint of secondary pink for section backgrounds */
+        }
+        
+        /* Global Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            /* Ensures content starts below the fixed header */
+            padding-top: 95px; 
+            background-color: var(--color-light-bg); 
+            color: var(--color-dark);
+        }
+        
+        h1, h2, h3 {
+            font-weight: 800;
+            color: var(--color-dark); 
+        }
+
+        /* Layout Container for Content */
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* General Link Styling with Primary Red */
+        a {
+            color: var(--color-primary-red);
+            text-decoration: none;
+            padding: 0; /* Removed default padding for inline links */
+            font-weight: 700;
+        }
+        /* Specific Link Styling for Header/Footer to keep necessary padding */
+        header nav a, footer a {
+            padding: 5px 10px;
+        }
+
+        /* --- Header Styles (Top Menu Bar) --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 50%; 
+            transform: translateX(-50%); 
+            max-width: 900px; 
+            width: 100%; 
+            background-color: white; 
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px; 
+            border-bottom: 3px solid var(--color-secondary-pink); 
+        }
+        
+        header a:first-child {
+            padding: 0;
+        }
+
+        header img {
+            height: 60px; 
+            width: auto;
+            vertical-align: middle;
+        }
+
+        header nav a {
+            margin-left: 20px;
+            font-weight: 700;
+        }
+        
+        /* Download App Button */
+        header nav a:last-child {
+            background-color: var(--color-primary-red);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 0 var(--color-dark); 
+            transition: all 0.1s ease;
+        }
+        header nav a:last-child:hover {
+            box-shadow: 0 2px 0 var(--color-dark);
+            transform: translateY(2px);
+        }
+        
+        /* --- Footer Styles --- */
+        footer {
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 1px solid var(--color-secondary-pink);
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        footer a {
+            margin: 0 10px;
+            font-size: 0.9em;
+        }
+
+        /* --- Form Specific Styles --- */
+        .form-card {
+            background-color: white; 
+            padding: 30px; 
+            border-radius: 16px; 
+            border: 2px solid var(--color-secondary-pink);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--color-secondary-pink);
+            border-radius: 8px;
+            box-sizing: border-box; /* Include padding in the element's total width and height */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--color-primary-red);
+            outline: none;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.1s ease;
+            box-shadow: 0 4px 0 var(--color-dark); 
+        }
+
+        .button-send {
+            background-color: var(--color-primary-red);
+            color: white;
+        }
+        
+        .button-clear {
+            background-color: var(--color-soft-bg); /* Use a softer background color */
+            color: var(--color-dark);
+            box-shadow: 0 4px 0 var(--color-dark); 
+        }
+
+        .button:hover {
+            box-shadow: 0 2px 0 var(--color-dark);
+            transform: translateY(2px);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            
+            /* Header adjustments for mobile */
+            header nav a:nth-child(1),
+            header nav a:nth-child(2) {
+                /* Hide 'About' and 'Support' links for space */
+                display: none; 
+            }
+            
+            /* Center buttons on mobile */
+            .button-group {
+                justify-content: space-around;
+            }
+            .button {
+                flex-grow: 1; /* Make buttons expand */
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- REUSABLE HEADER BLOCK -->
+    <header>
+        <a href="index.html">
+            <!-- Betsie Logo Placeholder -->
+            <img src="images/logo_betsie_red.png" alt="Betsie Logo" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f5444e/ffffff?text=Betsie';">
+        </a>
+        
+        <nav>
+            <a href="about_us.html">About</a>
+            <a href="support.html">Support</a> 
+            <a href="download.html">Download App</a> 
+        </nav>
+    </header>
+    <!-- END REUSABLE HEADER BLOCK -->
+
+
+    <!-- PAGE CONTENT SECTION -->
+    <div class="content-container" style="padding-top: 50px; padding-bottom: 80px;">
+        
+        <div class="form-card">
+            <h1>Support & Contact</h1>
+            <p style="font-size: 1.1em; font-weight: 700; margin-bottom: 30px;">
+                For support, please contact us using the form below. We will get back to you as quickly as possible!
+            </p>
+
+            <!-- Support Form -->
+            <form id="supportForm" onsubmit="event.preventDefault(); handleSend();">
+                
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="name@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required placeholder="App crashing, feature request, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required placeholder="Tell us about the issue or request..."></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button type="button" class="button button-clear" onclick="clearForm()">Clear</button>
+                    <button type="submit" class="button button-send">Send Message</button>
+                </div>
+            </form>
+
+            <!-- Message Box for Feedback (Alert Replacement) -->
+            <div id="feedbackMessage" style="
+                margin-top: 20px; 
+                padding: 15px; 
+                border-radius: 8px; 
+                border: 2px solid var(--color-accent-yellow); 
+                background-color: var(--color-soft-bg);
+                color: var(--color-dark);
+                font-weight: 700;
+                text-align: center;
+                display: none;">
+                <!-- Feedback text will be inserted here -->
+            </div>
+
+        </div>
+    </div>
+    <!-- END PAGE CONTENT SECTION -->
+
+
+    <!-- REUSABLE FOOTER BLOCK -->
+    <footer>
+        <h3>Site Links</h3>
+        
+        <a href="about_us.html">About&nbsp;Us</a>
+        <a href="privacy_policy.html">Privacy&nbsp;Policy</a>
+        <a href="terms_of_service.html">Terms&nbsp;of&nbsp;Service</a>
+        <a href="community_guidelines.html">Community&nbsp;Guidelines</a>
+        <a href="support.html">Support</a> 
+
+        <p style="font-size: 0.8em; color: #666; margin-top: 20px; padding-top: 10px;">
+            Betsie is a Trademark of Squeaky Cheese, LLC - Site &copy; 2025 Squeaky Cheese, LLC
+        </p>
+    </footer>
+    <!-- END REUSABLE FOOTER BLOCK -->
+    
+    <script>
+        function clearForm() {
+            document.getElementById('supportForm').reset();
+            hideFeedback();
+        }
+
+        function handleSend() {
+            // In a real application, this function would serialize the form data 
+            // and send it to a backend server (e.g., using fetch or XMLHttpRequest).
+            
+            // For this static demonstration, we'll just show a success message.
+            const name = document.getElementById('name').value;
+            const messageElement = document.getElementById('feedbackMessage');
+            
+            messageElement.innerHTML = `Thank you, ${name}! Your message has been sent. We will review it shortly.`;
+            messageElement.style.display = 'block';
+            
+            // Optional: Clear the form after 'sending'
+            setTimeout(() => {
+                document.getElementById('supportForm').reset();
+                hideFeedback();
+            }, 3000); // Hide message after 3 seconds
+        }
+
+        function hideFeedback() {
+            document.getElementById('feedbackMessage').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

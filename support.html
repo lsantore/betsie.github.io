@@ -38,11 +38,13 @@
             color: var(--color-dark); 
         }
 
-        /* Layout Container for Content */
-        .content-container {
+        /* Layout Container for all content on this page */
+        .content-wrapper {
+            /* Max width and centering, ensuring the content is readable */
             max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            /* Vertical and horizontal padding */
+            padding: 50px 20px 80px 20px; 
         }
 
         /* General Link Styling with Primary Red */
@@ -117,84 +119,18 @@
             font-size: 0.9em;
         }
 
-        /* --- Form Specific Styles --- */
-        .form-card {
-            background-color: white; 
-            padding: 30px; 
-            border-radius: 16px; 
-            border: 2px solid var(--color-secondary-pink);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
+        /* --- Iframe Specific Styles (Now completely stripped of box decorations) --- */
+        .content-wrapper iframe {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--color-secondary-pink);
-            border-radius: 8px;
-            box-sizing: border-box; /* Include padding in the element's total width and height */
-            font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        input:focus,
-        textarea:focus {
-            border-color: var(--color-primary-red);
-            outline: none;
+            width: 100%; /* Takes up full width of the wrapper */
+            height: 900px; 
+            min-height: 600px; 
+            border: none; /* Removed border */
+            border-radius: 0; /* Removed rounded corners */
+            box-shadow: none; /* Removed box shadow */
+            overflow: hidden;
         }
         
-        .button-group {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .button {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.1s ease;
-            box-shadow: 0 4px 0 var(--color-dark); 
-        }
-
-        .button-send {
-            background-color: var(--color-primary-red);
-            color: white;
-        }
-        
-        .button-clear {
-            background-color: var(--color-soft-bg); /* Use a softer background color */
-            color: var(--color-dark);
-            box-shadow: 0 4px 0 var(--color-dark); 
-        }
-
-        .button:hover {
-            box-shadow: 0 2px 0 var(--color-dark);
-            transform: translateY(2px);
-        }
-
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             
@@ -203,14 +139,6 @@
             header nav a:nth-child(2) {
                 /* Hide 'About' and 'Support' links for space */
                 display: none; 
-            }
-            
-            /* Center buttons on mobile */
-            .button-group {
-                justify-content: space-around;
-            }
-            .button {
-                flex-grow: 1; /* Make buttons expand */
             }
         }
         
@@ -234,59 +162,19 @@
     <!-- END REUSABLE HEADER BLOCK -->
 
 
-    <!-- PAGE CONTENT SECTION -->
-    <div class="content-container" style="padding-top: 50px; padding-bottom: 80px;">
+    <!-- PAGE CONTENT SECTION: Iframe is now a direct child of the wrapper -->
+    <div class="content-wrapper">
         
-        <div class="form-card">
-            <h1>Support & Contact</h1>
-            <p style="font-size: 1.1em; font-weight: 700; margin-bottom: 30px;">
-                For support, please contact us using the form below. We will get back to you as quickly as possible!
-            </p>
+        <!-- Google Form Iframe -->
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeF6DoHiYJNppzoBvZyaQR_17zYA8-BtOBkjsezG6kO5AFR-w/viewform?embedded=true" 
+                width="100%" 
+                height="900" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0">
+            Loading…
+        </iframe>
 
-            <!-- Support Form -->
-            <form id="supportForm" onsubmit="event.preventDefault(); handleSend();">
-                
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required placeholder="John Doe">
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="name@example.com">
-                </div>
-                
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" required placeholder="App crashing, feature request, etc.">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Your Message</label>
-                    <textarea id="message" name="message" required placeholder="Tell us about the issue or request..."></textarea>
-                </div>
-                
-                <div class="button-group">
-                    <button type="button" class="button button-clear" onclick="clearForm()">Clear</button>
-                    <button type="submit" class="button button-send">Send Message</button>
-                </div>
-            </form>
-
-            <!-- Message Box for Feedback (Alert Replacement) -->
-            <div id="feedbackMessage" style="
-                margin-top: 20px; 
-                padding: 15px; 
-                border-radius: 8px; 
-                border: 2px solid var(--color-accent-yellow); 
-                background-color: var(--color-soft-bg);
-                color: var(--color-dark);
-                font-weight: 700;
-                text-align: center;
-                display: none;">
-                <!-- Feedback text will be inserted here -->
-            </div>
-
-        </div>
     </div>
     <!-- END PAGE CONTENT SECTION -->
 
@@ -295,10 +183,10 @@
     <footer>
         <h3>Site Links</h3>
         
-        <a href="about_us.html">About&nbsp;Us</a>
-        <a href="privacy_policy.html">Privacy&nbsp;Policy</a>
-        <a href="terms_of_service.html">Terms&nbsp;of&nbsp;Service</a>
-        <a href="community_guidelines.html">Community&nbsp;Guidelines</a>
+        <a href="about_us.html">About Us</a>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+        <a href="community_guidelines.html">Community Guidelines</a>
         <a href="support.html">Support</a> 
 
         <p style="font-size: 0.8em; color: #666; margin-top: 20px; padding-top: 10px;">
@@ -307,34 +195,5 @@
     </footer>
     <!-- END REUSABLE FOOTER BLOCK -->
     
-    <script>
-        function clearForm() {
-            document.getElementById('supportForm').reset();
-            hideFeedback();
-        }
-
-        function handleSend() {
-            // In a real application, this function would serialize the form data 
-            // and send it to a backend server (e.g., using fetch or XMLHttpRequest).
-            
-            // For this static demonstration, we'll just show a success message.
-            const name = document.getElementById('name').value;
-            const messageElement = document.getElementById('feedbackMessage');
-            
-            messageElement.innerHTML = `Thank you, ${name}! Your message has been sent. We will review it shortly.`;
-            messageElement.style.display = 'block';
-            
-            // Optional: Clear the form after 'sending'
-            setTimeout(() => {
-                document.getElementById('supportForm').reset();
-                hideFeedback();
-            }, 3000); // Hide message after 3 seconds
-        }
-
-        function hideFeedback() {
-            document.getElementById('feedbackMessage').style.display = 'none';
-        }
-    </script>
-
 </body>
 </html>

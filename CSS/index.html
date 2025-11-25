@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLLHMD1E9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HWLLHMD1E9');
+</script>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Betsie App...</title>
+    <!-- 
+        This page is designed to be blank and execute a single JavaScript function 
+        immediately upon loading to redirect the user to the appropriate App Store 
+        (Apple App Store or Google Play Store) based on their operating system.
+    -->
+    <style>
+        /* Optional: Hide body content immediately to prevent flashing */
+        body { opacity: 0; margin: 0; padding: 0; }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            // const appStoreLink = "https://itunes.apple.com/app/id6754762923"; 
+            const appStoreLink = "https://testflight.apple.com/join/gbtU1CeG"
+            const playStoreLink = "https://play.google.com";
+            
+            let redirectUrl = appStoreLink; // Default to App Store (iOS/Mac/Win)
+
+            // 1. Check for Android strings (covers mobile and some desktop Android environments)
+            if (/android/i.test(userAgent)) {
+                redirectUrl = playStoreLink;
+            } 
+            // 2. Check for common iOS/Mac/Windows strings (handled by the default, but explicit check is safer)
+            // Note: Since most non-Android mobile users are iOS, and the default is Apple's link, 
+            // we primarily need to detect Android explicitly.
+            
+            // Execute the redirect
+            window.location.replace(redirectUrl);
+        });
+    </script>
+</head>
+<body>
+    <!-- Fallback text for users with JavaScript disabled -->
+    <p>If you are not automatically redirected, please click the appropriate link below:</p>
+    <ul>
+        <li><a href="https://itunes.apple.com/app/id6754762923">Download for iOS/Mac/Windows</a></li>
+        <li><a href="https://play.google.com">Download for Android</a></li>
+    </ul>
+</body>
+</html>

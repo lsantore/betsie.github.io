@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betsie: Dual User Guided Linear Prototype</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+
+    <style>
+        /* BASE STYLES & LAYOUT */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            user-select: none;
+            padding-top: 30px;
+        }
+
+        /* 🛑 1. SMALL SCREEN BLOCKER (Default visibility) */
+        .content-wrapper {
+            display: block; /* Show by default */
+        }
+        
+        .too-small-message {
+            display: none; /* Hidden by default */
+            padding: 40px;
+            text-align: center;
+            font-size: 18px;
+            color: #dc3545;
+            background-color: #ffebeb;
+            border: 2px solid #dc3545;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        /* MEDIA QUERY: If screen is too narrow (e.g., < 1000px for dual phones + controls) */
+        @media (max-width: 1050px) {
+            .content-wrapper {
+                display: none; /* Hide prototype content */
+            }
+            .too-small-message {
+                display: block; /* Show warning message */
+            }
+        }
+        /* --- End Small Screen Blocker Logic --- */
+
+
+        .dual-frame-container {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 30px;
+        }
+
+        .mobile-frame {
+            width: 375px; 
+            height: 667px; 
+            border: 8px solid #333;
+            border-radius: 40px;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* USER A: RED FRAME */
+        .frame-red {
+            border-color: #dc3545; /* Red */
+        }
+        
+        /* USER B: BLUE FRAME */
+        .frame-blue {
+            border-color: #007aff; /* Blue */
+        }
+
+        .user-label {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-size: 16px;
+            padding: 2px 10px;
+            border-radius: 5px;
+            color: white;
+            z-index: 100;
+        }
+        .frame-red .user-label { background-color: #dc3545; }
+        .frame-blue .user-label { background-color: #007aff; }
+
+
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: none;
+            flex-direction: column;
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        /* COMPONENT STYLES */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border-bottom: 1px solid #eee;
+            color: #888;
+        }
+        .progress-indicator { color: #333; font-weight: 700; }
+        .content { 
+            flex-grow: 1; 
+            padding: 20px; 
+            overflow-y: auto;
+            padding-bottom: 70px; 
+        }
+        .screen-footer { 
+            position: absolute; 
+            bottom: 60px; 
+            left: 0;
+            width: 100%;
+            padding: 15px 20px; 
+            border-top: 1px solid #eee; 
+            background-color: #fff;
+            z-index: 40; 
+        }
+        .cta-primary { width: 100%; padding: 15px; background-color: #007aff; color: white; font-size: 16px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; text-transform: uppercase; }
+        .cta-secondary { background-color: #eee; color: #333; border: 1px solid #ccc; margin-top: 10px; }
+        .bet-card { border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px; background-color: #f9f9f9; }
+        
+        /* Form Element Mocks */
+        .input-field.large-text { height: 100px; resize: none; }
+
+        /* Navigation */
+        .nav-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 50; 
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 10px;
+            color: #888;
+            font-weight: 600;
+            cursor: pointer;
+            width: 20%;
+        }
+        .nav-create { margin-top: -15px; }
+        .nav-item.active { color: #007aff; }
+
+        /* Lock Screen Specific Styles */
+        #screen-0-lock-plain, #screen-0-lock-notified {
+            background: #000; 
+            color: white;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+        #screen-0-lock-plain h1, #screen-0-lock-notified h1 {
+            color: white;
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .notification-mock-content {
+            background: rgba(255,255,255,0.1); 
+            padding: 10px; 
+            border-radius: 10px; 
+            margin-top: 20px; 
+            text-align: left;
+            color: white;
+        }
+
+        /* Inbox/Notification List Item */
+        .inbox-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .inbox-item-title {
+            font-size: 16px;
+            display: block;
+            color: #555;
+        }
+        .inbox-item-title.unread { 
+            font-weight: bold; 
+            color: #333; 
+        }
+        .inbox-item-meta {
+            font-size: 12px;
+            color: #999;
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* Profile Screen */
+        .score-card { 
+            border: 2px solid #ddd; 
+            border-radius: 12px; 
+            padding: 25px 15px;
+            margin-top: 25px;
+            background-color: #fefefe;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        .score-row { 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 18px; 
+            font-weight: 600;
+            padding: 8px 0;
+        }
+        .win { color: #28a745; }
+        .loss { color: #dc3545; }
+
+        /* GUIDED JOURNEY STYLES */
+        .journey-container {
+            width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-left: 3px solid #007aff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .journey-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .journey-controls button {
+            padding: 10px 15px;
+            border: 1px solid #007aff;
+            background-color: #007aff;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            min-width: 120px;
+        }
+    </style>
+    <script>
+        // --- CONFIG ---
+        let currentStepIndex = 8; // Start at Step 9 as requested
+        
+        // Defines the linear path: [User A ScreenID, User B ScreenID, Description]
+        const linearJourney = [
+            // Step: 0
+            ['screen-1-signup', 'screen-0-lock-plain', 'Step 1: **New User Onboarding (Sarah K. - Red Frame)**. The primary user is logging in.'],
+            // Step: 1
+            ['screen-2-home-feed', 'screen-0-lock-plain', 'Step 2: **Home Feed/No Active Bets (Sarah K.)**. Sarah clicks \'+\' to create a new bet.'],
+            // Step: 2
+            ['screen-5-define', 'screen-0-lock-plain', 'Step 3: **Create Bet (1/3 Define - Sarah K.)**. Sarah enters the bet details (Question, Type, Resolution Date).'],
+            // Step: 3
+            ['screen-8-invite', 'screen-0-lock-plain', 'Step 4: **Create Bet (2/3 Invite - Sarah K.)**. Sarah selects Jessica M. and reviews other friends/invites.'],
+            // Step: 4
+            ['screen-8a-review', 'screen-0-lock-plain', 'Step 5: **Create Bet (3/3 Review - Sarah K.)**. Sarah confirms the bet details and invited players.'],
+            // Step: 5
+            ['screen-5-active-bet-pending', 'screen-0-lock-notified', 'Step 6: **Bet Sent & Notification Received.** Sarah\'s bet is pending. **User B\'s Lock Screen updates to show the new challenge push notification**.'],
+            // Step: 6
+            ['screen-5-active-bet-pending', 'screen-9-friend-landing', 'Step 7: **Friend Joins (Jessica M.)**. Jessica clicks the notification and lands on the Bet Landing Page to pick a side.'],
+            // Step: 7
+            ['screen-5-active-bet-pending', 'screen-9-friend-landing-signup', 'Step 8: **Account Creation (Jessica M.)**. Jessica picks her side ("NO") and is shown the Sign Up/Login modal (Google, Apple, Email).'],
+            // Step: 8
+            ['screen-5-active-bet-live', 'screen-5-active-bet-live', 'Step 9: **Bet Live (Both Users)**. Jessica signs up/logs in successfully. Both users now see the active bet in their **My Bets** section.'],
+            // Step: 9
+            ['screen-4-notifications', 'screen-4-notifications', 'Step 10: **Inbox/Messages**. Both users see the combined feed with the newest action (Resolution Reminder) at the top, unread.'],
+            // Step: 10
+            ['screen-7-resolution', 'screen-7-resolution', 'Step 11: **Resolve Bet (Both Users)**. Both users land on the Resolution screen and must decide if the **Initiator (Sarah K.) was right or wrong**.'],
+            // Step: 11
+            ['screen-10-share-results-win', 'screen-10-share-results-lose', 'Step 12: **Results Revealed**. Sarah (User A) is shown the WINNER screen. Jessica (User B) is shown the LOSER screen (with social share options).'],
+            // Step: 12
+            ['screen-11-profile-score', 'screen-11-profile-score', 'Step 13: **Profile Scores (Final Step)**. Both users view their updated Profile pages with their current Win/Loss record (A: 1W-0L, B: 0W-1L).']
+        ];
+
+
+        // --- UI & NAVIGATION FUNCTIONS ---
+
+        function populateReviewScreen() {
+            // Hardcoded content for review screen based on the journey
+            const question = 'Will Olivia and James confirm they are dating before the next awards show?';
+            const resolution = 'Dec 20, 2025 at Midnight';
+            const players = 'Jessica M. + 1 other'; 
+            
+            // Update content in all relevant screen templates on both frames
+            document.querySelectorAll('.mobile-frame').forEach(frame => {
+                const qEl = frame.querySelector('#review-question');
+                if (qEl) qEl.textContent = question;
+                const rEl = frame.querySelector('#review-resolution');
+                if (rEl) rEl.textContent = resolution;
+                const pEl = frame.querySelector('#review-players');
+                if (pEl) pEl.textContent = players;
+            });
+        }
+        
+        function goToScreenForUser(user, screenId) {
+            const frame = document.getElementById(`frame-${user}`);
+            if (!frame) return;
+
+            // Deactivate all screens in this frame
+            frame.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            frame.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            
+            // Handle split screen IDs (e.g., friend landing with signup modal, or specific result screens)
+            if (screenId.includes('friend-landing-signup')) {
+                frame.querySelector('#screen-9-friend-landing').classList.add('active');
+                frame.querySelector('#signup-modal-friend').style.display = 'flex';
+                return;
+            } else if (screenId.includes('active-bet')) {
+                 screenId = 'screen-5-active-bet'; // Use the shared template ID
+            } else if (screenId.includes('results-win')) {
+                 screenId = 'screen-10-share-results-win'; // Use the winner template
+            } else if (screenId.includes('results-lose')) {
+                 screenId = 'screen-10-share-results-lose'; // Use the loser template
+            }
+
+
+            // Activate the specified screen
+            const targetScreen = frame.querySelector(`#${screenId}`);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+            }
+
+            // Handle special state updates for active bet screens 
+            const statusEl = frame.querySelector('#bet-status-text');
+            const playersEl = frame.querySelector('#bet-players-text');
+            
+            if (currentStepIndex >= 5 && currentStepIndex <= 7) { // PENDING state (Steps 6-8)
+                if (statusEl) statusEl.textContent = 'Bet Sent! Waiting for Friend\'s Picks';
+                
+                // User A is the initiator (YES), User B is the challenged (PENDING)
+                if (playersEl) {
+                     if (user === 'a') {
+                        playersEl.innerHTML = 'You picked: **YES**. Jessica M. picked: PENDING.';
+                     } else { // User B
+                        playersEl.innerHTML = 'Sarah K. picked: **YES**. You picked: PENDING.';
+                     }
+                }
+            } else if (currentStepIndex >= 8) { // LIVE state (Step 9 onwards)
+                if (statusEl) statusEl.textContent = 'Bet is LIVE! Locked & Running';
+                
+                // User A (YES) vs. User B (NO)
+                if (playersEl) {
+                    if (user === 'a') {
+                        playersEl.innerHTML = 'You picked: **YES**. Jessica M. picked: **NO**.';
+                    } else { // User B
+                        playersEl.innerHTML = 'Sarah K. picked: **YES**. You picked: **NO**.';
+                    }
+                }
+            }
+        }
+
+
+        function updateJourneyUI() {
+            const step = linearJourney[currentStepIndex];
+            
+            // 1. Update Journey Controls
+            document.getElementById('current-step-label').innerHTML = `Step ${currentStepIndex + 1}/${linearJourney.length}`;
+            document.getElementById('journey-description').innerHTML = step[2];
+            
+            // Update button states
+            document.getElementById('prev-step-btn').disabled = currentStepIndex === 0;
+            document.getElementById('next-step-btn').disabled = currentStepIndex === linearJourney.length - 1;
+
+            // 2. Update Dual Frames
+            goToScreenForUser('a', step[0]); // User A (Sarah K.)
+            goToScreenForUser('b', step[1]); // User B (Jessica M.)
+
+            // 3. Handle Special Content Population
+            if (step[0] === 'screen-8a-review' || step[1] === 'screen-8a-review') {
+                populateReviewScreen();
+            }
+        }
+
+        /**
+         * The simplified navigation logic. Moves strictly linearly.
+         */
+        function navigateJourney(direction) {
+            if (direction === 'next' && currentStepIndex < linearJourney.length - 1) {
+                currentStepIndex++;
+            } else if (direction === 'prev' && currentStepIndex > 0) {
+                currentStepIndex--;
+            }
+            
+            updateJourneyUI();
+        }
+
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateJourneyUI();
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="too-small-message">
+        <p>⚠️ **Screen Too Small**</p>
+        <p>This dual-frame prototype requires a minimum screen width of 1050 pixels to be viewed correctly. Please resize your browser window or switch to a desktop/tablet device.</p>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="dual-frame-container">
+            
+            <div id="frame-a" class="mobile-frame frame-red">
+                <span class="user-label">User A (Sarah K.)</span>
+
+                <div id="screen-0-lock-plain" class="screen">
+                    <main class="content">
+                        <h1>2:44</h1>
+                        <p>Sunday, Dec 14</p>
+                    </main>
+                </div>
+
+                <div id="screen-0-lock-notified" class="screen">
+                    <main class="content">
+                        <h1>2:44</h1>
+                        <p>Sunday, Dec 14</p>
+                        <div id="lock-screen-notification" class="notification-mock">
+                            <div class="notification-mock-content">
+                                <span style="font-weight: bold; color: #dc3545;">Betsie: New Challenge!</span>
+                                <p style="font-size: 14px; margin: 5px 0 0 0;">Sarah K. has challenged you: "Will Olivia and James..." (Tap to view)</p>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div id="screen-1-signup" class="screen">
+                    <header class="header" style="justify-content: center; border-bottom: none;"><span class="progress-indicator" style="font-size: 20px;">Betsie</span></header>
+                    <main class="content" style="text-align: center; justify-content: center; padding-top: 80px; padding-bottom: 20px;">
+                        <h1 style="font-size: 24px; margin-top: 0;">Start Your First Bet</h1>
+                        <p style="color: #555; margin-bottom: 40px;">Predict, challenge, and track your bragging rights.</p>
+                        <button class="cta-primary" style="background-color: #4285f4;">Continue with Google</button>
+                        <button class="cta-primary" style="background-color: #000; margin-top: 15px;">Continue with Apple</button>
+                        <button class="cta-primary cta-secondary" style="margin-top: 15px;">Continue with Email</button>
+                    </main>
+                </div>
+
+                <div id="screen-2-home-feed" class="screen">
+                    <header class="header"><span class="back-button">Profile</span><span class="progress-indicator">Feed</span><span class="close-button">Inbox</span></header>
+                    <main class="content">
+                        <div style="text-align: center; padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 20px;">
+                            <p style="color: #555; font-weight: 600;">👋 Welcome, Sarah K.!</p>
+                            <p class="small-text">No active bets yet. Make your first prediction!</p>
+                        </div>
+                        <h2 style="text-align: center; color: #333; margin-bottom: 20px;">🔥 TRENDING</h2>
+                        <div class="bet-card">
+                            <p>Posted by **SwiftieFan99** (Pop Culture)</p>
+                            <h3>Will Taylor Swift release a re-recorded *Debut* album by the end of Q1 next year?</h3>
+                            <p>42 people picked: YES | 18 people picked: NO</p>
+                        </div>
+                    </main>
+                    <div class="nav-footer">
+                        <div class="nav-item"><span class="nav-icon">🏠</span><span>Feed</span></div>
+                        <div class="nav-item active"><span class="nav-icon">📈</span><span>My Bets</span></div>
+                        <div class="nav-create">+</div>
+                        <div class="nav-item"><span class="nav-icon">🔔</span><span>Inbox</span></div>
+                        <div class="nav-item"><span class="nav-icon">👤</span><span>Profile</span></div>
+                    </div>
+                </div>
+
+                <div id="screen-5-define" class="screen">
+                    <header class="header"><span class="back-button">&lt; Back</span><span class="progress-indicator">1/3 Define</span><span class="close-button">X</span></header>
+                    <main class="content">
+                        <h1>WHAT'S THE BET?</h1>
+                        <textarea id="betQuestion" class="input-field large-text" style="height: 100px;">Will Olivia and James confirm they are dating before the next awards show?</textarea>
+                        
+                        <h2 style="margin-top: 30px;">BET TYPE</h2>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="cta-secondary" style="flex: 1; margin-top: 0; background-color: #007aff; color: white; text-transform: none;">Binary (YES/NO)</button>
+                            <button class="cta-secondary" style="flex: 1; margin-top: 0; text-transform: none;">Value (Number/Score)</button>
+                        </div>
+
+                        <h2 style="margin-top: 30px;">RESOLUTION DATE</h2>
+                        <div class="input-mock-date" style="width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 8px; font-weight: 600; color: #007aff;">
+                            Dec 20, 2025 at Midnight <span style="float: right;">📅</span>
+                        </div>
+                    </main>
+                    <div class="screen-footer"><button class="cta-primary">NEXT: PICK FRIENDS</button></div>
+                </div>
+
+                <div id="screen-8-invite" class="screen">
+                    <header class="header"><span class="back-button">&lt; Back</span><span class="progress-indicator">2/3 Invite</span><span class="close-button">X</span></header>
+                    <main class="content">
+                        <h1>WHO ARE YOU CHALLENGING?</h1>
+                        <input type="text" class="input-field friend-search-input" placeholder="Search name, username, or email..." style="width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px;">
+                        
+                        <h2 style="font-size: 16px; margin-top: 20px;">BETSIIE FRIENDS (1 Selected)</h2>
+                        <div class="friend-list-item">
+                            <span>Jessica M. (Selected)</span>
+                            <button class="select-btn" style="padding: 5px 10px; border-radius: 5px; font-size: 12px; background-color: #28a745; color: white; border: none;">REMOVE</button>
+                        </div>
+                        <div class="friend-list-item">
+                            <span>Emily R.</span>
+                            <button class="select-btn" style="padding: 5px 10px; border-radius: 5px; font-size: 12px; background-color: #ccc; color: #333; border: none;">SELECT</button>
+                        </div>
+
+                        <h2 style="font-size: 16px; margin-top: 30px;">INVITE FROM ADDRESS BOOK</h2>
+                        <div class="friend-list-item">
+                            <span>Michael B.</span>
+                            <button class="invite-btn" style="padding: 5px 10px; border-radius: 5px; font-size: 12px; background-color: #007aff; color: white; border: none;">INVITE</button>
+                        </div>
+                        
+                    </main>
+                    <div class="screen-footer"><button class="cta-primary">REVIEW BET (3/3)</button></div>
+                </div>
+
+                <div id="screen-8a-review" class="screen">
+                    <header class="header"><span class="back-button">&lt; Back</span><span class="progress-indicator">3/3 Review</span><span class="close-button">X</span></header>
+                    <main class="content">
+                        <h1 style="font-size: 22px; text-align: center;">Confirm and Send Challenge</h1>
+                        <div class="bet-card" style="padding: 20px; border-color: #007aff;">
+                            <p style="font-weight: 600; color: #555;">PREDICTION:</p>
+                            <h3 id="review-question" style="font-size: 18px; margin-top: 5px;">[Question Placeholder]</h3>
+                            <p id="review-resolution">Resolution Placeholder</p>
+                        </div>
+                        <div class="bet-card">
+                            <p style="font-weight: 600; color: #555;">INVITED PLAYERS:</p>
+                            <p id="review-players" style="font-size: 16px; margin-top: 5px;">You (Sarah K.) vs. [Players Placeholder]</p>
+                        </div>
+                    </main>
+                    <div class="screen-footer"><button class="cta-primary">SEND BET AND INVITE PLAYERS</button></div>
+                </div>
+
+                <div id="screen-5-active-bet" class="screen">
+                    <header class="header"><span class="back-button">Feed</span><span class="progress-indicator">My Bets</span><span class="close-button">Inbox</span></header>
+                    <main class="content" style="text-align: center;">
+                        <h1 style="font-size: 24px; margin-top: 30px;">Active Bets (1)</h1>
+                        <div class="bet-card" style="background-color: #e8f5e9;">
+                            <p id="bet-status-text" style="color: #28a745; font-weight: bold;">[Status Text]</p>
+                            <h3>Will Olivia and James confirm they are dating before the next awards show?</h3>
+                            <p id="bet-players-text">[Player Text]</p>
+                        </div>
+                    </main>
+                    <div class="nav-footer">
+                        <div class="nav-item"><span class="nav-icon">🏠</span><span>Feed</span></div>
+                        <div class="nav-item active"><span class="nav-icon">📈</span><span>My Bets</span></div>
+                        <div class="nav-create">+</div>
+                        <div class="nav-item"><span class="nav-icon">🔔</span><span>Inbox</span></div>
+                        <div class="nav-item"><span class="nav-icon">👤</span><span>Profile</span></div>
+                    </div>
+                </div>
+                
+                <div id="screen-4-notifications" class="screen">
+                    <header class="header"><span class="back-button"></span><span class="progress-indicator">Inbox</span><span class="close-button"></span></header>
+                    <main class="content">
+                        <h2 style="color: #333; margin-bottom: 10px;">Messages</h2>
+                        
+                        <div class="inbox-item" style="border-top: 3px solid #f7a01d;">
+                            <span class="inbox-item-title unread">Bet resolution time reached! **Settle the score.**</span>
+                            <span class="inbox-item-meta">Just now - Action Required</span>
+                        </div>
+
+                        <div class="inbox-item">
+                            <span class="inbox-item-title">Jessica M. sent a new message.</span>
+                            <span class="inbox-item-meta">Dec 16, 2025 - Chat</span>
+                        </div>
+                        
+                        <div class="inbox-item">
+                            <span class="inbox-item-title">Jessica M. accepted your challenge.</span>
+                            <span class="inbox-item-meta">Dec 14, 2025 - System</span>
+                        </div>
+
+                    </main>
+                    <div class="nav-footer">
+                        <div class="nav-item"><span class="nav-icon">🏠</span><span>Feed</span></div>
+                        <div class="nav-item"><span class="nav-icon">📈</span><span>My Bets</span></div>
+                        <div class="nav-create">+</div>
+                        <div class="nav-item active"><span class="nav-icon">🔔</span><span>Inbox</span></div>
+                        <div class="nav-item"><span class="nav-icon">👤</span><span>Profile</span></div>
+                    </div>
+                </div>
+
+                <div id="screen-7-resolution" class="screen">
+                    <header class="header"><span class="back-button">&lt; Back</span><span class="progress-indicator">Settle Bet</span><span class="close-button">X</span></header>
+                    <main class="content" style="padding-bottom: 20px;">
+                        <h1>SETTLE THE SCORE</h1> 
+                        <div class="bet-card"><h3>Will Olivia and James confirm they are dating before the next awards show?</h3></div>
+                        <h2 style="font-size: 18px;">WAS SARAH K.'s PREDICTION CORRECT?</h2>
+                        <p style="margin-bottom: 20px;">Selecting an outcome confirms the winner for all players.</p>
+                        <button class="cta-primary" style="background-color: #28a745;">YES, Sarah K. was RIGHT</button>
+                        <button class="cta-primary cta-secondary" style="background-color: #dc3545; color: white;">NO, Sarah K. was WRONG</button>
+                    </main>
+                    <div class="screen-footer"><button class="cta-primary" style="background-color: #f7a01d;">CONFIRM WINNER</button></div>
+                </div>
+
+                <div id="screen-10-share-results-win" class="screen">
+                    <header class="header"><span class="back-button">&lt; Back</span><span class="progress-indicator">Bet Closed</span><span class="close-button">X</span></header>
+                    <main class="content" style="text-align: center; padding-bottom: 20px;">
+                        <h1 style="color: #28a745; font-size: 32px;">CONGRATS! YOU WON.</h1>
+                        <p style="font-size: 18px; color: #333;">The outcome was **YES**. Your prediction was correct.</p>
+                        <div class="bet-card"><p>Your record is now **1 W - 0 L**. Time to brag!</p></div>
+                        <button class="cta-primary" style="background-color: #17a2b8; margin-top: 20px;">Share Outcome on Social Media</button>
+                    </main>
+                    <div class="screen-footer"><button class="cta-primary">BACK TO PROFILE</button></div>
+                </div>
+                
+                <div id="screen-11-profile-score" class="screen">
+                    <header class="header"><span class="back-button">Feed</span><span class="progress-indicator">Profile</span><span class="close-button"></span></header>
+                    <main class="content">
+                        <h1 style="text-align: center;">Sarah K.</h1>
+                        <p style="text-align: center; color: #888;">Joined: Dec 2025</p>
+                        <div class="score-card">
+                            <h3>ALL-TIME RECORD</h3>
+                            <div class="score-row">
+                                <span>WINS (W)</span>
+                                <span class="win">1</span>
+                            </div>
+                            <div class="score-row">
+                                <span>LOSSES (L)</span>
+                                <span class="loss">0</span>
+                            </div>
+                            <div class="score-row" style="border-top: 1px dashed #ccc; margin-top: 10px; padding-top: 10px;">
+                                <span>WIN RATE</span>
+                                <span style="font-weight: 700;">100%</span>
+                            </div>
+                        </div>
+                    </main>
+                    <div class="nav-footer">
+                        <div class="nav-item"><span class="nav-icon">🏠</span><span>Feed</span></div>
+                        <div class="nav-item"><span class="nav-icon">📈</span><span>My Bets</span></div>
+                        <div class="nav-create">+</div>
+                        <div class="nav-item"><span class="nav-icon">🔔</span><span>Inbox</span></div>
+                        <div class="nav-item active"><span class="nav-icon">👤</span><span>Profile</span></div>
+                    </div>
+                </div>
+
+
+                <div id="screen-10-share-results-lose" class="screen"></div>
+                <div id="signup-modal-friend" class="modal"></div>
+            </div>
+
+            
+            <div id="frame-b" class="mobile-frame frame-blue">
+                <span class="user-label">User B (Jessica M.)</span>
+
+                <div id="screen-0-lock-plain" class="screen">
+                    <main class="content">
+                        <h1>2:44</h1>
+                        <p>Sunday, Dec 14</p>
+                    </main>
+                </div>
+
+                <div id="screen-0-lock-notified" class="screen">
+                    <main class="content">
+                        <h1>2:44</h1>
+                        <p>Sunday, Dec 14</p>
+                        <div id="lock-screen-notification" class="notification-mock">
+                            <div class="notification-mock-content">
+                                <span style="font-weight: bold; color: #dc3545;">Betsie: New Challenge!</span>
+                                <p style="font-size: 14px; margin: 5px 0 0 0;">Sarah K. has challenged you: "Will Olivia and James..." (Tap to view)</p>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div id="screen-1-signup" class="screen">
+                    <header class="header" style="justify-content: center; border-bottom: none;"><span class="progress-indicator" style="font-size: 20px;">Betsie</span></header>
+                    <main class="content" style="text-align: center; justify-content: center; padding-top: 80px; padding-bottom: 20px;">
+                        <h1 style="font-size: 24px; margin-top: 0;">Start Your First Bet</h1>
+                        <p style="color: #555; margin-bottom: 40px;">Predict, challenge, and track your bragging rights.</p>
+                        <button class="cta-primary" style="background-color: #4285f4;">Continue with Google</button>
+                        <button class="cta-primary" style="background-color: #000; margin-top: 15px;">Continue with Apple</button>
+                        <button class="cta-primary cta-secondary" style="margin-top: 15px;">Continue with Email</button>
+                    </main>
+                </div>
+
+                <div id="screen-2-home-feed" class="screen">
+                    <header class="header"><span class="back-button">Profile</span><span class="progress-indicator">Feed</span><span class="close-button">Inbox</span></header>
+                    <main class="content">
+                        <div style="text-align: center; padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 20px;">
+                            <p style="color: #555; font-weight: 600;">👋 Welcome, Jessica M.!</p>
+                            <p class="small-text">Bet complete! Check your history.</p>
+                        </div>
+                        <h2 style="text-align: center; color: #333; margin-bottom: 20px;">🔥 TRENDING</h2>
+                        <div class="bet-card">
+                            <p>Posted by **SwiftieFan99** (Pop Culture)</p>
+                            <h3>Will Taylor Swift release a re-recorded *Debut* album by the end of Q1 next year?</h3>
+                            <p>42 people picked: YES | 18 people picked: NO</p>
+                        </div>
+                    </main>
+                    <div class="nav-footer">
+                        <div class="nav-item"><span class="nav-icon">🏠</span><span>Feed</span></div>
+                        <div class="nav-item active"><span class="nav-icon">📈</span><span>My Bets</span></div>
+                        <div class="nav-create">+</div>
+                        <div class="nav-item"><span class="nav-icon">🔔</span><span>Inbox</span></div>
+                        <div class="nav-item"><span class="nav-icon">👤</span><span>Profile</span></div>
+                    </div>
+                </div>
+
+                <div id="screen-9-friend-landing" class="screen">
+                    <header class="header"><span class="progress-indicator" style="font-size: 20px;">Betsie</span><span></span></header>
+                    <main class="content" style="text-align: center; padding-bottom: 20px;">
+                        <h1 style="margin-top: 30px; font-size: 22px;">You've been challenged by **Sarah K.**!</h1>
+                        <div class="bet-card" style="padding: 20px; margin-top: 30px; border-color: #007aff;">
+                            <h3 style="font-size: 18px;">Will Olivia and James confirm they are dating before the next awards show?</h3>
+                        </div>
+                        <h2 style="color: #333; margin-top: 40px; margin-bottom: 20px;">PICK YOUR SIDE</h2>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="cta-primary" style="flex: 1; background-color: #28a745;">YES</button>
+                            <button class="cta-primary" style="flex: 1; background-color: #dc3545;">NO</button>
+                        </div>
+                    </main>
+                </div>
+
+                <div id="screen-5-active-bet" class="screen">
+                    <header class="header"><span class="back-button">Feed</span><span class="progress-indicator">My Bets</span><span class="close-button">Inbox</span></header>
+                    <main class="content" style="text-align: center;">
+                        <h1 style="font-size: 24px; margin-top: 30px;">Active Bets (1)</h1>
+                        <div class="bet-card" style="background-color: #e8f5e9;">
+                            <p id="bet-status-text" style="color: #28a745; font-weight: bold;">[Status Text]</p>
+                            <h3>Will Olivia and James confirm they are dating before the next awards show?</h3>
+                            <p id="bet-players-text">[Player Text]</p>
+                        </div>
+                    </main>
+                    <div class="nav-footer">
+                        <div class="nav-item"><span class="nav-icon">🏠</span><span>Feed</span></div>
+                        <div class="nav-item active"><span class="nav-icon">📈</span><span>My Bets</span></div>
+                        <div class="nav-create">+</div>
+                        <div class="nav-item"><span class="nav-icon">🔔</span><span>Inbox</span></div>
+                        <div class="nav-item"><span class="nav-icon">👤</span><span>Profile</span></div>
+                    </div>
+                </div>
+                
+                <div id="screen-4-notifications" class="screen">
+                    <header class="header"><span class="back-button"></span><span class="progress-indicator">Inbox</span><span class="close-button"></span></header>
+                    <main class="content">
+                        <h2 style="color: #333; margin-bottom: 10px;">Messages</h2>
+                        
+                        <div class="inbox-item" style="border-top: 3px solid #f7a01d;">
+                            <span class="inbox-item-title unread">Bet resolution time reached! **Settle the score.**</span>
+                            <span class="inbox-item-meta">Just now - Action Required</span>
+                        </div>
+
+                        <div class="inbox-item">
+                            <span class="inbox-item-title">Sarah K. sent a new message.</span>
+                            <span class="inbox-item-meta">Dec 16, 2025 - Chat</span>
+                        </div>
+                        
+                        <div class="inbox-item">
+                            <span class="inbox-item-title">You accepted the challenge from Sarah K.</span>
+                            <span class="inbox-item-meta">Dec 14, 2025 - System</span>
+                        </div>
+
+                    </main>
+                    <div class="nav-footer">
+                        <div class="nav-item"><span class="nav-icon">🏠</span><span>Feed</span></div>
+                        <div class="nav-item"><span class="nav-icon">📈</span><span>My Bets</span></div>
+                        <div class="nav-create">+</div>
+                        <div class="nav-item active"><span class="nav-icon">🔔</span><span>Inbox</span></div>
+                        <div class="nav-item"><span class="nav-icon">👤</span><span>Profile</span></div>
+                    </div>
+                </div>
+
+                <div id="screen-7-resolution" class="screen">
+                    <header class="header"><span class="back-button">&lt; Back</span><span class="progress-indicator">Settle Bet</span><span class="close-button">X</span></header>
+                    <main class="content" style="padding-bottom: 20px;">
+                        <h1>SETTLE THE SCORE</h1> 
+                        <div class="bet-card"><h3>Will Olivia and James confirm they are dating before the next awards show?</h3></div>
+                        <h2 style="font-size: 18px;">WAS SARAH K.'s PREDICTION CORRECT?</h2>
+                        <p style="margin-bottom: 20px;">Selecting an outcome confirms the winner for all players.</p>
+                        <button class="cta-primary" style="background-color: #28a745;">YES, Sarah K. was RIGHT</button>
+                        <button class="cta-primary cta-secondary" style="background-color: #dc3545; color: white;">NO, Sarah K. was WRONG</button>
+                    </main>
+                    <div class="screen-footer"><button class="cta-primary" style="background-color: #f7a01d;">CONFIRM WINNER</button></div>
+                </div>
+
+                <div id="screen-10-share-results-lose" class="screen">
+                    <header class="header"><span class="back-button">&lt; Back</span><span class="progress-indicator">Bet Closed</span><span class="close-button">X</span></header>
+                    <main class="content" style="text-align: center; padding-bottom: 20px;">
+                        <h1 style="color: #dc3545; font-size: 32px;">BET LOST.</h1>
+                        <p style="font-size: 18px; color: #333;">The outcome was **YES**. Your prediction (**NO**) was incorrect.</p>
+                        <div class="bet-card"><p>Your record is now **0 W - 1 L**. Better luck next time.</p></div>
+                        <button class="cta-primary" style="background-color: #17a2b8; margin-top: 20px;">Share Outcome on Social Media</button>
+                    </main>
+                    <div class="screen-footer"><button class="cta-primary">BACK TO PROFILE</button></div>
+                </div>
+
+                <div id="screen-11-profile-score" class="screen">
+                    <header class="header"><span class="back-button">Feed</span><span class="progress-indicator">Profile</span><span class="close-button"></span></header>
+                    <main class="content">
+                        <h1 style="text-align: center;">Jessica M.</h1>
+                        <p style="text-align: center; color: #888;">Joined: Dec 2025</p>
+                        <div class="score-card">
+                            <h3>ALL-TIME RECORD</h3>
+                            <div class="score-row">
+                                <span>WINS (W)</span>
+                                <span class="win">0</span>
+                            </div>
+                            <div class="score-row">
+                                <span>LOSSES (L)</span>
+                                <span class="loss">1</span>
+                            </div>
+                            <div class="score-row" style="border-top: 1px dashed #ccc; margin-top: 10px; padding-top: 10px;">
+                                <span>WIN RATE</span>
+                                <span style="font-weight: 700;">0%</span>
+                            </div>
+                        </div>
+                    </main>
+                    <div class="nav-footer">
+                        <div class="nav-item"><span class="nav-icon">🏠</span><span>Feed</span></div>
+                        <div class="nav-item"><span class="nav-icon">📈</span><span>My Bets</span></div>
+                        <div class="nav-create">+</div>
+                        <div class="nav-item"><span class="nav-icon">🔔</span><span>Inbox</span></div>
+                        <div class="nav-item active"><span class="nav-icon">👤</span><span>Profile</span></div>
+                    </div>
+                </div>
+
+                <div id="screen-5-define" class="screen"></div>
+                <div id="screen-8-invite" class="screen"></div>
+                <div id="screen-8a-review" class="screen"></div>
+                <div id="screen-10-share-results-win" class="screen"></div>
+
+                <div id="signup-modal-friend" class="modal">
+                    <div class="modal-content" style="background-color: #fff; padding: 20px; border-radius: 15px; width: 80%; text-align: center;">
+                        <img src="https://via.placeholder.com/60x60?text=✔️" alt="Success Icon" style="margin-bottom: 15px;">
+                        <h2>Great pick!</h2>
+                        <p>Log in or **Sign up in seconds** to submit your choice to Sarah.</p>
+                        <button class="cta-primary" style="background-color: #4285f4;">Sign Up with Google</button>
+                        <button class="cta-primary" style="background-color: #000; margin-top: 15px;">Sign Up with Apple</button>
+                        <button class="cta-primary cta-secondary" style="margin-top: 15px;">Sign Up with Email</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="journey-container">
+            <div class="journey-controls">
+                <button id="prev-step-btn" onclick="navigateJourney('prev')">
+                    &lt; Previous Step
+                </button>
+                <span id="current-step-label">Step 9/13</span>
+                <button id="next-step-btn" onclick="navigateJourney('next')">
+                    Next Step &gt;
+                </button>
+            </div>
+            <div id="journey-description">
+                Step 9: **Bet Live (Both Users)**. Jessica signs up/logs in successfully. Both users now see the active bet in their **My Bets** section.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

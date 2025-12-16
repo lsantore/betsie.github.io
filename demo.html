@@ -8,6 +8,34 @@
     <meta name="robots" content="noindex, nofollow">
 
     <style>
+        /* --- IMAGE PATHS UPDATED TO /images DIRECTORY --- */
+        /* These paths assume you have the following files in your /images directory:
+           friend-01.jpg, friend-02.jpg, friend-03.jpg, friend-04.jpg 
+        */
+        
+        /* friend-01.jpg (Sarah K. - Red scheme) */
+        .avatar-sarah, .h2h-player.user-a .h2h-avatar, .frame-red .profile-picture, 
+        .challenger-picture {
+            background-image: url("/images/friend-01.jpg");
+        }
+
+        /* friend-02.jpg (Jessica M. - Blue scheme) */
+        .avatar-jessica, .h2h-player.user-b .h2h-avatar, .frame-blue .profile-picture {
+            background-image: url("/images/friend-02.jpg");
+        }
+
+        /* friend-03.jpg (Emily R. - Green scheme) */
+        .avatar-emily {
+            background-image: url("/images/friend-03.jpg");
+        }
+
+        /* friend-04.jpg (Michael B. - Gray scheme) */
+        .avatar-michael {
+            background-image: url("/images/friend-04.jpg");
+        }
+
+        /* --- END IMAGE PATH UPDATES --- */
+
         /* BASE STYLES & LAYOUT */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -19,7 +47,7 @@
             min-height: 100vh;
             margin: 0;
             user-select: none;
-            padding-top: 30px;
+            padding-top: 15px; 
         }
 
         /* 🛑 1. SMALL SCREEN BLOCKER (Default visibility) */
@@ -53,12 +81,14 @@
 
 
         .dual-frame-container {
+            /* REDUCED GAP TO SAVE SPACE */
             display: flex;
-            gap: 50px;
-            margin-bottom: 30px;
+            gap: 30px; 
+            margin-bottom: 20px;
         }
 
         .mobile-frame {
+            /* FIX: Using standard iPhone X/11/12 width and height */
             width: 375px; 
             height: 667px; 
             border: 8px solid #333;
@@ -128,11 +158,12 @@
             flex-grow: 1; 
             padding: 20px; 
             overflow-y: auto;
-            padding-bottom: 70px; 
+            /* Adjusted padding to accommodate the new height */
+            padding-bottom: 80px; 
         }
         .screen-footer { 
             position: absolute; 
-            bottom: 60px; 
+            bottom: 0; /* Align to the bottom of the screen */
             left: 0;
             width: 100%;
             padding: 15px 20px; 
@@ -146,7 +177,6 @@
         .bet-card { border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px; background-color: #f9f9f9; }
         
         /* Form Element Mocks */
-        /* Styles for text area (Step 3) */
         .input-field.large-text { 
             height: 100px; 
             resize: none; 
@@ -157,7 +187,6 @@
             border-radius: 8px;
         }
         
-        /* Styles for date picker mock (Step 3) */
         .input-mock-date {
             width: 100%; 
             padding: 15px; 
@@ -168,14 +197,13 @@
             box-sizing: border-box; 
         }
 
-        /* Styles for search input (Step 4) */
         .input-field.friend-search-input {
             width: 100%; 
             padding: 15px; 
             border: 1px solid #ccc; 
             border-radius: 8px; 
             font-size: 16px;
-            box-sizing: border-box; /* Ensure padding is inside the 100% width */
+            box-sizing: border-box; 
         }
 
         /* Friend List Item styles for Step 4 */
@@ -215,7 +243,22 @@
             cursor: pointer;
             width: 20%;
         }
-        .nav-create { margin-top: -15px; }
+        .nav-create { 
+             margin-top: -15px; 
+             /* The 'Create' button is visually different/raised */
+             background-color: #007aff;
+             color: white;
+             font-size: 24px;
+             font-weight: 300;
+             height: 50px;
+             width: 50px;
+             border-radius: 50%;
+             line-height: 40px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+             display: flex;
+             justify-content: center;
+             align-items: center;
+        }
         .nav-item.active { color: #007aff; }
 
         /* Lock Screen Specific Styles */
@@ -252,8 +295,6 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
             /* Mock App Logo styling */
             background-color: #f7a01d; 
             display: flex;
@@ -262,7 +303,9 @@
             font-size: 20px;
             color: white;
             font-weight: 700;
+            margin-right: 15px;
         }
+        
         .inbox-item-text {
             flex-grow: 1;
         }
@@ -281,18 +324,43 @@
             display: block;
             margin-top: 3px;
         }
+        
+        /* 🛑 PROFILE/AVATAR STYLES (Image Replacement) */
+        /* Base styles for all avatar types */
+        .avatar-placeholder, .profile-picture, .challenger-picture, .h2h-avatar {
+            /* General image settings */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #ddd; /* Fallback color */
+            
+            /* Text fallback alignment (hidden if image loads) */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: transparent; 
+            font-size: 0;
+            text-indent: -9999px; /* Hide text fallback */
+        }
 
-        /* Profile Picture Style (Used for Profile and now Invitation) */
+        /* Small Avatar (Friend List, Inbox) */
+        .avatar-placeholder {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        /* Profile Picture Style (Larger version) */
         .profile-picture {
             width: 90px;
             height: 90px;
             border-radius: 50%;
-            object-fit: cover;
             margin: 20px auto 10px auto;
-            display: block;
             border: 3px solid; 
         }
-        /* Specific border colors for context */
+        /* Specific border colors for context, and map image class */
         .frame-red .profile-picture { border-color: #dc3545; }
         .frame-blue .profile-picture { border-color: #007aff; }
 
@@ -301,13 +369,29 @@
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 15px auto; /* Centered, slight bottom margin */
-            display: block;
-            border: 3px solid #dc3545; /* Sarah K.'s primary color */
+            margin: 0 auto 15px auto; 
+            border: 3px solid #dc3545; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        
+        /* Head-to-Head Avatar */
+        .h2h-player .h2h-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid; 
+            margin-bottom: 10px;
+            
+            /* Hide the fallback text for H2H as well */
+            color: transparent;
+            font-size: 0;
+            text-indent: -9999px;
+        }
+        /* Specific H2H avatar colors and image map */
+        .h2h-player.user-a .h2h-avatar { border-color: #dc3545; }
+        .h2h-player.user-b .h2h-avatar { border-color: #007aff; }
 
+        /* General styles (continued) */
         .score-card { 
             border: 2px solid #ddd; 
             border-radius: 12px; 
@@ -335,12 +419,12 @@
             padding: 20px;
             flex-grow: 1;
         }
-        .h2h-container p { margin: 5px 0; } /* Adjusted spacing */
+        .h2h-container p { margin: 5px 0; } 
 
         .h2h-matchup {
             display: flex;
             justify-content: space-around;
-            align-items: flex-start; /* Align top for better vertical flow */
+            align-items: flex-start; 
             width: 100%;
             margin-top: 50px;
         }
@@ -350,14 +434,7 @@
             align-items: center;
             width: 35%;
         }
-        .h2h-player img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 4px solid; 
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
+        
         .h2h-score-box {
             display: flex;
             flex-direction: column;
@@ -384,11 +461,11 @@
             padding: 3px 8px;
             border-radius: 5px;
             margin-top: 10px;
-            white-space: pre-line; /* Allows line breaks in the text content */
+            white-space: pre-line; 
             line-height: 1.4;
         }
-        .h2h-player.winner img { border-color: #28a745; }
-        .h2h-player.loser img { border-color: #dc3545; }
+        .h2h-player.winner .h2h-avatar { border-color: #28a745; }
+        .h2h-player.loser .h2h-avatar { border-color: #dc3545; }
         .h2h-win-indicator.win { background-color: #e8f5e9; color: #28a745; }
         .h2h-win-indicator.loss { background-color: #ffebeb; color: #dc3545; }
 
@@ -405,7 +482,7 @@
             font-weight: 600;
         }
 
-        /* New Countdown Timer Styles */
+        /* Countdown Timer Styles */
         .countdown-timer-container {
             display: flex;
             justify-content: space-around;
@@ -442,7 +519,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin-bottom: 20px; /* Space for copyright */
+            margin-bottom: 20px; 
         }
         .journey-controls {
             display: flex;
@@ -470,7 +547,7 @@
     </style>
     <script>
         // --- CONFIG ---
-        let currentStepIndex = 0; 
+        let currentStepIndex = 0; // Start at Step 1, index 0
         let countdownInterval;
         const resolutionDate = new Date("Dec 20, 2025 00:00:00").getTime(); // Fixed resolution time
         
@@ -483,7 +560,7 @@
             // Step: 2 (STEP 3)
             ['screen-5-define', 'screen-0-lock-plain', 'Step 3: Create Bet (1/3 Define - Sarah K.). Sarah enters the bet details (Question, Type, Resolution Date).'],
             // Step: 3 (STEP 4)
-            ['screen-8-invite', 'screen-0-lock-plain', 'Step 4: Create Bet (2/3 Invite - Sarah K.). Sarah selects Jessica M. and reviews other friends/invites. (Profile images added and corrected.)'],
+            ['screen-8-invite', 'screen-0-lock-plain', 'Step 4: Create Bet (2/3 Invite - Sarah K.). Sarah selects Jessica M. and reviews other friends/invites.'],
             // Step: 4 (STEP 5)
             ['screen-8a-review', 'screen-0-lock-plain', 'Step 5: Create Bet (3/3 Review - Sarah K.). Sarah confirms the bet details and invited players.'],
             // Step: 5 (STEP 6)
@@ -509,21 +586,17 @@
 
         // --- COUNTDOWN LOGIC ---
 
-        // Mock current time for demonstration (Dec 15, 2025 16:23:01 PST)
-        // This is necessary to make the countdown consistent across sessions/browsers
-        const mockNow = new Date("Dec 15, 2025 16:23:01").getTime(); 
+        // Mock current time for demonstration (Dec 15, 2025 17:00:00 PM PST)
+        const mockNow = new Date("Dec 15, 2025 17:00:00").getTime(); 
 
         function startCountdown() {
-            // Clear any existing interval
             if (countdownInterval) clearInterval(countdownInterval);
 
             let currentTime = mockNow;
 
             function updateTimer() {
-                // Calculate time difference
                 const distance = resolutionDate - currentTime;
                 
-                // If the countdown is finished, stop and display "CLOSED"
                 if (distance < 0) {
                     clearInterval(countdownInterval);
                     const closedText = '<span style="color: #dc3545;">CLOSED</span>';
@@ -532,20 +605,16 @@
                     return;
                 }
                 
-                // Time calculations for days, hours, minutes, and seconds
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                // Format the output
                 const daysFormatted = `<div class="countdown-number">${days}</div><div class="countdown-label">Days</div>`;
                 const hoursFormatted = `<div class="countdown-number">${hours < 10 ? '0' + hours : hours}</div><div class="countdown-label">Hours</div>`;
                 const minutesFormatted = `<div class="countdown-number">${minutes < 10 ? '0' + minutes : minutes}</div><div class="countdown-label">Mins</div>`;
                 const secondsFormatted = `<div class="countdown-number">${seconds < 10 ? '0' + seconds : seconds}</div><div class="countdown-label">Secs</div>`;
 
-                // Update the elements for both User A and User B
-                // Ensure all elements exist before updating
                 const timerContainerA = document.getElementById('countdown-timer-a');
                 const timerContainerB = document.getElementById('countdown-timer-b');
 
@@ -564,11 +633,9 @@
                         `<div class="countdown-item">${secondsFormatted}</div>`;
                 }
 
-                // Decrement current time by one second for mock functionality
                 currentTime += 1000;
             }
 
-            // Run immediately and then every second
             updateTimer(); 
             countdownInterval = setInterval(updateTimer, 1000);
         }
@@ -582,7 +649,6 @@
 
         // --- UI & NAVIGATION FUNCTIONS ---
         
-        // Removed populateReviewScreen() as content is now hardcoded in HTML for stability.
 
         function goToScreenForUser(user, screenId) {
             const frame = document.getElementById(`frame-${user}`);
@@ -627,7 +693,6 @@
                  startCountdown(); 
             } else {
                  if (timerContainer) timerContainer.style.display = 'none';
-                 // Only stop the interval when navigating away from the 'active-bet' screen
                  if (currentStepIndex < 8 && countdownInterval) stopCountdown(); 
             }
 
@@ -672,8 +737,6 @@
             // 2. Update Dual Frames
             goToScreenForUser('a', step[0]); // User A (Sarah K.)
             goToScreenForUser('b', step[1]); // User B (Jessica M.)
-
-            // 3. Removed special content population function
         }
 
         /**
@@ -797,14 +860,14 @@
                         <h2 style="font-size: 16px; margin-top: 20px;">BETSIE FRIENDS (1 Selected)</h2>
                         <div class="friend-list-item">
                             <div style="display: flex; align-items: center;">
-                                <img src="/images/friend-02.jpg" alt="Jessica M." style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px; object-fit: cover;">
+                                <div class="avatar-placeholder avatar-jessica"></div>
                                 <span>Jessica M. (Selected)</span>
                             </div>
                             <button class="select-btn" style="padding: 5px 10px; border-radius: 5px; font-size: 12px; background-color: #28a745; color: white; border: none;">REMOVE</button>
                         </div>
                         <div class="friend-list-item">
                             <div style="display: flex; align-items: center;">
-                                <img src="/images/friend-03.jpg" alt="Emily R." style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px; object-fit: cover;">
+                                <div class="avatar-placeholder avatar-emily"></div>
                                 <span>Emily R.</span>
                             </div>
                             <button class="select-btn" style="padding: 5px 10px; border-radius: 5px; font-size: 12px; background-color: #ccc; color: #333; border: none;">SELECT</button>
@@ -812,8 +875,8 @@
 
                         <h2 style="font-size: 16px; margin-top: 30px;">INVITE FROM ADDRESS BOOK</h2>
                         <div class="friend-list-item">
-                             <div style="display: flex; align-items: center;">
-                                <img src="/images/friend-04.jpg" alt="Michael B." style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px; object-fit: cover; background-color: #f7a01d; color: white; font-size: 10px;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="avatar-placeholder avatar-michael"></div>
                                 <span>Michael B.</span>
                             </div>
                             <button class="invite-btn" style="padding: 5px 10px; border-radius: 5px; font-size: 12px; background-color: #007aff; color: white; border: none;">INVITE</button>
@@ -831,11 +894,11 @@
                             <p style="font-weight: 600; color: #555;">PREDICTION:</p>
                             <h3 id="review-question" style="font-size: 18px; margin-top: 5px;">Will Olivia and James confirm they are dating before the next awards show?</h3>
                             <p id="review-resolution">Dec 20, 2025 at Midnight</p>
-                            </div>
+                        </div>
                         <div class="bet-card">
                             <p style="font-weight: 600; color: #555;">INVITED PLAYERS:</p>
                             <p id="review-players" style="font-size: 16px; margin-top: 5px;">You (Sarah K.) vs. Jessica M. + 1 other</p>
-                            </div>
+                        </div>
                     </main>
                     <div class="screen-footer"><button class="cta-primary">SEND BET AND INVITE PLAYERS</button></div>
                 </div>
@@ -877,7 +940,7 @@
                         </div>
 
                         <div class="inbox-item">
-                            <img src="/images/friend-02.jpg" alt="Jessica M. Profile" class="inbox-item-img" style="background-color: transparent;">
+                            <div class="avatar-placeholder avatar-jessica" style="margin-right: 15px;"></div>
                             <div class="inbox-item-text">
                                 <span class="inbox-item-title">Jessica M. sent a new message.</span>
                             <span class="inbox-item-meta">Dec 16, 2025 - Chat</span>
@@ -933,8 +996,8 @@
                         <p style="color: #555;">You closed the bet by winning this round.</p>
                         <p style="color: #555; font-weight: 600;">Here's your updated head-to-head scorecard.</p>
                         <div class="h2h-matchup">
-                            <div class="h2h-player winner">
-                                <img src="/images/friend-01.jpg" alt="Sarah K. Profile">
+                            <div class="h2h-player user-a winner">
+                                <div class="h2h-avatar"></div>
                                 <h3>You</h3>
                                 <div class="h2h-win-indicator win">Total Record:
                                     1 W - 0 L
@@ -949,9 +1012,9 @@
                                 <div class="h2h-win-rate">
                                     100%<br>Win Rate
                                 </div>
-                                </div>
-                            <div class="h2h-player loser">
-                                <img src="/images/friend-02.jpg" alt="Jessica M. Profile">
+                            </div>
+                            <div class="h2h-player user-b loser">
+                                <div class="h2h-avatar"></div>
                                 <h3>Jessica M.</h3>
                                 <div class="h2h-win-indicator loss">Total Record:
                                     0 W - 1 L
@@ -967,7 +1030,7 @@
                 <div id="screen-11-profile-score" class="screen">
                     <header class="header"><span class="back-button">Feed</span><span class="progress-indicator">Profile</span><span class="close-button"></span></header>
                     <main class="content">
-                        <img src="/images/friend-01.jpg" alt="Sarah K. Profile" class="profile-picture">
+                        <div class="profile-picture avatar-sarah"></div>
                         <h1 style="text-align: center; margin-top: 0;">Sarah K.</h1>
                         <p style="text-align: center; color: #888;">Joined: Dec 2025</p>
                         <div class="score-card">
@@ -1065,7 +1128,7 @@
                 <div id="screen-9-friend-landing" class="screen">
                     <header class="header"><span class="progress-indicator" style="font-size: 20px;">Betsie</span><span></span></header>
                     <main class="content" style="text-align: center; padding-bottom: 20px;">
-                        <img src="/images/friend-01.jpg" alt="Sarah K. Profile" class="challenger-picture">
+                        <div class="challenger-picture avatar-sarah"></div>
                         
                         <h1 style="margin-top: 0; font-size: 22px;">You've been challenged by Sarah K.!</h1>
                         <div class="bet-card" style="padding: 20px; margin-top: 30px; border-color: #007aff;">
@@ -1116,7 +1179,7 @@
                         </div>
 
                         <div class="inbox-item">
-                            <img src="/images/friend-01.jpg" alt="Sarah K. Profile" class="inbox-item-img" style="background-color: transparent;">
+                            <div class="avatar-placeholder avatar-sarah" style="margin-right: 15px;"></div>
                             <div class="inbox-item-text">
                                 <span class="inbox-item-title">Sarah K. sent a new message.</span>
                                 <span class="inbox-item-meta">Dec 16, 2025 - Chat</span>
@@ -1172,8 +1235,8 @@
                         <p style="color: #555;">Sarah K. closed the bet by winning this round.</p>
                         <p style="color: #555; font-weight: 600;">Here's your updated head-to-head scorecard.</p>
                         <div class="h2h-matchup">
-                            <div class="h2h-player loser">
-                                <img src="/images/friend-02.jpg" alt="Jessica M. Profile">
+                            <div class="h2h-player user-b loser">
+                                <div class="h2h-avatar"></div>
                                 <h3>You</h3>
                                 <div class="h2h-win-indicator loss">Total Record:
                                     0 W - 1 L
@@ -1188,9 +1251,9 @@
                                 <div class="h2h-win-rate">
                                     0%<br>Win Rate
                                 </div>
-                                </div>
-                            <div class="h2h-player winner">
-                                <img src="/images/friend-01.jpg" alt="Sarah K. Profile">
+                            </div>
+                            <div class="h2h-player user-a winner">
+                                <div class="h2h-avatar"></div>
                                 <h3>Sarah K.</h3>
                                 <div class="h2h-win-indicator win">Total Record:
                                     1 W - 0 L
@@ -1206,7 +1269,7 @@
                 <div id="screen-11-profile-score" class="screen">
                     <header class="header"><span class="back-button">Feed</span><span class="progress-indicator">Profile</span><span class="close-button"></span></header>
                     <main class="content">
-                        <img src="/images/friend-02.jpg" alt="Jessica M. Profile" class="profile-picture">
+                        <div class="profile-picture avatar-jessica"></div>
                         <h1 style="text-align: center; margin-top: 0;">Jessica M.</h1>
                         <p style="text-align: center; color: #888;">Joined: Dec 2025</p>
                         <div class="score-card">
@@ -1234,66 +1297,11 @@
                     </div>
                 </div>
 
-                <div id="screen-5-define" class="screen">
-                    <header class="header"><span class="back-button">&lt; Back</span><span class="progress-indicator">1/3 Define</span><span class="close-button">X</span></header>
-                    <main class="content">
-                        <h1>WHAT'S THE BET?</h1>
-                        <textarea id="betQuestion" class="input-field large-text">Will Olivia and James confirm they are dating before the next awards show?</textarea>
-                        
-                        <h2 style="margin-top: 30px;">BET TYPE</h2>
-                        <div style="display: flex; gap: 10px;">
-                            <button class="cta-secondary" style="flex: 1; margin-top: 0; background-color: #007aff; color: white; text-transform: none;">Binary (YES/NO)</button>
-                            <button class="cta-secondary" style="flex: 1; margin-top: 0; text-transform: none;">Multiple Options</button>
-                        </div>
-
-                        <h2 style="margin-top: 30px;">RESOLUTION DATE</h2>
-                        <div class="input-mock-date">
-                            Dec 20, 2025 at Midnight <span style="float: right;">📅</span>
-                        </div>
-                    </main>
-                    <div class="screen-footer"><button class="cta-primary">NEXT: PICK FRIENDS</button></div>
-                </div>
-
-                <div id="screen-8-invite" class="screen">
-                    <header class="header"><span class="back-button">&lt; Back</span><span class="progress-indicator">2/3 Invite</span><span class="close-button">X</span></header>
-                    <main class="content">
-                        <h1>WHO ARE YOU CHALLENGING?</h1>
-                        <input type="text" class="input-field friend-search-input" placeholder="Search name, username, or email...">
-                        
-                        <h2 style="font-size: 16px; margin-top: 20px;">BETSIE FRIENDS (1 Selected)</h2>
-                        <div class="friend-list-item">
-                            <span>Jessica M. (Selected)</span>
-                            <button class="select-btn" style="padding: 5px 10px; border-radius: 5px; font-size: 12px; background-color: #28a745; color: white; border: none;">REMOVE</button>
-                        </div>
-                        <div class="friend-list-item">
-                            <span>Emily R.</span>
-                            <button class="select-btn" style="padding: 5px 10px; border-radius: 5px; font-size: 12px; background-color: #ccc; color: #333; border: none;">SELECT</button>
-                        </div>
-
-                        <h2 style="font-size: 16px; margin-top: 30px;">INVITE FROM ADDRESS BOOK</h2>
-                        <div class="friend-list-item">
-                            <span>Michael B.</span>
-                            <button class="invite-btn" style="padding: 5px 10px; border-radius: 5px; font-size: 12px; background-color: #007aff; color: white; border: none;">INVITE</button>
-                        </div>
-                        
-                    </main>
-                    <div class="screen-footer"><button class="cta-primary">REVIEW BET (3/3)</button></div>
-                </div>
-
-
+                <div id="screen-5-define" class="screen"></div>
+                <div id="screen-8-invite" class="screen"></div>
                 <div id="screen-8a-review" class="screen"></div>
                 <div id="screen-10-share-results-win" class="screen"></div>
-                
-                <div id="signup-modal-friend" class="modal">
-                    <div class="modal-content" style="background-color: #fff; padding: 20px; border-radius: 15px; width: 80%; text-align: center;">
-                        <img src="https://via.placeholder.com/60x60?text=✔️" alt="Success Icon" style="margin-bottom: 15px;">
-                        <h2>Great pick!</h2>
-                        <p>Log in or Sign up in seconds to submit your choice to Sarah.</p>
-                        <button class="cta-primary" style="background-color: #4285f4;">Sign Up with Google</button>
-                        <button class="cta-primary" style="background-color: #000; margin-top: 15px;">Sign Up with Apple</button>
-                        <button class="cta-primary cta-secondary" style="margin-top: 15px;">Sign Up with Email</button>
-                    </div>
-                </div>
+                <div id="signup-modal-friend" class="modal"></div>
                 <div id="screen-12-h2h-win" class="screen"></div>
             </div>
 

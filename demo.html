@@ -10,7 +10,7 @@
     <style>
         /* --- IMAGE PATHS UPDATED TO /images DIRECTORY --- */
         /* These paths assume you have the following files in your /images directory:
-           friend-01.jpg, friend-02.jpg, friend-03.jpg, friend-04.jpg 
+           friend-01.jpg, friend-02.jpg, friend-03.jpg, friend-04.jpg, betsie-app-logo.png
         */
         
         /* friend-01.jpg (Sarah K. - Red scheme) */
@@ -32,6 +32,14 @@
         /* friend-04.jpg (Michael B. - Gray scheme) */
         .avatar-michael {
             background-image: url("/images/friend-04.jpg");
+        }
+        
+        /* Betsie App Logo for Signup and Inbox */
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px auto; /* Centering and spacing */
+            display: block;
         }
 
         /* --- END IMAGE PATH UPDATES --- */
@@ -288,7 +296,6 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #f7a01d; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -296,6 +303,18 @@
             color: white;
             font-weight: 700;
             margin-right: 15px;
+            /* Placeholder styles: */
+            background-color: #f7a01d; 
+        }
+        
+        /* New Styles for App Logo in System Inbox Items */
+        .inbox-item-img.system-logo {
+            background-color: white; /* Make background white */
+            background-image: url("/images/betsie-app-logo.png");
+            background-size: 80%; /* Fit logo */
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid #ddd; /* Subtle border */
         }
         
         .inbox-item-text {
@@ -1140,6 +1159,8 @@
                 <div id="screen-1-signup" class="screen">
                     <header class="header" style="justify-content: center; border-bottom: none;"><span class="progress-indicator" style="font-size: 20px;">Betsie</span></header>
                     <main class="content" style="text-align: center; justify-content: center; padding-top: 80px; padding-bottom: 20px;">
+                        <img src="images/betsie-app-logo.png" alt="Betsie App Logo" class="app-logo">
+                        
                         <h1 style="font-size: 24px; margin-top: 0;">Start Your First Bet</h1>
                         <p style="color: #555; margin-bottom: 40px;">Predict, challenge, and track your bragging rights.</p>
                         <button class="cta-primary" style="background-color: #4285f4;">Continue with Google</button>
@@ -1324,8 +1345,7 @@
                         <h2 style="color: #333; margin-bottom: 10px;">Messages</h2>
                         
                         <div class="inbox-item" style="border-top: 3px solid #f7a01d;">
-                            <div class="inbox-item-img">B</div>
-                            <div class="inbox-item-text">
+                            <div class="inbox-item-img system-logo"></div> <div class="inbox-item-text">
                                 <span class="inbox-item-title unread">Bet resolution time reached! Settle the score.</span>
                                 <span class="inbox-item-meta">Just now - Action Required</span>
                             </div>
@@ -1340,8 +1360,7 @@
                         </div>
                         
                         <div class="inbox-item">
-                            <div class="inbox-item-img">B</div>
-                            <div class="inbox-item-text">
+                            <div class="inbox-item-img system-logo"></div> <div class="inbox-item-text">
                                 <span class="inbox-item-title">Jessica M. accepted your challenge.</span>
                                 <span class="inbox-item-meta">Dec 14, 2025 - System</span>
                             </div>
@@ -1481,6 +1500,8 @@
                 <div id="screen-1-signup" class="screen">
                     <header class="header" style="justify-content: center; border-bottom: none;"><span class="progress-indicator" style="font-size: 20px;">Betsie</span></header>
                     <main class="content" style="text-align: center; justify-content: center; padding-top: 80px; padding-bottom: 20px;">
+                        <img src="images/betsie-app-logo.png" alt="Betsie App Logo" class="app-logo">
+                        
                         <h1 style="font-size: 24px; margin-top: 0;">Start Your First Bet</h1>
                         <p style="color: #555; margin-bottom: 40px;">Predict, challenge, and track your bragging rights.</p>
                         <button class="cta-primary" style="background-color: #4285f4;">Continue with Google</button>
@@ -1621,8 +1642,7 @@
                         <h2 style="color: #333; margin-bottom: 10px;">Messages</h2>
                         
                         <div class="inbox-item" style="border-top: 3px solid #f7a01d;">
-                            <div class="inbox-item-img">B</div>
-                            <div class="inbox-item-text">
+                            <div class="inbox-item-img system-logo"></div> <div class="inbox-item-text">
                                 <span class="inbox-item-title unread">Bet resolution time reached! Settle the score.</span>
                                 <span class="inbox-item-meta">Just now - Action Required</span>
                             </div>
@@ -1637,8 +1657,7 @@
                         </div>
                         
                         <div class="inbox-item">
-                            <div class="inbox-item-img">B</div>
-                            <div class="inbox-item-text">
+                            <div class="inbox-item-img system-logo"></div> <div class="inbox-item-text">
                                 <span class="inbox-item-title">You accepted the challenge from Sarah K.</span>
                                 <span class="inbox-item-meta">Dec 14, 2025 - System</span>
                             </div>

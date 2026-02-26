@@ -10,7 +10,7 @@ import {
   Trophy,
   Apple
 } from "lucide-react";
-import { PhoneMockup } from "./PhoneMockup";
+import { PhoneMockup } from "PhoneMockup";
 
 // Better Logo approach: Just a nice 4-heart clover icon from standard paths
 function BestLogo() {

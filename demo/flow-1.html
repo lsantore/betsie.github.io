@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betsie Optimized Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        :root {
+            --betsie-pink: #FF2D55;
+            --betsie-dark: #1A1A1A;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #phone-container {
+            width: 375px;
+            height: 760px;
+            background: white;
+            border-radius: 40px;
+            border: 8px solid #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen {
+            display: none;
+            height: 100%;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .betsie-btn {
+            background-color: var(--betsie-pink);
+            color: white;
+            font-weight: 700;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.1s;
+        }
+
+        .betsie-btn:active {
+            transform: scale(0.98);
+        }
+
+        .fab {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65px;
+            height: 65px;
+            background: var(--betsie-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 20px rgba(255, 45, 85, 0.4);
+            cursor: pointer;
+            z-index: 50;
+        }
+
+        .nav-footer {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .comment-bubble {
+            background: #f0f0f0;
+            border-radius: 18px;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="phone-container">
+        
+        <!-- SCREEN 1: THE FEED -->
+        <div id="screen-1" class="screen active">
+            <header class="p-6 pb-2 flex justify-between items-center">
+                <h1 class="text-2xl font-extrabold italic tracking-tight text-[#FF2D55]">BETSIE.</h1>
+                <i class="fa-solid fa-bell text-gray-400"></i>
+            </header>
+            <div class="flex-1 overflow-y-auto px-6 space-y-6 pt-4">
+                <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-blue-500"></div>
+                        <span class="text-sm font-semibold">Mike D. vs Sarah L.</span>
+                    </div>
+                    <p class="font-bold mb-2">"Sarah won't finish the marathon under 4 hours"</p>
+                    <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                        <div class="bg-pink-500 h-full w-2/3"></div>
+                    </div>
+                    <div class="flex justify-between mt-2 text-[10px] text-gray-500 font-bold uppercase">
+                        <span>12 Days Left</span>
+                        <span>Stake: 🍺 Beer</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-green-500"></div>
+                        <span class="text-sm font-semibold">The Pizza Bet</span>
+                    </div>
+                    <p class="font-bold">"Tom will lose his keys before we leave the bar"</p>
+                    <div class="flex items-center gap-2 mt-3">
+                        <span class="text-xs bg-white border px-2 py-1 rounded-full text-gray-500">3 Comments</span>
+                    </div>
+                </div>
+            </div>
+            <div class="fab" onclick="goToScreen(2)">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <nav class="h-20 border-t flex justify-around items-center px-6">
+                <i class="fa-solid fa-house text-pink-500 text-xl"></i>
+                <i class="fa-solid fa-magnifying-glass text-gray-300 text-xl"></i>
+                <div class="w-10"></div>
+                <i class="fa-solid fa-chart-simple text-gray-300 text-xl"></i>
+                <i class="fa-solid fa-user text-gray-300 text-xl"></i>
+            </nav>
+        </div>
+
+        <!-- SCREEN 2: THE UNIVERSAL COMPOSER -->
+        <div id="screen-2" class="screen">
+            <header class="p-6 flex justify-between items-center">
+                <button onclick="goToScreen(1)" class="text-gray-400"><i class="fa-solid fa-xmark text-xl"></i></button>
+                <span class="font-bold text-sm">Create New Dispute</span>
+                <div class="w-6"></div>
+            </header>
+            <div class="flex-1 px-6 space-y-8">
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">The Challenge</label>
+                    <textarea class="w-full text-xl font-bold border-none focus:ring-0 p-0 mt-2 resize-none" placeholder="I bet that..." rows="2"></textarea>
+                </div>
+
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">With</label>
+                    <div class="flex items-center gap-2 mt-3">
+                        <div class="flex -space-x-3 overflow-hidden">
+                            <div class="inline-block h-10 w-10 rounded-full ring-2 ring-white bg-blue-400 flex items-center justify-center text-white font-bold">JD</div>
+                        </div>
+                        <button class="h-10 w-10 rounded-full border-2 border-dashed border-gray-200 flex items-center justify-center text-gray-300">
+                            <i class="fa-solid fa-plus text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">The Stakes</label>
+                    <div class="flex gap-2 mt-3 overflow-x-auto pb-2">
+                        <div class="flex-shrink-0 bg-pink-100 text-pink-600 px-4 py-2 rounded-full font-bold text-sm border-2 border-pink-500">🍺 Beer</div>
+                        <div class="flex-shrink-0 bg-gray-50 text-gray-600 px-4 py-2 rounded-full font-bold text-sm border border-gray-200">🍕 Pizza</div>
+                        <div class="flex-shrink-0 bg-gray-50 text-gray-600 px-4 py-2 rounded-full font-bold text-sm border border-gray-200">💸 Cash</div>
+                        <div class="flex-shrink-0 bg-gray-50 text-gray-600 px-4 py-2 rounded-full font-bold text-sm border border-gray-200">🏆 Pride</div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">Ends</label>
+                    <div class="flex items-center gap-2 mt-2 text-lg font-semibold">
+                        <i class="fa-regular fa-calendar text-gray-400"></i>
+                        <span>Tomorrow, 8:00 PM</span>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-dashed">
+                    <div class="flex justify-between items-center text-gray-400">
+                        <span class="text-sm font-medium"><i class="fa-solid fa-sliders mr-2"></i> Advanced Settings</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </div>
+                    <div class="mt-2 text-[10px] text-gray-400">Default: Consensus Judging • Friends Only</div>
+                </div>
+            </div>
+            <div class="p-6">
+                <button onclick="goToScreen(3)" class="betsie-btn w-full shadow-lg">LOCK IT IN</button>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: HYPE SCREEN -->
+        <div id="screen-3" class="screen items-center justify-center p-6 text-center">
+            <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-4xl mb-6 scale-up">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h2 class="text-3xl font-black mb-2">GAUNTLET THROWN!</h2>
+            <p class="text-gray-500 mb-8 px-4">Your bet is locked. Now make sure they see it coming.</p>
+            
+            <div class="w-full bg-white border-2 border-black rounded-3xl p-6 mb-8 transform rotate-1 shadow-[8px_8px_0px_rgba(0,0,0,1)]">
+                <div class="text-[10px] font-bold uppercase tracking-widest text-pink-500 mb-2">LIVE DISPUTE</div>
+                <div class="text-xl font-black mb-4 italic">"I'll run 5 miles before breakfast tomorrow"</div>
+                <div class="flex justify-center gap-4 text-sm font-bold">
+                    <span>STAKE: 🍺</span>
+                    <span>VS: @JDoe</span>
+                </div>
+            </div>
+
+            <div class="w-full space-y-3">
+                <button onclick="goToScreen(4)" class="w-full bg-black text-white p-4 rounded-xl font-bold flex items-center justify-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> SEND TO GROUP CHAT
+                </button>
+                <button onclick="goToScreen(4)" class="w-full border-2 border-gray-100 p-4 rounded-xl font-bold text-gray-400">
+                    GO TO FEED
+                </button>
+            </div>
+        </div>
+
+        <!-- SCREEN 4: LIVE FEED & TRASH TALK -->
+        <div id="screen-4" class="screen">
+            <header class="p-6 flex justify-between items-center bg-black text-white">
+                <button onclick="goToScreen(1)" class="text-white"><i class="fa-solid fa-chevron-left"></i></button>
+                <span class="font-bold">The Breakfast Run</span>
+                <i class="fa-solid fa-ellipsis"></i>
+            </header>
+            <div class="flex-1 overflow-y-auto">
+                <div class="p-6 bg-black text-white pb-10">
+                    <div class="text-center">
+                        <div class="text-5xl font-black mb-2">14:22:01</div>
+                        <div class="text-[10px] uppercase font-bold tracking-widest opacity-50">Time Remaining</div>
+                    </div>
+                    <div class="mt-8 flex justify-around items-center">
+                        <div class="text-center">
+                            <div class="w-16 h-16 rounded-full bg-blue-500 border-4 border-white mx-auto mb-2"></div>
+                            <div class="font-bold">You</div>
+                            <div class="text-xs text-pink-500 font-bold uppercase">78% Confidence</div>
+                        </div>
+                        <div class="text-xl font-black italic">VS</div>
+                        <div class="text-center opacity-50">
+                            <div class="w-16 h-16 rounded-full bg-gray-600 border-4 border-transparent mx-auto mb-2"></div>
+                            <div class="font-bold">John</div>
+                            <div class="text-xs font-bold uppercase">Awaiting Proof</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 -mt-6">
+                    <div class="bg-white rounded-2xl shadow-xl p-4 border border-gray-100 mb-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-bold text-sm">Evidence Vault</h3>
+                            <button class="text-pink-500 text-xs font-bold">+ ADD PROOF</button>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-camera text-gray-300"></i>
+                            </div>
+                            <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot text-gray-300"></i>
+                            </div>
+                            <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-link text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-20">
+                        <h3 class="font-bold text-sm">Trash Talk</h3>
+                        <div class="comment-bubble"><b>John:</b> Bold claim for someone who slept in until noon today...</div>
+                        <div class="comment-bubble"><b>Mike:</b> I've got the alarm set. Keep that beer cold.</div>
+                        <div class="comment-bubble"><b>Sarah:</b> $10 says he hits snooze.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t bg-white absolute bottom-0 w-full flex gap-3">
+                <input type="text" placeholder="Talk some trash..." class="flex-1 bg-gray-50 border-none rounded-xl px-4 py-2 text-sm focus:ring-1 focus:ring-pink-500">
+                <button class="bg-pink-500 text-white p-2 rounded-xl px-4 font-bold">SEND</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LOGIC EXPLANATION FOOTER -->
+    <div class="nav-footer">
+        <div class="flex justify-between items-center">
+            <button onclick="prevStep()" class="text-gray-400 font-bold px-4 py-2 hover:bg-gray-100 rounded-lg">← Back</button>
+            <div id="step-indicator" class="text-xs font-black uppercase tracking-widest text-pink-500">Step 1 of 4</div>
+            <button onclick="nextStep()" class="text-gray-400 font-bold px-4 py-2 hover:bg-gray-100 rounded-lg">Forward →</button>
+        </div>
+        <div id="step-description" class="text-sm leading-relaxed text-gray-600 italic border-l-4 border-pink-500 pl-4 py-2">
+            <b>The Hook:</b> The social dashboard is now a live feed of activity. We've added a glowing "FAB" (Floating Action Button) as the primary entry point to start a bet instantly, mirroring high-engagement apps like Instagram.
+        </div>
+    </div>
+
+    <script>
+        let currentScreen = 1;
+        const totalScreens = 4;
+
+        const descriptions = {
+            1: "<b>The Hook:</b> The social dashboard is now a live feed of activity. We've added a glowing 'FAB' (Floating Action Button) as the primary entry point to start a bet instantly, mirroring high-engagement apps like Instagram.",
+            2: "<b>The Core (11 Screens Reduced to 1):</b> This is the 'Universal Composer.' Instead of clicking 'Next' 11 times for friends, dates, and stakes, we use a single sheet. We assume 'Consensus' as the default judge to skip the moderator selection step entirely unless the user wants a third party.",
+            3: "<b>The Viral Loop:</b> Once locked, we don't just go to a list. We show a high-contrast 'Hype Card.' This screen is designed to be shared to WhatsApp or iMessage immediately, creating the network effect that drives growth.",
+            4: "<b>The Retention:</b> The live bet view is a social hub. We've added a 'Trash Talk' thread and an 'Evidence Vault.' This turns the bet from a static data entry into a live, interactive event that people check repeatedly throughout the day."
+        };
+
+        function goToScreen(n) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(`screen-${n}`).classList.add('active');
+            currentScreen = n;
+            updateFooter();
+        }
+
+        function nextStep() {
+            if (currentScreen < totalScreens) goToScreen(currentScreen + 1);
+        }
+
+        function prevStep() {
+            if (currentScreen > 1) goToScreen(currentScreen - 1);
+        }
+
+        function updateFooter() {
+            document.getElementById('step-indicator').innerText = `Step ${currentScreen} of ${totalScreens}`;
+            document.getElementById('step-description').innerHTML = descriptions[currentScreen];
+        }
+    </script>
+</body>
+</html>

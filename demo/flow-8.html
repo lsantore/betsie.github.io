@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betsie Optimized Prototype - Full Onboarding Flow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        :root {
+            --betsie-pink: #FF2D55;
+            --betsie-dark: #1A1A1A;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #phone-container {
+            width: 375px;
+            height: 760px;
+            background: white;
+            border-radius: 40px;
+            border: 8px solid #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen {
+            display: none;
+            height: 100%;
+            flex-direction: column;
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .betsie-btn {
+            background-color: var(--betsie-pink);
+            color: white;
+            font-weight: 800;
+            padding: 1.25rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 45, 85, 0.3);
+        }
+
+        .betsie-btn:active { transform: scale(0.95); }
+
+        .social-pill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 16px;
+            border: 2px solid #f3f4f6;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .social-pill:hover { border-color: #eee; background: #fafafa; }
+
+        .input-group {
+            background: #f9fafb;
+            border: 2px solid #f3f4f6;
+            border-radius: 16px;
+            padding: 12px 16px;
+            transition: all 0.2s;
+        }
+        .input-group:focus-within {
+            border-color: var(--betsie-pink);
+            background: white;
+        }
+
+        .avatar-upload {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            border: 3px dashed #d1d5db;
+            cursor: pointer;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .nav-footer {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="phone-container">
+        
+        <!-- ONBOARDING SCREEN 1: SPLASH & HOOK -->
+        <div id="screen-0" class="screen active bg-black text-white p-8 justify-center">
+            <div class="mb-12">
+                <h1 class="text-4xl font-black italic tracking-tighter text-[#FF2D55] mb-2">BETSIE.</h1>
+                <p class="text-xl font-bold leading-tight">Predictions among friends.</p>
+            </div>
+            
+            <div class="bg-white/10 border border-white/10 rounded-3xl p-6 mb-12">
+                <p class="text-[10px] font-black text-pink-500 uppercase tracking-[0.2em] mb-3">Trending Now</p>
+                <p class="text-lg font-bold italic leading-snug">"Will the next iPhone have a physical camera button?"</p>
+                <div class="flex items-center gap-2 mt-4">
+                    <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full bg-blue-500 border-2 border-black"></div>
+                        <div class="w-6 h-6 rounded-full bg-green-500 border-2 border-black"></div>
+                        <div class="w-6 h-6 rounded-full bg-purple-500 border-2 border-black"></div>
+                    </div>
+                    <span class="text-[10px] font-bold opacity-50">842 people in this dispute</span>
+                </div>
+            </div>
+
+            <button onclick="goToScreen(0.1)" class="betsie-btn w-full">GET STARTED</button>
+        </div>
+
+        <!-- ONBOARDING SCREEN 2: SOCIAL SIGN IN -->
+        <div id="screen-0.1" class="screen bg-white p-8">
+            <header class="mb-12 pt-4">
+                <button onclick="goToScreen(0)" class="text-gray-400 mb-6"><i class="fa-solid fa-chevron-left text-xl"></i></button>
+                <h2 class="text-3xl font-black italic tracking-tight leading-none">CREATE YOUR ACCOUNT</h2>
+                <p class="text-gray-400 text-sm font-medium mt-2">Pick a way to find your rivals.</p>
+            </header>
+
+            <div class="space-y-4">
+                <div onclick="goToScreen(0.15)" class="social-pill">
+                    <i class="fa-brands fa-apple text-xl"></i> <span>Continue with Apple</span>
+                </div>
+                <div onclick="goToScreen(0.15)" class="social-pill">
+                    <i class="fa-brands fa-google text-xl text-red-500"></i> <span>Continue with Google</span>
+                </div>
+                <div onclick="goToScreen(0.15)" class="social-pill">
+                    <i class="fa-brands fa-facebook text-xl text-blue-600"></i> <span>Continue with Facebook</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONBOARDING SCREEN 3: IDENTITY (HANDLE, EMAIL, PHONE) -->
+        <div id="screen-0.15" class="screen bg-white p-8">
+            <header class="mb-8 pt-4">
+                <button onclick="goToScreen(0.1)" class="text-gray-400 mb-6"><i class="fa-solid fa-chevron-left text-xl"></i></button>
+                <h2 class="text-2xl font-black italic tracking-tight leading-none">WHO ARE YOU?</h2>
+                <p class="text-gray-400 text-sm font-medium mt-2">Set your unique handle and details.</p>
+            </header>
+
+            <div class="space-y-4">
+                <div class="input-group">
+                    <label class="text-[10px] font-black text-pink-500 uppercase tracking-widest">Handle</label>
+                    <div class="flex items-center">
+                        <span class="text-gray-400 font-bold mr-1">@</span>
+                        <input type="text" placeholder="betsie_pro" class="w-full bg-transparent border-none focus:ring-0 p-0 font-bold">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Email</label>
+                    <input type="email" placeholder="you@example.com" class="w-full bg-transparent border-none focus:ring-0 p-0 font-bold">
+                </div>
+
+                <div class="input-group">
+                    <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Phone</label>
+                    <input type="tel" placeholder="+1 (555) 000-0000" class="w-full bg-transparent border-none focus:ring-0 p-0 font-bold">
+                </div>
+            </div>
+
+            <button onclick="goToScreen(0.16)" class="betsie-btn w-full mt-auto mb-6">CONTINUE</button>
+        </div>
+
+        <!-- ONBOARDING SCREEN 4: PROFILE PICTURE -->
+        <div id="screen-0.16" class="screen bg-white p-8 text-center">
+            <header class="mb-12 pt-4 text-left">
+                <button onclick="goToScreen(0.15)" class="text-gray-400 mb-6"><i class="fa-solid fa-chevron-left text-xl"></i></button>
+                <h2 class="text-2xl font-black italic tracking-tight leading-none">LOOKING GOOD?</h2>
+                <p class="text-gray-400 text-sm font-medium mt-2">Add a photo so friends can spot you.</p>
+            </header>
+
+            <div class="avatar-upload mt-10">
+                <i class="fa-solid fa-camera text-3xl text-gray-300"></i>
+                <div class="absolute bottom-0 right-0 w-10 h-10 bg-pink-500 rounded-full border-4 border-white flex items-center justify-center text-white text-xs">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+
+            <div class="mt-8 space-y-2">
+                <p class="font-bold text-gray-800">Your Rivals' View</p>
+                <p class="text-xs text-gray-400 italic">"Mike D. is calling you out..."</p>
+            </div>
+
+            <button onclick="goToScreen(0.2)" class="betsie-btn w-full mt-auto mb-6">SET PHOTO</button>
+            <button onclick="goToScreen(0.2)" class="text-gray-300 font-bold text-xs uppercase tracking-widest mb-4">Skip for now</button>
+        </div>
+
+        <!-- ONBOARDING SCREEN 5: CONTACTS PERMISSION -->
+        <div id="screen-0.2" class="screen bg-white p-8 items-center text-center">
+            <div class="w-20 h-20 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center text-3xl mb-6 mt-12">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <h2 class="text-2xl font-black italic tracking-tight mb-2">BETSIE IS BEST WITH FRIENDS</h2>
+            <p class="text-gray-400 text-sm font-medium px-4">See what your inner circle is predicting. We only show you friends already on Betsie.</p>
+            
+            <button onclick="goToScreen(0.3)" class="betsie-btn w-full mt-12">CONNECT ADDRESS BOOK</button>
+            <button onclick="goToScreen(1)" class="text-gray-300 font-bold text-xs uppercase tracking-widest mt-6">Not now</button>
+        </div>
+
+        <!-- ONBOARDING SCREEN 6: ADDRESS BOOK LIST -->
+        <div id="screen-0.3" class="screen bg-white">
+            <header class="p-6 pb-2">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-black italic tracking-tight">FIND YOUR RIVALS</h2>
+                    <button onclick="goToScreen(1)" class="text-pink-500 font-bold text-sm">DONE</button>
+                </div>
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-gray-300 text-sm"></i>
+                    <input type="text" placeholder="Search contacts..." class="w-full bg-gray-50 border-none rounded-xl py-3 pl-11 text-sm focus:ring-1 focus:ring-pink-500">
+                </div>
+            </header>
+
+            <div class="flex-1 overflow-y-auto px-6 pt-4">
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">On Betsie</p>
+                
+                <div class="contact-row">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600">MD</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold">Mike Danvers</p>
+                        <p class="text-[10px] text-gray-400">@mike_d</p>
+                    </div>
+                    <button class="bg-black text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase">ADD</button>
+                </div>
+
+                <div class="contact-row">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-600">SL</div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold">Sarah Lewis</p>
+                        <p class="text-[10px] text-gray-400">@sarah_l</p>
+                    </div>
+                    <button class="bg-black text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase">ADD</button>
+                </div>
+
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-8 mb-4">Invite to Betsie</p>
+
+                <div class="contact-row">
+                    <div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center font-bold text-gray-300">TH</div>
+                    <div class="flex-1 text-gray-400">
+                        <p class="text-sm font-bold">Tom Holland</p>
+                        <p class="text-[10px] text-gray-300">+1 234 567 890</p>
+                    </div>
+                    <button class="border border-gray-200 text-gray-400 px-4 py-1.5 rounded-full text-[10px] font-black uppercase">INVITE</button>
+                </div>
+
+                <div class="contact-row">
+                    <div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center font-bold text-gray-300">ZW</div>
+                    <div class="flex-1 text-gray-400">
+                        <p class="text-sm font-bold">Zoe West</p>
+                        <p class="text-[10px] text-gray-300">+1 987 654 321</p>
+                    </div>
+                    <button class="border border-gray-200 text-gray-400 px-4 py-1.5 rounded-full text-[10px] font-black uppercase">INVITE</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 7: THE FEED -->
+        <div id="screen-1" class="screen bg-white">
+            <header class="p-6 pb-2 flex justify-between items-center bg-white border-b">
+                <h1 class="text-2xl font-black italic tracking-tighter text-[#FF2D55]">BETSIE.</h1>
+                <i class="fa-solid fa-bell text-gray-800 text-xl"></i>
+            </header>
+            <div class="flex-1 overflow-y-auto px-6 py-6 space-y-6">
+                <div class="bg-gray-50 p-5 rounded-3xl border border-gray-100">
+                    <p class="text-[10px] font-black text-pink-500 uppercase tracking-widest mb-3">Live Now</p>
+                    <p class="font-bold text-lg leading-snug italic">"Sarah won't finish the marathon under 4 hours"</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LOGIC EXPLANATION FOOTER -->
+    <div class="nav-footer">
+        <div class="flex justify-between items-center">
+            <button onclick="prevStep()" class="text-gray-400 font-bold px-4 py-2 hover:bg-gray-100 rounded-lg text-xs">← Prev</button>
+            <div id="step-indicator" class="text-[10px] font-black uppercase tracking-widest text-pink-500">Step 1 of 7</div>
+            <button onclick="nextStep()" class="text-gray-400 font-bold px-4 py-2 hover:bg-gray-100 rounded-lg text-xs">Next →</button>
+        </div>
+        <div id="step-description" class="text-[12px] leading-relaxed text-gray-600 italic border-l-4 border-pink-500 pl-4 py-2">
+            <b>Value First Splash:</b> Replaces Screen 1 in Flow 8. Instead of a generic logo, we show a 'Trending Bet' to build immediate trust.
+        </div>
+    </div>
+
+    <script>
+        let currentScreen = 0;
+        const screens = [0, 0.1, 0.15, 0.16, 0.2, 0.3, 1];
+        
+        const descriptions = {
+            0: "<b>Splash:</b> Immediate proof of value through a 'Trending Now' card.",
+            0.1: "<b>Auth:</b> Quick social login. Engineers can pull basic info here to pre-fill the next screen.",
+            0.15: "<b>Identity Stack:</b> This bundles Handle, Email, and Phone. By grouping these requirements on one page, we satisfy system needs without 'form fatigue'.",
+            0.16: "<b>Visual ID:</b> Profile picture setup. Providing a preview of how they look to 'Rivals' makes this step feel more social and less like an admin task.",
+            0.2: "<b>Contact Bridge:</b> Instead of a dry system prompt, we explain WHY we need contacts: to find rivals.",
+            0.3: "<b>Address Book Flow:</b> This is the social connection layer. It separates existing Betsie users from those who need an invite, fueling the 'Viral Loop'.",
+            1: "<b>Success:</b> The user is fully registered and ready to bet."
+        };
+
+        const titles = {
+            0: "Step 1: Splash",
+            0.1: "Step 2: Sign In",
+            0.15: "Step 3: Identity Setup",
+            0.16: "Step 4: Profile Picture",
+            0.2: "Step 5: Trust Bridge",
+            0.3: "Step 6: Friend Finder",
+            1: "Step 7: The Feed"
+        };
+
+        function goToScreen(n) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(`screen-${n}`).classList.add('active');
+            currentScreen = screens.indexOf(n);
+            updateFooter();
+        }
+
+        function nextStep() { if (currentScreen < screens.length - 1) goToScreen(screens[currentScreen + 1]); }
+        function prevStep() { if (currentScreen > 0) goToScreen(screens[currentScreen - 1]); }
+
+        function updateFooter() {
+            const actualVal = screens[currentScreen];
+            document.getElementById('step-indicator').innerText = titles[actualVal];
+            document.getElementById('step-description').innerHTML = descriptions[actualVal];
+        }
+    </script>
+</body>
+</html>

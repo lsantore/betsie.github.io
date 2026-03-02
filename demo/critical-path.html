@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betsie: The Social Loop Funnel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .funnel-step {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .funnel-step:hover {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 pb-20">
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-16">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+            <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-orange-100 text-orange-700 text-sm font-bold tracking-tight uppercase">
+                Phase 3: Strategic Growth Blueprint
+            </div>
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4 sm:text-6xl tracking-tight">
+                Betsie: The Social Loop
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                From "I Think" to "I Told You So"—the critical path to building social authority and permanent track records.
+            </p>
+        </div>
+
+        <!-- Funnel Steps Container -->
+        <div class="space-y-12 relative">
+            
+            <!-- Step 1: The Quick Entry -->
+            <div class="funnel-step relative bg-white rounded-3xl border-2 border-slate-100 shadow-xl p-6 md:p-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-blue-50 text-blue-600">
+                        <i data-lucide="user-plus" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                            <h3 class="text-2xl font-bold">1. The Quick Entry</h3>
+                            <span class="px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-blue-100 text-blue-700">J-Law (No BS)</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-widest">Critical Path Actions</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-blue-400 shrink-0"></span> One-tap Social Auth (Apple/Google)</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-blue-400 shrink-0"></span> Phone verification & Handle claim</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-blue-400 shrink-0"></span> Mandatory Contact Sync / Seeding</li>
+                                </ul>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-blue-50/50 border border-blue-100">
+                                <p class="text-xs font-bold text-blue-400 uppercase mb-4 tracking-widest">Growth Metrics</p>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between border-b border-blue-100 pb-2">
+                                        <span class="text-sm font-semibold text-slate-600">Sync Opt-in Rate</span>
+                                        <span class="text-sm font-bold text-blue-600">>65%</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm font-semibold text-slate-600">TTV (Time to Value)</span>
+                                        <span class="text-sm font-bold text-blue-600"><90s</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 text-slate-300">
+                    <i data-lucide="arrow-down"></i>
+                </div>
+            </div>
+
+            <!-- Step 2: The Call Out -->
+            <div class="funnel-step relative bg-white rounded-3xl border-2 border-slate-100 shadow-xl p-6 md:p-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-orange-50 text-orange-600">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                            <h3 class="text-2xl font-bold">2. The Call Out</h3>
+                            <span class="px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-orange-100 text-orange-700">Instagram (Visual)</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-widest">Critical Path Actions</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-orange-400 shrink-0"></span> Select Bet Template (The Hook)</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-orange-400 shrink-0"></span> Set 'Day of Reckoning' (Deadline)</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-orange-400 shrink-0"></span> Issue Challenge to specific 'Crew'</li>
+                                </ul>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-orange-50/50 border border-orange-100">
+                                <p class="text-xs font-bold text-orange-400 uppercase mb-4 tracking-widest">Growth Metrics</p>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between border-b border-orange-100 pb-2">
+                                        <span class="text-sm font-semibold text-slate-600">Creation Velocity</span>
+                                        <span class="text-sm font-bold text-orange-600">24h %</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm font-semibold text-slate-600">Invitation K-Factor</span>
+                                        <span class="text-sm font-bold text-orange-600">2.5x</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 text-slate-300">
+                    <i data-lucide="arrow-down"></i>
+                </div>
+            </div>
+
+            <!-- Step 3: The Participation -->
+            <div class="funnel-step relative bg-white rounded-3xl border-2 border-slate-100 shadow-xl p-6 md:p-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-pink-50 text-pink-600">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                            <h3 class="text-2xl font-bold">3. The Participation</h3>
+                            <span class="px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-pink-100 text-pink-700">High Stakes</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-widest">Critical Path Actions</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-pink-400 shrink-0"></span> Inbound conversion via SMS link</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-pink-400 shrink-0"></span> Agree or Pivot with 'Custom Challenge'</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-pink-400 shrink-0"></span> Seamless Join-to-Defend onboarding</li>
+                                </ul>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-pink-50/50 border border-pink-100">
+                                <p class="text-xs font-bold text-pink-400 uppercase mb-4 tracking-widest">Growth Metrics</p>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between border-b border-pink-100 pb-2">
+                                        <span class="text-sm font-semibold text-slate-600">Invite Conversion</span>
+                                        <span class="text-sm font-bold text-pink-600">>40%</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm font-semibold text-slate-600">Custom Challenge %</span>
+                                        <span class="text-sm font-bold text-pink-600">Intent</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 text-slate-300">
+                    <i data-lucide="arrow-down"></i>
+                </div>
+            </div>
+
+            <!-- Step 4: The Heat -->
+            <div class="funnel-step relative bg-white rounded-3xl border-2 border-slate-100 shadow-xl p-6 md:p-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-purple-50 text-purple-600">
+                        <i data-lucide="message-circle" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                            <h3 class="text-2xl font-bold">4. The Heat</h3>
+                            <span class="px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-purple-100 text-purple-700">Sticky/Chaotic</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-widest">Critical Path Actions</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-purple-400 shrink-0"></span> Open 'Tea Room' live chat</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-purple-400 shrink-0"></span> Rich media receipts (GIFs/Images)</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-purple-400 shrink-0"></span> Countdown timer trash talk loop</li>
+                                </ul>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-purple-50/50 border border-purple-100">
+                                <p class="text-xs font-bold text-purple-400 uppercase mb-4 tracking-widest">Growth Metrics</p>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between border-b border-purple-100 pb-2">
+                                        <span class="text-sm font-semibold text-slate-600">Engagement Depth</span>
+                                        <span class="text-sm font-bold text-purple-600">8+ msgs</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm font-semibold text-slate-600">Stickiness (DAU/MAU)</span>
+                                        <span class="text-sm font-bold text-purple-600">Habit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 text-slate-300">
+                    <i data-lucide="arrow-down"></i>
+                </div>
+            </div>
+
+            <!-- Step 5: The Verdict -->
+            <div class="funnel-step relative bg-white rounded-3xl border-2 border-slate-100 shadow-xl p-6 md:p-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-green-50 text-green-600">
+                        <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                            <h3 class="text-2xl font-bold">5. The Verdict</h3>
+                            <span class="px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-green-100 text-green-700">Strava (Truth)</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-widest">Critical Path Actions</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-green-400 shrink-0"></span> Consensus Vote or Judge Adjudication</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-green-400 shrink-0"></span> 24-Hour Passive Approval settlement</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-green-400 shrink-0"></span> Definitive Winner/Loser declaration</li>
+                                </ul>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-green-50/50 border border-green-100">
+                                <p class="text-xs font-bold text-green-400 uppercase mb-4 tracking-widest">Growth Metrics</p>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between border-b border-green-100 pb-2">
+                                        <span class="text-sm font-semibold text-slate-600">Resolution Success</span>
+                                        <span class="text-sm font-bold text-green-600">>90%</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm font-semibold text-slate-600">Mean Time to Resolve</span>
+                                        <span class="text-sm font-bold text-green-600"><12h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 text-slate-300">
+                    <i data-lucide="arrow-down"></i>
+                </div>
+            </div>
+
+            <!-- Step 6: The Flex -->
+            <div class="funnel-step relative bg-white rounded-3xl border-2 border-slate-100 shadow-xl p-6 md:p-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-indigo-50 text-indigo-600">
+                        <i data-lucide="share-2" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                            <h3 class="text-2xl font-bold">6. The Flex</h3>
+                            <span class="px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-indigo-100 text-indigo-700">Status/Legend</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-widest">Critical Path Actions</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-indigo-400 shrink-0"></span> Generate Aesthetic Match Card</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-indigo-400 shrink-0"></span> Social Story/Group Text export</li>
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium italic"><span class="w-2 h-2 mt-2 rounded-full bg-indigo-400 shrink-0"></span> Permanent Oracle Profile update</li>
+                                </ul>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-indigo-50/50 border border-indigo-100">
+                                <p class="text-xs font-bold text-indigo-400 uppercase mb-4 tracking-widest">Growth Metrics</p>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between border-b border-indigo-100 pb-2">
+                                        <span class="text-sm font-semibold text-slate-600">Viral Coefficient</span>
+                                        <span class="text-sm font-bold text-indigo-600">New Leads</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm font-semibold text-slate-600">Profile Return Rate</span>
+                                        <span class="text-sm font-bold text-indigo-600">Authority</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Strategic Pillars -->
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm text-center">
+                <div class="mx-auto mb-4 w-12 h-12 flex items-center justify-center bg-blue-50 text-blue-500 rounded-full">
+                    <i data-lucide="activity"></i>
+                </div>
+                <h4 class="font-bold text-lg mb-2">Velocity</h4>
+                <p class="text-sm text-slate-500">Minimize every micro-friction from signup to the first social challenge.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm text-center">
+                <div class="mx-auto mb-4 w-12 h-12 flex items-center justify-center bg-pink-50 text-pink-500 rounded-full">
+                    <i data-lucide="trending-up"></i>
+                </div>
+                <h4 class="font-bold text-lg mb-2">Stakes</h4>
+                <p class="text-sm text-slate-500">Enable rich media trash talk to make every resolution feel high-stakes.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm text-center">
+                <div class="mx-auto mb-4 w-12 h-12 flex items-center justify-center bg-green-50 text-green-500 rounded-full">
+                    <i data-lucide="award"></i>
+                </div>
+                <h4 class="font-bold text-lg mb-2">Status</h4>
+                <p class="text-sm text-slate-500">Turn ephemeral bets into permanent, sharable social credibility.</p>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center text-slate-400 text-sm italic font-medium">
+            * KPI targets based on high-growth social application benchmarks.
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

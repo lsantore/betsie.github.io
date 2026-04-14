@@ -9,40 +9,39 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-HWLLHMD1E9');
+  gtag('config', 'G-HWLLHMD1E9', {
+    send_page_view: true,
+    cookie_flags: 'SameSite=Lax;Secure'
+  });
 </script>
     <meta name="robots" content="noindex, nofollow" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betsie - Terms of Service</title>
-    
-    <!-- Font Imports -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
-<body>
+<body class="page-sub">
 
-    <!-- REUSABLE HEADER BLOCK -->
     <header>
-        <a href="index.html">
-            <!-- Betsie Logo Placeholder -->
-            <img src="images/logo_betsie_red.png" alt="Betsie Logo" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f5444e/ffffff?text=Betsie';">
+        <a href="index.html" class="header-logo-link" aria-label="Betsie home">
+            <img src="images/logo_betsie_red.png" alt="" width="60" height="60" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f5444e/ffffff?text=Betsie';">
         </a>
-        
-        <nav>
+
+        <nav aria-label="Primary">
             <a href="about_us.html">About</a>
-            <a href="support.html">Support</a> 
-            <a href="download.html">Download App</a> &nbsp;
+            <a href="support.html">Support</a>
+            <a href="download.html" class="nav-cta">Download</a>
         </nav>
     </header>
-    <!-- END REUSABLE HEADER BLOCK -->
 
+    <main id="main">
+    <div class="content-container subpage-stack">
 
-    <!-- PAGE CONTENT SECTION -->
-    <div class="content-container" style="padding-top: 50px; padding-bottom: 80px;">
-        
-        <div style="background-color: white; padding: 30px; border-radius: 16px; border: 2px solid var(--color-secondary-pink);">
+        <div class="subpage-panel">
             <h1>Betsie – Terms of Service</h1>
             <p>Last Updated: November 17, 2025</p>
 
@@ -103,24 +102,22 @@
             <p>For support regarding these Terms of Service, please reach out to us from our <a href="support.html">Support page</a>.</p>
         </div>
     </div>
-    <!-- END PAGE CONTENT SECTION -->
+    </main>
 
-
-    <!-- REUSABLE FOOTER BLOCK -->
     <footer>
-        <h3>Site Links</h3>
-        
-        <a href="about_us.html">About Us</a>
-        <a href="privacy_policy.html">Privacy&nbsp;Policy</a>
-        <a href="terms_of_service.html">Terms&nbsp;of&nbsp;Service</a>
-        <a href="community_guidelines.html">Community&nbsp;Guidelines</a>
-        <a href="support.html">Support</a> 
+        <nav aria-label="Footer">
+            <a href="about_us.html">About</a>
+            <a href="privacy_policy.html">Privacy&nbsp;Policy</a>
+            <a href="terms_of_service.html">Terms&nbsp;of&nbsp;Service</a>
+            <a href="community_guidelines.html">Community&nbsp;Guidelines</a>
+            <a href="support.html">Support</a>
+        </nav>
 
-        <p style="font-size: 0.8em; color: #666; margin-top: 20px; padding-top: 10px;">
-            Betsie is a Trademark of Squeaky Cheese, Inc. - Site &copy; 2025 Squeaky Cheese, Inc.
+        <p class="footer-meta">
+            Betsie is a trademark of Squeaky Cheese, Inc. · Site © 2026 Squeaky Cheese, Inc.
         </p>
     </footer>
-    <!-- END REUSABLE FOOTER BLOCK -->
 
+    <script src="JS/ga-events.js" defer></script>
 </body>
 </html>

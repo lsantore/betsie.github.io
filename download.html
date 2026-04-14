@@ -9,7 +9,10 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-HWLLHMD1E9');
+  gtag('config', 'G-HWLLHMD1E9', {
+    send_page_view: true,
+    cookie_flags: 'SameSite=Lax;Secure'
+  });
 </script>
     <meta name="robots" content="noindex, nofollow" />
     <meta charset="UTF-8">
@@ -26,26 +29,38 @@
     </style>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            // const appStoreLink = "https://itunes.apple.com/app/id6754762923"; 
-            const appStoreLink = "https://testflight.apple.com/join/5RtfWwJN"
-            //const playStoreLink = "https://play.google.com/apps/internaltest/4701602177839023061";
-            const playStoreLink = "https://forms.gle/FX1gWv5h8jjkVJo86";
-            
-            let redirectUrl = appStoreLink; // Default to App Store (iOS/Mac/Win)
-
-            // 1. Check for Android strings (covers mobile and some desktop Android environments)
-            if (/android/i.test(userAgent)) {
-                redirectUrl = playStoreLink;
-            } 
-            // 2. Check for common iOS/Mac/Windows strings (handled by the default, but explicit check is safer)
-            // Note: Since most non-Android mobile users are iOS, and the default is Apple's link, 
-            // we primarily need to detect Android explicitly.
-            
-            // Execute the redirect
-            window.location.replace(redirectUrl);
-        });
+        (function () {
+            function runRedirect() {
+                var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                var appStoreLink = "https://testflight.apple.com/join/5RtfWwJN";
+                var playStoreLink = "https://forms.gle/FX1gWv5h8jjkVJo86";
+                var isAndroid = /android/i.test(userAgent);
+                var redirectUrl = isAndroid ? playStoreLink : appStoreLink;
+                var done = false;
+                function go() {
+                    if (done) return;
+                    done = true;
+                    window.location.replace(redirectUrl);
+                }
+                if (typeof gtag === "function") {
+                    gtag("event", "betsie_download_redirect", {
+                        link_url: redirectUrl,
+                        store_target: isAndroid ? "android" : "ios",
+                        engagement_time_msec: 1,
+                        event_callback: go,
+                        event_timeout: 2000
+                    });
+                    window.setTimeout(go, 2500);
+                } else {
+                    go();
+                }
+            }
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", runRedirect);
+            } else {
+                runRedirect();
+            }
+        })();
     </script>
 </head>
 <body>
@@ -55,5 +70,7 @@
         <li><a href="https://itunes.apple.com/app/id6754762923">Download for iOS/Mac/Windows</a></li>
         <li><a href="https://play.google.com/">Download for Android</a></li>
     </ul>
+
+    <script src="JS/ga-events.js" defer></script>
 </body>
 </html>

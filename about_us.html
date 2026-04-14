@@ -9,44 +9,43 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-HWLLHMD1E9');
+  gtag('config', 'G-HWLLHMD1E9', {
+    send_page_view: true,
+    cookie_flags: 'SameSite=Lax;Secure'
+  });
 </script>
     <meta name="robots" content="noindex, nofollow" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betsie and Squeaky Cheese, Inc.</title>
-    
-    <!-- Font Imports -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
-<body>
+<body class="page-sub">
 
-    <!-- REUSABLE HEADER BLOCK -->
     <header>
-        <a href="index.html">
-            <!-- Betsie Logo Placeholder -->
-            <img src="images/logo_betsie_red.png" alt="Betsie Logo" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f5444e/ffffff?text=Betsie';">
+        <a href="index.html" class="header-logo-link" aria-label="Betsie home">
+            <img src="images/logo_betsie_red.png" alt="" width="60" height="60" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f5444e/ffffff?text=Betsie';">
         </a>
-        
-        <nav>
+
+        <nav aria-label="Primary">
             <a href="about_us.html">About</a>
-            <a href="support.html">Support</a> 
-            <a href="download.html">Download App</a> &nbsp;
+            <a href="support.html">Support</a>
+            <a href="download.html" class="nav-cta">Download</a>
         </nav>
     </header>
-    <!-- END REUSABLE HEADER BLOCK -->
 
-
-    <!-- PAGE CONTENT SECTION -->
-    <div class="content-container" style="padding-top: 50px; padding-bottom: 80px;">
-    <div id="about"  style="background-color: white; padding: 30px; border-radius: 16px; border: 2px solid var(--color-secondary-pink);">    
+    <main id="main">
+    <div class="content-container subpage-stack">
+    <div id="about" class="subpage-panel">
 <h1>About Squeaky Cheese, Inc.</h1>
 
         <p>
             Betsie&trade; didn’t start as a business idea — it started as a running joke between friends and colleagues. After years of making playful predictions about who was going to be right with friends, families, and coworkers...<br />
-            <strong>“He’s definitely quitting,” 
+            <strong class="accent-handwriting">“He’s definitely quitting,” 
             “She’s absolutely showing up late,”<br />
             “There is no universe where that project launches on time”,</strong><br />
             They realized two things:</p>
@@ -121,34 +120,29 @@
             </div>
         </div> -->
         
-        <!-- 4. Final CTA Section -->
-        <div style="text-align:center;">
-        <a href="download.html" id="app-store-button">
-            <!-- Download on the Apple App Store Placeholder -->
-            <img src="images/download_apple_ios.png" alt="Download on the Apple App Store" onerror="this.onerror=null; this.src='https://placehold.co/150x50/002cfc/ffffff?text=Download+App';">
-        </a>     
+        <div class="subpage-panel__cta">
+        <a href="download.html" id="app-store-button" class="app-store-wrap">
+            <img src="images/download_apple_ios.png" alt="Download on the App Store" width="150" height="50" onerror="this.onerror=null; this.src='https://placehold.co/150x50/002cfc/ffffff?text=Download+App';">
+        </a>
         </div>
         </div>
     </div>
+    </main>
 
-    <!-- END PAGE CONTENT SECTION -->
-
-
-    <!-- REUSABLE FOOTER BLOCK -->
     <footer>
-        <h3>Site Links</h3>
-        <a href="index.html">Betsie&nbsp;Home</a>
-        <a href="about_us.html">About&nbsp;Us</a>
-        <a href="privacy_policy.html">Privacy&nbsp;Policy</a>
-        <a href="terms_of_service.html">Terms&nbsp;of&nbsp;Service</a>
-        <a href="community_guidelines.html">Community&nbsp;Guidelines</a>
-        <a href="support.html">Support</a> 
+        <nav aria-label="Footer">
+            <a href="about_us.html">About</a>
+            <a href="privacy_policy.html">Privacy&nbsp;Policy</a>
+            <a href="terms_of_service.html">Terms&nbsp;of&nbsp;Service</a>
+            <a href="community_guidelines.html">Community&nbsp;Guidelines</a>
+            <a href="support.html">Support</a>
+        </nav>
 
-        <p style="font-size: 0.8em; color: #666; margin-top: 20px; padding-top: 10px;">
-            Betsie is a Trademark of Squeaky Cheese, Inc. - Site &copy; 2025 Squeaky Cheese, Inc.
+        <p class="footer-meta">
+            Betsie is a trademark of Squeaky Cheese, Inc. · Site © 2026 Squeaky Cheese, Inc.
         </p>
     </footer>
-    <!-- END REUSABLE FOOTER BLOCK -->
 
+    <script src="JS/ga-events.js" defer></script>
 </body>
 </html>

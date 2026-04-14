@@ -9,154 +9,180 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-HWLLHMD1E9');
+  gtag('config', 'G-HWLLHMD1E9', {
+    send_page_view: true,
+    cookie_flags: 'SameSite=Lax;Secure'
+  });
 </script>
     <meta name="robots" content="noindex, nofollow" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betsie - Social Predictions</title>
-    
-    <!-- Font Imports -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Betsie — Social predictions with friends</title>
+    <meta name="description" content="Betsie helps friends log playful predictions, agree on outcomes together, and keep a private scoreboard. Not gambling — just receipts.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
-<body>
+<body class="page-home">
 
-    <!-- Header / Fixed Top Menu Bar -->
     <header>
-        <a href="index.html">
-            <!-- Betsie Logo Placeholder -->
-            <img src="images/logo_betsie_red.png" alt="Betsie Logo" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f5444e/ffffff?text=Betsie';">
+        <a href="index.html" class="header-logo-link" aria-label="Betsie home">
+            <img src="images/logo_betsie_red.png" alt="" width="60" height="60" onerror="this.onerror=null; this.src='https://placehold.co/60x60/f5444e/ffffff?text=Betsie';">
         </a>
-        
-        <nav>
+
+        <nav aria-label="Primary">
             <a href="about_us.html">About</a>
-            <a href="support.html">Support</a> 
-            <a href="download.html">Download App</a> &nbsp; 
+            <a href="support.html">Support</a>
+            <a href="download.html" class="nav-cta">Download</a>
         </nav>
     </header>
 
+    <main id="main">
+    <!-- Hero -->
+    <section id="hero-section" class="content-container hero" aria-labelledby="hero-heading">
+        <div id="hero-text" class="hero__copy">
+            <p class="eyebrow">Social predictions · Private by default</p>
+            <h1 id="hero-heading">
+                <span class="hero__title">Call the chaos.</span>
+                <span class="hero__title">Keep the receipts.</span>
+                <span class="hero__kicker accent-handwriting" role="presentation">Claim your main-character glory.</span>
+            </h1>
 
-    <!-- 1. Hero Section -->
-    <div id="hero-section" class="content-container">
-        
-        <div id="hero-text">
-            <h1>Call The Chaos.<br />
-            Get The Receipts.<br />
-            <strong>Claim Your Main Character Glory.</strong></h1>
-            
-            <!-- <p>Your friend group chat is basically a crystal ball, but who keeps score?</p> -->
-            <p>Betsie turns those "I told you so!" moments<br />into <b>permanent, indisputable receipts</b>.</p>
-            <p>Track your predictive genius on a <b>real-time scoreboard</b> against your whole circle. If you have the superior insight, you deserve the glory.</p>
+            <p class="lead">Betsie is the lightweight way for friend groups to turn “I told you so” into a shared record—without drama, screenshots, or group-chat archaeology.</p>
+            <ul class="hero__bullets" aria-label="What Betsie does">
+                <li>Log predictions with a clear deadline</li>
+                <li>Both sides confirm the outcome in the app</li>
+                <li>See your record on a simple scoreboard</li>
+            </ul>
 
-            <p>Loser buys the espresso martini? Winner decides the group vacation spot? <b>It's time to settle the score with zero chill.</b></p>
-
-            <p>
-                <a href="download.html">Download Betsie Now</a>
+            <p class="hero__cta-wrap">
+                <a href="download.html" class="btn btn-primary">Download Betsie</a>
+                <a href="privacy_policy.html" class="btn btn-ghost">Privacy</a>
             </p>
         </div>
 
-        <div id="hero-image">
-            <!-- Using the uploaded screenshot asset -->
-            <img src="images/screenshot-001.png" alt="Betsie App Screenshot on Phone" onerror="this.onerror=null; this.src='https://placehold.co/300x450/002cfc/ffffff?text=App+Screenshot';">
+        <div id="hero-image" class="hero__visual">
+            <figure class="device-frame">
+                <img src="images/hero-screenshot.png" alt="Betsie app showing a prediction and scoreboard on iPhone" width="502" height="1014" onerror="this.onerror=null; this.src='https://placehold.co/300x450/1c1c1e/ffffff?text=App+Screenshot';">
+            </figure>
         </div>
+    </section>
 
-    </div>
+    <!-- Trust strip -->
+    <section class="content-container trust-strip" aria-label="Why you can trust Betsie">
+        <ul class="trust-strip__list">
+            <li>
+                <span class="trust-strip__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+                <span><strong>Mutual confirmation</strong> — Results are recorded only when both people agree.</span>
+            </li>
+            <li>
+                <span class="trust-strip__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                </span>
+                <span><strong>Private by default</strong> — Bets stay between participants unless you choose to share.</span>
+            </li>
+            <li>
+                <span class="trust-strip__icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="1" fill="currentColor" stroke="none"/></svg>
+                </span>
+                <span><strong>Playful, not pay-to-win</strong> — Stakes are optional jokes between friends, not real-money wagering.</span>
+            </li>
+        </ul>
+    </section>
 
-    <!-- 2. Features Section (2x2 Grid) -->
-    <div id="features-section" class="content-container">
-        <h2>Make Bets on the Delicious Chaos of Everyday Life:</h2>
+    <!-- Examples -->
+    <section id="features-section" class="content-container section-tight" aria-labelledby="features-heading">
+        <h2 id="features-heading">What people actually bet on</h2>
+        <p class="section-sub">Lightweight prompts your group already argues about—now with a finish line and a fair resolution.</p>
 
         <div id="card-container">
-            
-            <div class="feature-card">
-                <img src="https://placehold.co/300x120/ffc7ed/f5444e?text=Breakup+Arc+Energy" alt="Friend Group Chat Icon">
-                <h3>Breakup Arc Energy</h3>
-                <p>Which friend is giving off major breakup arc energy (and when it’s going down)</p>
-            </div>
+            <article class="feature-card">
+                <img src="https://placehold.co/300x120/f5f5f7/86868b?text=Friend+group+energy" alt="" width="300" height="120">
+                <h3>Breakup arc energy</h3>
+                <p>Which friend is giving off “something’s shifting” vibes—and on what timeline.</p>
+            </article>
 
-            <div class="feature-card">
-                <img src="https://placehold.co/300x120/ffc7ed/f5444e?text=Reality+TV+Finale" alt="Reality TV Icon">
-                <h3>Reality TV Drama</h3>
-                <p>If the latest reality TV couple will make it past the reunion special</p>
-            </div>
+            <article class="feature-card">
+                <img src="https://placehold.co/300x120/f5f5f7/86868b?text=Reality+TV" alt="" width="300" height="120">
+                <h3>Reality TV drama</h3>
+                <p>Whether the couple makes it past the reunion, who flips first, who walks.</p>
+            </article>
 
-            <div class="feature-card">
-                <img src="https://placehold.co/300x120/ffc7ed/f5444e?text=Soft+Launch+Drama" alt="Social Media Icon">
-                <h3>The Soft Launch</h3>
-                <p>When your friend will soft-launch their new thing (and then immediately delete it)</p>
-            </div>
+            <article class="feature-card">
+                <img src="https://placehold.co/300x120/f5f5f7/86868b?text=Soft+launch" alt="" width="300" height="120">
+                <h3>The soft launch</h3>
+                <p>When someone will post-and-delete, or finally go “Instagram official.”</p>
+            </article>
 
-            <div class="feature-card">
-                <img src="https://placehold.co/300x120/ffc7ed/f5444e?text=Spicy+New+Diet" alt="Diet and Fitness Icon">
-                <h3>The Trend Cycle</h3>
-                <p>How long before your most chaotic friend tries a spicy new diet and gives up immediately</p>
-            </div>
+            <article class="feature-card">
+                <img src="https://placehold.co/300x120/f5f5f7/86868b?text=Trend+cycle" alt="" width="300" height="120">
+                <h3>The trend cycle</h3>
+                <p>How long before the most chaotic friend tries a new thing—and how gracefully they bounce.</p>
+            </article>
         </div>
-    </div>
-    
-    <!-- 3. Scoreboard/How-To Section -->
-    <div id="scoreboard-section" class="content-container">
-        <h2>How The Chaos Gets Logged: The Betsie Playbook </h2>
-        
-        <p>Turn your group chat banter into an official W/L record in four iconic steps. This is how the receipts are made:</p>
-        
+    </section>
+
+    <!-- How it works -->
+    <section id="scoreboard-section" class="content-container how-it-works" aria-labelledby="how-heading">
+        <h2 id="how-heading">How it works</h2>
+        <p class="section-sub">Four short steps from idea to receipt—transparent rules, no surprises.</p>
+
         <div class="process-list">
-            
             <div data-step="1">
-                <h3>Set the Scene & The Rules</h3>
-                <p>Pick your prediction, invite a friend, and <b>define the timeframe</b>. They have to accept the terms before the clock starts ticking. No take-backs!</p>
+                <h3>Set the scene</h3>
+                <p>Choose a prediction, invite someone, and set a timeframe. They accept before the clock starts—clear terms, no retro edits.</p>
             </div>
 
             <div data-step="2">
-                <h3>Raise the Stakes (Optional)</h3>
-                <p>Agree on a <b>fun, low-stakes consequence</b>—buying lunch, posting a dare, or making the loser wear a ridiculous hat for the day. You set the rules!</p>
+                <h3>Optional stakes</h3>
+                <p>Add a fun, low-stakes consequence if you want: coffee, a silly hat, a story post. It is always optional and between you two.</p>
             </div>
-            
+
             <div data-step="3">
-                <h3>Close the Bet & Get Confirmation</h3>
-                <p>When the outcome happens (or the deadline hits), both parties must <b>agree on the result</b> in the app. No cheating, the app makes sure it's 100% mutual.</p>
+                <h3>Close it together</h3>
+                <p>When the moment arrives, both sides confirm the outcome in the app. If you disagree, you work it out—nothing posts without alignment.</p>
             </div>
-            
+
             <div data-step="4">
-                <h3>Memorialize the Win/Loss Record</h3>
-                <p>The win is <b>permanently logged</b> on your profile! Your W/L ratio automatically updates, cementing your status as a certified psychic (or maybe just a certified hottie).</p>
+                <h3>Memorialize the record</h3>
+                <p>Wins and losses update your profile stats—so the group chat can move on, but the receipts stay crisp.</p>
             </div>
-
         </div>
-        
-        <div class="privacy-note">
-            <b>Your Vibe, Your Rules:</b> All bets are <b>private</b> between the two of you<br />
-            unless you choose to share the results or invite friends to spectate!
-        </div>
-    </div>
 
-    <!-- 4. Final CTA Section -->
-    <div id="cta-section" class="content-container">
-        
-        <h2>It's Not Just Gossiping.<br />It's Strategic, Receipt-Backed Analysis.</h2>
-        <p>Stop talking about it, be about it. Call the chaos. Catalog the disasters.<br />Log every victory. Get Betsie&trade; now.</p>
-        <a href="download.html" id="app-store-button">
-            <!-- Download on the Apple App Store Placeholder -->
-            <img src="images/download_apple_ios.png" alt="Download on the Apple App Store" onerror="this.onerror=null; this.src='https://placehold.co/150x50/002cfc/ffffff?text=Download+App';">
+        <aside class="privacy-note">
+            <strong>Your vibe, your rules.</strong> Bets are private between participants unless you invite someone to spectate or share a result.
+            <a href="privacy_policy.html" class="privacy-note__link">Read the privacy policy →</a>
+        </aside>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta-section" class="content-container cta-panel" aria-labelledby="cta-heading">
+        <h2 id="cta-heading">Less scrolling back. More closing the loop.</h2>
+        <p class="cta-panel__lede">Betsie is built for friends who like to compete on instinct—without turning your chat into a courtroom.</p>
+        <a href="download.html" id="app-store-button" class="app-store-wrap">
+            <img src="images/download_apple_ios.png" alt="Download on the App Store" width="150" height="50" onerror="this.onerror=null; this.src='https://placehold.co/150x50/1c1c1e/ffffff?text=Download';">
         </a>
-    </div>
+    </section>
+    </main>
 
-    <!-- Footer -->
     <footer>
-        <h3>Site Links</h3>
-        
-        <a href="about_us.html">About Us</a>
-        <a href="privacy_policy.html">Privacy&nbsp;Policy</a>
-        <a href="terms_of_service.html">Terms&nbsp;of&nbsp;Service</a>
-        <a href="community_guidelines.html">Community&nbsp;Guidelines</a>
-        <a href="support.html">Support</a> 
+        <nav aria-label="Footer">
+            <a href="about_us.html">About</a>
+            <a href="privacy_policy.html">Privacy&nbsp;Policy</a>
+            <a href="terms_of_service.html">Terms&nbsp;of&nbsp;Service</a>
+            <a href="community_guidelines.html">Community&nbsp;Guidelines</a>
+            <a href="support.html">Support</a>
+        </nav>
 
-        <p style="font-size: 0.8em; color: #666; margin-top: 20px; padding-top: 10px;">
-            Betsie is a Trademark of Squeaky Cheese, Inc. - Site &copy; 2025 Squeaky Cheese, Inc.
+        <p class="footer-meta">
+            Betsie is a trademark of Squeaky Cheese, Inc. · Site © 2026 Squeaky Cheese, Inc.
         </p>
     </footer>
 
+    <script src="JS/ga-events.js" defer></script>
 </body>
 </html>

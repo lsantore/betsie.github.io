@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Original illustration for the Betsie marketing site. (c) 2026 Squeaky Cheese, Inc. All rights reserved. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="600" height="240">
+  <defs>
+    <linearGradient id="tvbg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1d1d1f"/>
+      <stop offset="100%" style="stop-color:#3a3a3c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" style="stop-color:#fce8f2;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#f5f5f7;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="240" fill="#f5f5f7"/>
+  <ellipse cx="300" cy="200" rx="260" ry="80" fill="url(#glow)"/>
+  <!-- couch -->
+  <path d="M88 148c0-18 14-32 32-32h360c18 0 32 14 32 32v36H88v-36z" fill="#e12d3a" opacity="0.18"/>
+  <path d="M100 142h400c12 0 22 10 22 22v42H78v-42c0-12 10-22 22-22z" fill="#ffffff" stroke="#d2d2d7" stroke-width="1.5"/>
+  <rect x="100" y="142" width="400" height="18" rx="4" fill="#fce8f2"/>
+  <!-- bowl -->
+  <ellipse cx="300" cy="132" rx="34" ry="12" fill="#ffffff" stroke="#d2d2d7" stroke-width="1.2"/>
+  <ellipse cx="300" cy="128" rx="28" ry="8" fill="#f5c542" opacity="0.5"/>
+  <!-- TV -->
+  <rect x="228" y="48" width="144" height="88" rx="8" fill="url(#tvbg)" stroke="#1d1d1f" stroke-width="2"/>
+  <rect x="238" y="58" width="124" height="68" rx="4" fill="#0071e3" opacity="0.15"/>
+  <!-- abstract "stage" sparkles -->
+  <g fill="#f5c542" opacity="0.9">
+    <circle cx="256" cy="78" r="3"/>
+    <circle cx="344" cy="98" r="2.5"/>
+    <circle cx="318" cy="72" r="2"/>
+    <circle cx="282" cy="108" r="2"/>
+  </g>
+  <path d="M250 100h100" stroke="#e12d3a" stroke-width="2" stroke-linecap="round" opacity="0.4" stroke-dasharray="6 8"/>
+  <rect x="292" y="136" width="16" height="8" rx="2" fill="#3a3a3c"/>
+</svg>

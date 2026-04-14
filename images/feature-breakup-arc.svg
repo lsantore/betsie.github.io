@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Original illustration for the Betsie marketing site. (c) 2026 Squeaky Cheese, Inc. All rights reserved. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="600" height="240">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbfbfd"/>
+      <stop offset="100%" style="stop-color:#fce8f2"/>
+    </linearGradient>
+    <linearGradient id="glass1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#e8e8ed"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="240" fill="url(#bg1)"/>
+  <g opacity="0.35" fill="none" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round">
+    <path d="M48 168h120"/>
+    <path d="M168 168h120"/>
+    <path d="M288 168h120"/>
+    <path d="M408 168h120"/>
+  </g>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" fill="#6e6e73" opacity="0.6">
+    <text x="72" y="158">Soon</text>
+    <text x="200" y="158">Later</text>
+    <text x="330" y="158">Maybe</text>
+    <text x="450" y="158">IDK</text>
+  </g>
+  <path d="M120 92 Q300 40 480 92" fill="none" stroke="#e12d3a" stroke-width="2.5" stroke-linecap="round" opacity="0.35" stroke-dasharray="8 10"/>
+  <!-- left drink -->
+  <g transform="translate(118 0)">
+    <ellipse cx="0" cy="118" rx="36" ry="10" fill="#1d1d1f" opacity="0.06"/>
+    <path d="M-22 118l10-52h24l10 52z" fill="url(#glass1)" stroke="#d2d2d7" stroke-width="1.2"/>
+    <rect x="-8" y="78" width="8" height="36" rx="2" fill="#f5c542" opacity="0.85"/>
+  </g>
+  <!-- right drink -->
+  <g transform="translate(336 6)">
+    <ellipse cx="0" cy="118" rx="36" ry="10" fill="#1d1d1f" opacity="0.06"/>
+    <path d="M-22 118l10-52h24l10 52z" fill="url(#glass1)" stroke="#d2d2d7" stroke-width="1.2"/>
+    <rect x="-8" y="82" width="8" height="32" rx="2" fill="#0071e3" opacity="0.35"/>
+  </g>
+  <circle cx="300" cy="72" r="22" fill="#ffffff" stroke="#e12d3a" stroke-width="2"/>
+  <path d="M292 72l6 6 12-14" fill="none" stroke="#e12d3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

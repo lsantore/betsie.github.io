@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+    (function () {
+        if (location.protocol !== 'http:') return;
+        var h = location.hostname;
+        if (h === 'localhost' || h === '127.0.0.1' || h === '[::1]') return;
+        location.replace(location.href.replace(/^http:/, 'https:'));
+    })();
+    </script>
     <link rel="icon" type="image/png" href="images/betsie-app-logo.png">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLLHMD1E9"></script>
@@ -14,11 +22,30 @@
     cookie_flags: 'SameSite=Lax;Secure'
   });
 </script>
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content="index, follow" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betsie — Social predictions with friends</title>
     <meta name="description" content="Betsie helps friends log playful predictions, agree on outcomes together, and keep a private scoreboard. Not gambling — just receipts.">
+
+    <link rel="canonical" href="https://betsie.app/">
+
+    <meta property="og:site_name" content="Betsie">
+    <meta property="og:title" content="Betsie — Social predictions with friends">
+    <meta property="og:description" content="Betsie helps friends log playful predictions, agree on outcomes together, and keep a private scoreboard. Not gambling — just receipts.">
+    <meta property="og:url" content="https://betsie.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://betsie.app/images/hero-screenshot.png">
+    <meta property="og:image:width" content="502">
+    <meta property="og:image:height" content="1014">
+    <meta property="og:image:alt" content="Betsie app showing a prediction and scoreboard on iPhone">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Betsie — Social predictions with friends">
+    <meta name="twitter:description" content="Betsie helps friends log playful predictions, agree on outcomes together, and keep a private scoreboard. Not gambling — just receipts.">
+    <meta name="twitter:image" content="https://betsie.app/images/hero-screenshot.png">
+    <meta name="twitter:image:alt" content="Betsie app showing a prediction and scoreboard on iPhone">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,25 +128,25 @@
 
         <div id="card-container">
             <article class="feature-card">
-                <img src="https://placehold.co/300x120/f5f5f7/86868b?text=Friend+group+energy" alt="" width="300" height="120">
+                <img src="images/feature-breakup-arc.svg" alt="Abstract illustration: timeline, two drinks apart, subtle check-in moment." width="600" height="240" loading="lazy" decoding="async">
                 <h3>Breakup arc energy</h3>
                 <p>Which friend is giving off “something’s shifting” vibes—and on what timeline.</p>
             </article>
 
             <article class="feature-card">
-                <img src="https://placehold.co/300x120/f5f5f7/86868b?text=Reality+TV" alt="" width="300" height="120">
+                <img src="images/feature-reality-tv.svg" alt="Abstract illustration: couch, snacks, and a glowing screen for watch-party energy." width="600" height="240" loading="lazy" decoding="async">
                 <h3>Reality TV drama</h3>
                 <p>Whether the couple makes it past the reunion, who flips first, who walks.</p>
             </article>
 
             <article class="feature-card">
-                <img src="https://placehold.co/300x120/f5f5f7/86868b?text=Soft+launch" alt="" width="300" height="120">
+                <img src="images/feature-soft-launch.svg" alt="Abstract illustration: phone feed with a cropped peek and soft social-post shapes." width="600" height="240" loading="lazy" decoding="async">
                 <h3>The soft launch</h3>
                 <p>When someone will post-and-delete, or finally go “Instagram official.”</p>
             </article>
 
             <article class="feature-card">
-                <img src="https://placehold.co/300x120/f5f5f7/86868b?text=Trend+cycle" alt="" width="300" height="120">
+                <img src="images/feature-trend-cycle.svg" alt="Abstract illustration: circular arrow and hobby icons suggesting a new era every month." width="600" height="240" loading="lazy" decoding="async">
                 <h3>The trend cycle</h3>
                 <p>How long before the most chaotic friend tries a new thing—and how gracefully they bounce.</p>
             </article>

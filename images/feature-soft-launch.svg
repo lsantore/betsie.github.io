@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Original illustration for the Betsie marketing site. (c) 2026 Squeaky Cheese, Inc. All rights reserved. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="600" height="240">
+  <defs>
+    <linearGradient id="slbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#f5f5f7"/>
+    </linearGradient>
+    <clipPath id="phoneclip">
+      <rect x="210" y="36" width="180" height="168" rx="22"/>
+    </clipPath>
+  </defs>
+  <rect width="600" height="240" fill="url(#slbg)"/>
+  <!-- phone -->
+  <rect x="208" y="34" width="184" height="172" rx="24" fill="#1d1d1f"/>
+  <rect x="210" y="36" width="180" height="168" rx="22" fill="#fbfbfd"/>
+  <g clip-path="url(#phoneclip)">
+    <!-- feed abstract -->
+    <rect x="226" y="52" width="148" height="44" rx="8" fill="#fce8f2"/>
+    <rect x="226" y="106" width="72" height="72" rx="10" fill="#e8e8ed"/>
+    <rect x="308" y="106" width="66" height="34" rx="8" fill="#e8e8ed"/>
+    <rect x="308" y="148" width="66" height="30" rx="8" fill="#e8e8ed"/>
+    <!-- "cropped" peek circle -->
+    <circle cx="380" cy="88" r="42" fill="#d2d2d7" opacity="0.35"/>
+    <circle cx="380" cy="88" r="28" fill="#f5c542" opacity="0.25"/>
+  </g>
+  <!-- notch -->
+  <rect x="278" y="42" width="44" height="5" rx="2.5" fill="#1d1d1f" opacity="0.2"/>
+  <!-- story ring hint -->
+  <circle cx="262" cy="168" r="18" fill="none" stroke="#e12d3a" stroke-width="2.5" opacity="0.55"/>
+  <circle cx="262" cy="168" r="10" fill="#fce8f2"/>
+  <!-- ghost "deleted" -->
+  <g opacity="0.45" transform="translate(420 56)">
+    <rect width="56" height="20" rx="6" fill="#6e6e73"/>
+    <path d="M8 26h40" stroke="#6e6e73" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

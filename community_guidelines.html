@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+    (function () {
+        if (location.protocol !== 'http:') return;
+        var h = location.hostname;
+        if (h === 'localhost' || h === '127.0.0.1' || h === '[::1]') return;
+        location.replace(location.href.replace(/^http:/, 'https:'));
+    })();
+    </script>
     <link rel="icon" type="image/png" href="images/betsie-app-logo.png">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWLLHMD1E9"></script>

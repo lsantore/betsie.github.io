@@ -76,6 +76,28 @@
         .download-compare td:nth-child(3) {
             text-align: center;
         }
+        .compare-below-preview {
+            display: none;
+        }
+        @media (orientation: landscape) {
+            #hero-section.hero {
+                flex-wrap: wrap;
+            }
+            .hero__copy .download-cta,
+            .hero__copy .download-cta-secondary {
+                text-align: center;
+            }
+            .compare-inline {
+                display: none;
+            }
+            .compare-below-preview {
+                display: block;
+                width: 100%;
+            }
+            .compare-below-preview .download-compare {
+                margin-top: 0.5rem;
+            }
+        }
         @media (max-width: 768px) {
             .download-compare {
                 overflow-x: auto;
@@ -170,7 +192,7 @@
                     <a href="https://try.betsie.app" class="btn btn-primary">Try Betsie Quick Bet</a>
                 </p>
                 <p class="download-cta-secondary"><a href="#cta-section">Join Tester Program</a></p>
-                <div class="download-compare" aria-label="Quick Bet and iOS app comparison">
+                <div class="download-compare compare-inline" aria-label="Quick Bet and iOS app comparison">
                     <table>
                         <thead>
                             <tr>
@@ -216,8 +238,53 @@
             </div>
             <div class="hero__visual">
                 <figure class="device-frame">
-                    <img src="images/hero-screenshot.png" alt="Betsie app preview on iPhone" width="502" height="1014" onerror="this.onerror=null; this.src='https://placehold.co/300x450/1c1c1e/ffffff?text=Betsie';">
+                    <img src="images/betsie-quick-bet-screen.png" alt="Betsie app preview on iPhone" width="502" height="1014" onerror="this.onerror=null; this.src='https://placehold.co/300x450/1c1c1e/ffffff?text=Betsie';">
                 </figure>
+            </div>
+            <div class="compare-below-preview">
+                <div class="download-compare" aria-label="Quick Bet and iOS app comparison">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Compare</th>
+                                <th scope="col">Quick Bet</th>
+                                <th scope="col">iOS App</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Availability</td>
+                                <td>Web</td>
+                                <td>TestFlight</td>
+                            </tr>
+                            <tr>
+                                <td>Needs Account</td>
+                                <td>Never</td>
+                                <td>Required</td>
+                            </tr>
+                            <tr>
+                                <td>Multi-Player</td>
+                                <td>1-on-1</td>
+                                <td>1-to-Many</td>
+                            </tr>
+                            <tr>
+                                <td>Decision Method</td>
+                                <td>Vote</td>
+                                <td>Vote, Judge, AI</td>
+                            </tr>
+                            <tr>
+                                <td>Privacy</td>
+                                <td>Anyone with Link</td>
+                                <td>Public or Private</td>
+                            </tr>
+                            <tr>
+                                <td>History</td>
+                                <td>None</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 

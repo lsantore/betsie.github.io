@@ -47,40 +47,67 @@
     </header>
 
     <main id="main">
-    <div class="content-container subpage-stack">
-    <div id="about" class="subpage-panel">
-<h1>About Squeaky Cheese, Inc.</h1>
+    <div class="subpage-stack about-layout">
+    <section id="about" class="content-container hero about-hero" aria-labelledby="about-heading">
+        <div class="about-hero__panel">
+        <div class="hero__copy">
+            <h1 id="about-heading">About Squeaky Cheese, Inc.</h1>
+            <article class="feature-card about-intro-card">
+                <p class="lead">
+                    Betsie&trade; didn’t start as a business idea — it started as a running joke between friends and colleagues. After years of making playful predictions about who was going to be right with friends, families, and coworkers...
+                </p>
+                <blockquote class="about-quote accent-handwriting about-quote-list">
+                    <p>“He’s definitely quitting,”</p>
+                    <p>“She’s absolutely showing up late,”</p>
+                    <p>“There is no universe where that project launches on time”</p>
+                </blockquote>
+                <p class="about-followup">They realized two things:</p>
+                <div class="about-insights" role="list" aria-label="Two key realizations">
+                    <article class="about-insight-card" role="listitem">
+                        <p class="about-insight-card__label">01</p>
+                        <p class="about-insight-card__text">They were doing this all the time.</p>
+                    </article>
+                    <article class="about-insight-card" role="listitem">
+                        <p class="about-insight-card__label">02</p>
+                        <p class="about-insight-card__text">No one had receipts.</p>
+                    </article>
+                </div>
+            </article>
+        </div>
+        </div>
+    </section>
 
-        <p>
-            Betsie&trade; didn’t start as a business idea — it started as a running joke between friends and colleagues. After years of making playful predictions about who was going to be right with friends, families, and coworkers...<br />
-            <strong class="accent-handwriting">“He’s definitely quitting,” 
-            “She’s absolutely showing up late,”<br />
-            “There is no universe where that project launches on time”,</strong><br />
-            They realized two things:</p>
-            <ol>
-                <li>They were doing this all the time, and</li>
-                <li>No one had receipts.</li>
-            </ol>
-       
-    <h2>About the Founders</h2>
-        
-        <p><img src="images/bio_laetitia-kat.jpg" class="about-hero-img" />
-            From funny little life moments to surprisingly serious calls, Laetitia, Kat, and their friends reveled in the thrill of being right, the humility of being hilariously wrong, and the shared laughter in between. Eventually, one of them said what they’d both been thinking: “We really need a way to keep receipts on this.”
+    <section class="content-container how-it-works about-story" aria-labelledby="founders-heading">
+        <h2 id="founders-heading">About the Founders</h2>
+        <img src="images/bio_laetitia-kat.jpg" class="about-hero-img about-founders-img" alt="Laetitia and Kat, founders of Betsie">
+        <div class="about-story-grid">
+            <article class="feature-card">
+                <p>
+                    From funny little life moments to surprisingly serious calls, Laetitia, Kat, and their friends reveled in the thrill of being right, the humility of being hilariously wrong, and the shared laughter in between. Eventually, one of them said what they’d both been thinking: “We really need a way to keep receipts on this.”
+                </p>
+                <p class="about-story-break">
+                    So they started a company, <b>Squeaky Cheese, Inc</b>, and built Betsie!
+                </p>
+            </article>
+            <article class="feature-card">
+                <p>
+                    <a href="https://www.linkedin.com/in/katrinastrafford/" target="_blank">Kat</a> has a talent for transforming “Wouldn’t it be cool if…?” moments into actual products that delight real humans. <a href="https://www.linkedin.com/in/laetitiasantore/" target="_blank">Laetitia</a> brings her creative instincts and sharp design eye to keep everything joyful, polished, and perfectly chaotic.
+                </p>
+                <p class="about-story-break">
+                    Together, they built Betsie to celebrate everyday moments — the spicy, the petty, the heartfelt, and the delightfully ridiculous. No money, no pressure, just bragging rights… finally backed by receipts.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="content-container cta-panel about-contact" aria-labelledby="contact-heading">
+        <h3 id="contact-heading">Contact Us</h3>
+        <p class="cta-panel__lede">
+            For support inquiries, <a href="support.html">click here</a>.<br />
+            To reach our leadership team,<br />
+            <a href="mailto:Kat@squeakycheeseinc.com">Kat@squeakycheeseinc.com</a> or <b class="phone-nowrap">+1&nbsp;(206)&nbsp;745-2343</b>.
         </p>
-        <p>
-            So they started a company, <b>Squeaky Cheese, Inc</b>, and built Betsie!
-        </p>
-        <p>    
-            <a href="https://www.linkedin.com/in/katrinastrafford/" target="_blank">Kat</a> has a talent for transforming “Wouldn’t it be cool if…?” moments into actual products that delight real humans. <a href="https://www.linkedin.com/in/laetitiasantore/" target="_blank">Laetitia</a> brings her creative instincts and sharp design eye to keep everything joyful, polished, and perfectly chaotic.
-        </p>
-        <p>    
-            Together, they built Betsie to celebrate everyday moments — the spicy, the petty, the heartfelt, and the delightfully ridiculous. No money, no pressure, just bragging rights… finally backed by receipts.
-        </p>
-    <h3>Contact Us</h3>
-        <p>
-          	For support inquiries, <a href="support.html">click here</a>.<br />
-            To reach our leadership team, <a href="mailto:Kat@squeakycheeseinc.com">Kat@squeakycheeseinc.com</a> or <b>+1&nbsp;(206)&nbsp;745-2343</b>.
-        </p>
+    </section>
         <!-- Kat Strafford Profile
         <div class="founder-profile">
             <div class="founder-photo-wrapper">
@@ -128,11 +155,10 @@
             </div>
         </div> -->
         
-        <div class="subpage-panel__cta">
+        <div class="content-container subpage-panel__cta">
         <a href="download.html" id="app-store-button" class="app-store-wrap">
             <img src="images/download_apple_ios.png" alt="Download on the App Store" width="150" height="50" onerror="this.onerror=null; this.src='https://placehold.co/150x50/002cfc/ffffff?text=Download+App';">
         </a>
-        </div>
         </div>
     </div>
     </main>

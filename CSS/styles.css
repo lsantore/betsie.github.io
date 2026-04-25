@@ -714,18 +714,216 @@ footer a:hover {
 
 .about-hero-img {
     width: 100%;
-    max-width: 800px;
+    max-width: 460px;
     height: auto;
     display: block;
-    margin: 20px auto 20px;
-    border-radius: var(--radius-lg);
+    margin: 0 auto;
+    border-radius: 20px;
+    border: none;
+    box-shadow: none;
+}
+
+.about-layout {
+    padding-top: 8px;
+    padding-bottom: 80px;
+}
+
+.page-sub .subpage-stack.about-layout {
+    padding-top: 0;
+}
+
+.about-hero {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.about-hero__panel {
+    background: var(--color-soft-bg);
     border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 56px 32px;
+    text-align: center;
+}
+
+.about-hero .hero__copy {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.about-hero h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    line-height: 1.1;
+}
+
+.about-quote {
+    margin: 18px 0 12px 0;
+    font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+    line-height: 1.2;
+    color: var(--color-primary-red);
+}
+
+.about-quote-list {
+    margin: 24px 0 16px 0;
+    padding: 0 0 0 16px;
+    border-left: 3px solid var(--color-primary-red);
+}
+
+.about-quote-list p {
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+.about-quote-list p + p {
+    margin-top: 6px;
+}
+
+.about-followup {
+    margin: 0 0 10px 0;
+    color: var(--color-muted);
+}
+
+.about-bullets {
+    max-width: 26em;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-bullets li {
+    margin-bottom: 8px;
+}
+
+.about-insights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.about-insight-card {
+    border: 1px solid var(--color-line);
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: 14px 14px 12px;
+}
+
+.about-insight-card__label {
+    margin: 0 0 6px 0;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--color-primary-red);
+}
+
+.about-insight-card__text {
+    margin: 0;
+    color: var(--color-dark);
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.about-intro-card {
+    margin-top: 24px;
+    text-align: left;
+    min-height: 0;
+}
+
+.about-intro-card .lead {
+    margin-top: 0;
+}
+
+.about-intro-card .about-quote {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-size: clamp(1.55rem, 3.2vw, 2.2rem);
+    color: var(--color-primary-red);
+}
+
+.about-hero .hero__visual {
+    max-width: 420px;
+    margin: 22px auto 0;
+    text-align: center;
+}
+
+.about-founders-img {
+    margin: 16px auto 24px;
+}
+
+.about-hero .device-frame {
+    padding: 10px;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #fff, #f5f5f7);
     box-shadow: var(--shadow-soft);
+}
+
+.about-story {
+    text-align: left;
+}
+
+.about-story h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.about-story-grid {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.about-story-grid .feature-card {
+    min-height: 0;
+}
+
+.about-story-grid .feature-card p:last-child {
+    margin-bottom: 0;
+}
+
+.about-story-grid .feature-card p.about-story-break {
+    margin-top: 18px;
+}
+
+.about-contact {
+    margin-top: 24px;
+    margin-bottom: 20px;
+}
+
+.about-contact h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+}
+
+.about-contact .cta-panel__lede {
+    margin-bottom: 0;
+}
+
+.phone-nowrap {
+    white-space: nowrap;
 }
 
 /* Mobile */
 @media (max-width: 900px) {
     .trust-strip__list {
+        grid-template-columns: 1fr;
+    }
+
+    .about-story-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 560px) {
+    .about-insights {
         grid-template-columns: 1fr;
     }
 }
@@ -766,6 +964,35 @@ footer a:hover {
 
     .hero__copy {
         max-width: 100%;
+    }
+
+    .about-layout {
+        padding-top: 4px;
+    }
+
+    .about-hero {
+        padding: 0;
+    }
+
+    .about-hero__panel {
+        padding: 36px 22px;
+    }
+
+    .about-hero .hero__copy {
+        max-width: 100%;
+    }
+
+    .about-bullets {
+        max-width: 22em;
+    }
+
+    .about-quote {
+        margin-top: 2px;
+        margin-bottom: 14px;
+    }
+
+    .about-hero .hero__visual {
+        max-width: 300px;
     }
 
     .lead {

@@ -71,11 +71,28 @@
         .download-compare td:first-child {
             text-align: center;
         }
+        .download-compare th:first-child,
+        .download-compare td:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            background: #ffffff;
+        }
+        .download-compare thead th:first-child {
+            z-index: 3;
+        }
         .download-compare th:nth-child(2),
         .download-compare th:nth-child(3),
         .download-compare td:nth-child(2),
         .download-compare td:nth-child(3) {
             text-align: center;
+        }
+        .download-compare th:nth-child(2),
+        .download-compare th:nth-child(3) {
+            color: var(--color-primary-red);
+        }
+        .download-compare tbody td:first-child {
+            font-weight: 700;
         }
         .compare-below-preview {
             display: none;
@@ -103,7 +120,13 @@
             .download-compare {
                 overflow-x: auto;
                 overflow-y: hidden;
-                scrollbar-width: thin;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            .download-compare::-webkit-scrollbar {
+                display: none;
+                width: 0;
+                height: 0;
             }
             .download-compare table {
                 min-width: 540px;

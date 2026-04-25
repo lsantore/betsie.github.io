@@ -50,6 +50,7 @@
             background: #ffffff;
             border-radius: 12px;
             overflow: hidden;
+            position: relative;
         }
         .download-compare table {
             width: 100%;
@@ -101,9 +102,42 @@
         @media (max-width: 768px) {
             .download-compare {
                 overflow-x: auto;
+                overflow-y: hidden;
+                scrollbar-width: thin;
             }
             .download-compare table {
                 min-width: 540px;
+            }
+            .download-compare::after {
+                content: "";
+                position: sticky;
+                right: 0;
+                top: 0;
+                width: 38px;
+                height: 100%;
+                float: right;
+                pointer-events: none;
+                background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff 72%);
+                opacity: 1;
+                transition: opacity 180ms ease;
+            }
+            .download-compare.is-end::after {
+                opacity: 0;
+            }
+            .compare-scroll-hint {
+                display: block;
+                margin: 0.45rem 0 0.1rem;
+                padding-right: 0.25rem;
+                font-size: 0.82rem;
+                color: #666;
+                text-align: right;
+                white-space: nowrap;
+                opacity: 1;
+                transition: opacity 180ms ease;
+            }
+            .download-compare.is-end .compare-scroll-hint,
+            .download-compare.is-scrolled .compare-scroll-hint {
+                opacity: 0;
             }
         }
     </style>
@@ -223,17 +257,18 @@
                                 <td>Vote, Judge, AI</td>
                             </tr>
                             <tr>
-                                <td>Privacy</td>
+                                <td>Bet Visibility</td>
                                 <td>Anyone with Link</td>
                                 <td>Public or Private</td>
                             </tr>
                             <tr>
-                                <td>History</td>
+                                <td>Bet History</td>
                                 <td>None</td>
                                 <td>Yes</td>
                             </tr>
                         </tbody>
                     </table>
+                    <p class="compare-scroll-hint" aria-hidden="true">Swipe to see more &rarr;</p>
                 </div>
             </div>
             <div class="hero__visual">
@@ -273,17 +308,18 @@
                                 <td>Vote, Judge, AI</td>
                             </tr>
                             <tr>
-                                <td>Privacy</td>
+                                <td>Bet Visibility</td>
                                 <td>Anyone with Link</td>
                                 <td>Public or Private</td>
                             </tr>
                             <tr>
-                                <td>History</td>
+                                <td>Bet History</td>
                                 <td>None</td>
                                 <td>Yes</td>
                             </tr>
                         </tbody>
                     </table>
+                    <p class="compare-scroll-hint" aria-hidden="true">Swipe to see more &rarr;</p>
                 </div>
             </div>
         </section>
@@ -309,5 +345,39 @@
     </footer>
 
     <script src="JS/ga-events.js" defer></script>
+    <script>
+        (function () {
+            function updateCompareScrollState(compareEl) {
+                var maxScroll = compareEl.scrollWidth - compareEl.clientWidth;
+                var hasOverflow = maxScroll > 6;
+                var isAtEnd = compareEl.scrollLeft >= maxScroll - 6;
+
+                compareEl.classList.toggle("is-end", !hasOverflow || isAtEnd);
+                compareEl.classList.toggle("is-scrolled", compareEl.scrollLeft > 8);
+            }
+
+            function initCompareHints() {
+                var compareTables = document.querySelectorAll(".download-compare");
+                if (!compareTables.length) return;
+
+                compareTables.forEach(function (compareEl) {
+                    updateCompareScrollState(compareEl);
+                    if (!compareEl.dataset.compareHintBound) {
+                        compareEl.addEventListener("scroll", function () {
+                            updateCompareScrollState(compareEl);
+                        }, { passive: true });
+                        compareEl.dataset.compareHintBound = "true";
+                    }
+                });
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", initCompareHints);
+            } else {
+                initCompareHints();
+            }
+            window.addEventListener("resize", initCompareHints);
+        })();
+    </script>
 </body>
 </html>

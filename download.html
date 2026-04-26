@@ -147,21 +147,6 @@
             .download-compare.is-end::after {
                 opacity: 0;
             }
-            .compare-scroll-hint {
-                display: block;
-                margin: 0.45rem 0 0.1rem;
-                padding-right: 0.25rem;
-                font-size: 0.82rem;
-                color: #666;
-                text-align: right;
-                white-space: nowrap;
-                opacity: 1;
-                transition: opacity 180ms ease;
-            }
-            .download-compare.is-end .compare-scroll-hint,
-            .download-compare.is-scrolled .compare-scroll-hint {
-                opacity: 0;
-            }
         }
     </style>
     <noscript><style>body { opacity: 1 !important; }</style></noscript>
@@ -291,7 +276,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p class="compare-scroll-hint" aria-hidden="true">Swipe to see more &rarr;</p>
                 </div>
             </div>
             <div class="hero__visual">
@@ -342,7 +326,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p class="compare-scroll-hint" aria-hidden="true">Swipe to see more &rarr;</p>
                 </div>
             </div>
         </section>
@@ -376,7 +359,6 @@
                 var isAtEnd = compareEl.scrollLeft >= maxScroll - 6;
 
                 compareEl.classList.toggle("is-end", !hasOverflow || isAtEnd);
-                compareEl.classList.toggle("is-scrolled", compareEl.scrollLeft > 8);
             }
 
             function initCompareHints() {

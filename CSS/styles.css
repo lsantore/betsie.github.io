@@ -910,6 +910,10 @@ footer a:hover {
     white-space: nowrap;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 /* Mobile */
 @media (max-width: 900px) {
     .trust-strip__list {

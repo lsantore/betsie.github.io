@@ -842,7 +842,7 @@ footer a:hover {
 .about-intro-card .about-quote {
     margin-top: 24px;
     margin-bottom: 16px;
-    font-size: clamp(1.55rem, 3.2vw, 2.2rem);
+    font-size: clamp(1.47rem, 3.1vw, 2.12rem);
     color: var(--color-primary-red);
 }
 

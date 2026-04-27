@@ -325,6 +325,28 @@ header nav a:last-child:hover {
     vertical-align: middle;
 }
 
+.device-frame--captioned {
+    position: relative;
+    overflow: hidden;
+}
+
+.device-frame__caption {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    margin: 0;
+    padding: 10px 14px;
+    border-radius: 0 0 26px 26px;
+    background: linear-gradient(180deg, rgba(16, 16, 18, 0.12) 0%, rgba(16, 16, 18, 0.62) 100%);
+    color: #ffffff;
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-align: center;
+    pointer-events: none;
+}
+
 /* Trust strip */
 .trust-strip {
     margin-bottom: 48px;

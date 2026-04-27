@@ -265,6 +265,10 @@
                     redirectUrl = appStoreLink;
                 }
 
+                // Always reveal fallback content before redirect attempt so
+                // users are not left on a blank screen if TestFlight handoff fails.
+                document.body.style.opacity = "1";
+
                 function go() {
                     if (done) return;
                     done = true;

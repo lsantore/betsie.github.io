@@ -38,6 +38,23 @@
         .download-cta .btn-ghost {
             margin-left: 0;
         }
+        .redirecting-note {
+            display: none;
+            margin: 0 0 1rem;
+            padding: 0.75rem 0.9rem;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            color: #1c1c1e;
+            background: rgba(245, 68, 78, 0.1);
+            border: 1px solid rgba(245, 68, 78, 0.22);
+        }
+        .redirecting-note a {
+            color: #9e1e28;
+            font-weight: 700;
+        }
+        body.is-iphone .redirecting-note {
+            display: block;
+        }
         .download-cta-secondary {
             margin-top: 0.6rem;
             margin-bottom: 0;
@@ -45,195 +62,12 @@
         .download-cta-secondary a {
             font-size: 0.9rem;
         }
-        .download-compare {
-            margin-top: 1.25rem;
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid rgba(28, 28, 30, 0.08);
-            box-shadow: 0 14px 28px rgba(28, 28, 30, 0.08);
-        }
-        .download-compare table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-        }
-        .download-compare th,
-        .download-compare td {
-            padding: 0.65rem 0.75rem;
-            text-align: left;
-            vertical-align: top;
-        }
-        .download-compare thead th {
-            background: transparent;
-            font-weight: 600;
-            text-align: center;
-            padding-top: 0.8rem;
-            padding-bottom: 0.85rem;
-        }
-        .download-compare td:first-child {
-            text-align: center;
-        }
-        .download-compare th:first-child,
-        .download-compare td:first-child {
-            position: sticky;
-            left: 0;
-            z-index: 2;
-            background: #ffffff;
-        }
-        .download-compare thead th:first-child {
-            z-index: 3;
-        }
-        .download-compare th:nth-child(2),
-        .download-compare th:nth-child(3),
-        .download-compare td:nth-child(2),
-        .download-compare td:nth-child(3) {
-            text-align: center;
-        }
-        .download-compare th:nth-child(2),
-        .download-compare th:nth-child(3) {
-            color: var(--color-primary-red);
-        }
-        .download-compare tbody td:first-child {
+        .download-cta-divider {
+            margin: 0.9rem 0 0;
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
             font-weight: 700;
-        }
-        .download-compare tbody tr:nth-child(odd) td {
-            background: rgba(245, 68, 78, 0.03);
-        }
-        .download-compare tbody tr:nth-child(odd) td:first-child {
-            background: rgba(245, 68, 78, 0.06);
-        }
-        .compare-row-label {
-            color: #1c1c1e;
-            letter-spacing: 0.01em;
-        }
-        .compare-value {
-            color: #3a3a3c;
-            font-weight: 500;
-        }
-        .compare-value.is-strong {
-            color: #1c1c1e;
-            font-weight: 700;
-        }
-        .compare-col-title {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .compare-chip {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.16rem 0.45rem;
-            border-radius: 999px;
-            font-size: 0.69rem;
-            line-height: 1.25;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-            color: #7a252a;
-            background: rgba(245, 68, 78, 0.13);
-        }
-        .compare-chip.alt {
-            color: #1f4d23;
-            background: rgba(48, 209, 88, 0.16);
-        }
-        .compare-mobile {
-            display: none;
-        }
-        .compare-card-wrap {
-            display: grid;
-            gap: 0.7rem;
-            padding: 0.8rem 0.78rem 0.85rem;
-        }
-        .compare-card {
-            border: 1px solid rgba(28, 28, 30, 0.1);
-            border-radius: 10px;
-            padding: 0.75rem 0.72rem;
-            background: #ffffff;
-        }
-        .compare-card.recommended {
-            border-color: rgba(245, 68, 78, 0.35);
-            box-shadow: 0 8px 18px rgba(245, 68, 78, 0.12);
-        }
-        .compare-card-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .compare-card-head strong {
-            font-size: 1rem;
-            color: #1c1c1e;
-        }
-        .compare-card-list {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: grid;
-            gap: 0.45rem;
-        }
-        .compare-card-list li {
-            display: flex;
-            justify-content: space-between;
-            gap: 0.65rem;
-            font-size: 0.9rem;
-        }
-        .compare-card-list span:first-child {
-            color: #3a3a3c;
-            font-weight: 600;
-        }
-        .compare-card-list span:last-child {
-            text-align: right;
-            color: #1c1c1e;
-            font-weight: 600;
-        }
-        .compare-card-cta {
-            margin-top: 0.68rem;
-        }
-        .compare-card-cta a {
-            display: inline-block;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--color-primary-red);
-        }
-        .compare-card-cta a:hover,
-        .compare-card-cta a:focus-visible {
-            text-decoration: underline;
-        }
-        .compare-below-preview {
-            display: none;
-        }
-        @media (orientation: landscape) {
-            #hero-section.hero {
-                flex-wrap: wrap;
-            }
-            .hero__copy .download-cta,
-            .hero__copy .download-cta-secondary {
-                text-align: center;
-            }
-            .compare-inline {
-                display: none;
-            }
-            .compare-below-preview {
-                display: block;
-                width: 100%;
-            }
-            .compare-below-preview .download-compare {
-                margin-top: 0.5rem;
-            }
-        }
-        @media (max-width: 768px) {
-            .download-compare table {
-                display: none;
-            }
-            .compare-mobile {
-                display: block;
-            }
+            color: #6e6e73;
         }
     </style>
     <noscript><style>body { opacity: 1 !important; }</style></noscript>
@@ -241,50 +75,37 @@
         (function () {
             function runRedirect() {
                 var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-                var appStoreLink = "https://testflight.apple.com/join/5RtfWwJN";
-                var quickBetLink = "https://try.betsie.app";
+                var testFlightUrl = "https://testflight.apple.com/join/5RtfWwJN";
                 var hasTouch = (navigator.maxTouchPoints || 0) > 1;
-                var isWindowsDesktop = /Windows NT/i.test(userAgent);
-                var isMacDesktop = /Macintosh/i.test(userAgent) && !hasTouch;
                 var isIPad = /iPad/i.test(userAgent) || (/Macintosh/i.test(userAgent) && hasTouch);
-                var isDesktopComputer = isWindowsDesktop || isMacDesktop || isIPad;
-                var isAndroid = /android/i.test(userAgent);
                 var isIPhone = /iPhone/i.test(userAgent);
-                var shouldUseAppStoreLink = isIPhone;
-                var redirectUrl = isAndroid ? quickBetLink : appStoreLink;
                 var done = false;
 
-                // For real desktop users, show page content instead of auto-redirecting.
-                if (isDesktopComputer && !shouldUseAppStoreLink) {
-                    document.body.style.opacity = "1";
-                    return;
+                if (isIPhone && !isIPad) {
+                    document.body.classList.add("is-iphone");
                 }
-
-                // Any non-Android traffic defaults to Apple TestFlight link.
-                if (!isAndroid && shouldUseAppStoreLink) {
-                    redirectUrl = appStoreLink;
-                }
-
-                // Always reveal fallback content before redirect attempt so
-                // users are not left on a blank screen if TestFlight handoff fails.
                 document.body.style.opacity = "1";
+
+                // Only iPhone visitors should redirect to TestFlight.
+                // iPad and all non-iPhone platforms stay on-page.
+                if (!isIPhone || isIPad) return;
 
                 function go() {
                     if (done) return;
                     done = true;
-                    window.location.replace(redirectUrl);
+                    window.location.replace(testFlightUrl);
                 }
                 if (typeof gtag === "function") {
                     gtag("event", "betsie_download_redirect", {
-                        link_url: redirectUrl,
-                        store_target: isAndroid ? "android" : "ios",
+                        link_url: testFlightUrl,
+                        store_target: "iphone_testflight",
                         engagement_time_msec: 1,
                         event_callback: go,
-                        event_timeout: 2000
+                        event_timeout: 1600
                     });
-                    window.setTimeout(go, 2500);
+                    window.setTimeout(go, 1100);
                 } else {
-                    go();
+                    window.setTimeout(go, 700);
                 }
             }
             if (document.readyState === "loading") {
@@ -311,211 +132,21 @@
         <section id="hero-section" class="content-container hero" aria-labelledby="download-title">
             <div class="hero__copy">
                 <p class="eyebrow">Platform update</p>
-                <h1 id="download-title">
-                    <span class="hero__title">Betsie is still being built</span>
-                    <span class="hero__title">for this platform.</span>
-                    <span class="hero__kicker accent-handwriting" role="presentation">You&nbsp;can&nbsp;still jump&nbsp;in&nbsp;today.</span>
-                </h1>
-                <p class="lead">We are actively working on the best Betsie experience for your device.</p>
-                <ul class="hero__bullets" aria-label="Download options">
-                    <li>If you have an iPhone, come back on mobile and get the Betsie app with TestFlight.</li>
-                    <li>If you want to play app-free the meantime, try Betsie Quick Bet.</li>
-                </ul>
-                <p class="hero__cta-wrap download-cta">
-                    <a href="https://try.betsie.app" class="btn btn-primary">Try Betsie Quick Bet</a>
+                <p class="redirecting-note">
+                    Redirecting iPhone visitors to TestFlight. If nothing happens,
+                    <a href="https://testflight.apple.com/join/5RtfWwJN">open TestFlight directly</a>.
                 </p>
-                <p class="download-cta-secondary"><a href="#cta-section">Join Tester Program</a></p>
-                <div class="download-compare compare-inline" aria-label="Quick Bet and iOS app comparison">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Compare</th>
-                                <th scope="col">
-                                    <span class="compare-col-title">Quick Bet</span>
-                                </th>
-                                <th scope="col">
-                                    <span class="compare-col-title">Mobile App</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="compare-row-label">Best for</td>
-                                <td class="compare-value is-strong">Instant bets</td>
-                                <td class="compare-value">Power users</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Works on</td>
-                                <td class="compare-value">Desktop + Mobile Web</td>
-                                <td class="compare-value">iOS (TestFlight)</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Account setup</td>
-                                <td class="compare-value">None</td>
-                                <td class="compare-value">Regsiter with Email</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Playing with</td>
-                                <td class="compare-value">1-on-1</td>
-                                <td class="compare-value">1-to-many</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Bet Visibility</td>
-                                <td class="compare-value">Anyone with link</td>
-                                <td class="compare-value">Public or private</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Decision tools</td>
-                                <td class="compare-value">Vote</td>
-                                <td class="compare-value">Vote + Judge + AI</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">History</td>
-                                <td class="compare-value">Bet Reciept</td>
-                                <td class="compare-value is-strong">Book of Bets</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="compare-mobile" aria-hidden="true">
-                        <div class="compare-card-wrap">
-                            <article class="compare-card">
-                                <div class="compare-card-head">
-                                    <strong>Quick Bet</strong>
-                                    <span class="compare-chip alt">Fast Start</span>
-                                </div>
-                                <ul class="compare-card-list">
-                                    <li><span>Best for</span><span>Instant bets</span></li>
-                                    <li><span>Works on</span><span>Desktop + Mobile Web</span></li>
-                                    <li><span>Account setup</span><span>None</span></li>
-                                    <li><span>Playing with</span><span>1-on-1</span></li>
-                                    <li><span>Bet Visibility</span><span>Anyone with link</span></li>
-                                    <li><span>Decision tools</span><span>Vote</span></li>
-                                    <li><span>History</span><span>Bet Reciept</span></li>
-                                </ul>
-                                <p class="compare-card-cta"><a href="https://try.betsie.app">Try Quick Bet now</a></p>
-                            </article>
-                            <article class="compare-card recommended">
-                                <div class="compare-card-head">
-                                    <strong>Mobile App</strong>
-                                    <span class="compare-chip">Full Experience</span>
-                                </div>
-                                <ul class="compare-card-list">
-                                    <li><span>Best for</span><span>Power users</span></li>
-                                    <li><span>Works on</span><span>iOS (TestFlight)</span></li>
-                                    <li><span>Account setup</span><span>Regsiter with Email</span></li>
-                                    <li><span>Playing with</span><span>1-to-many</span></li>
-                                    <li><span>Bet Visibility</span><span>Public or private</span></li>
-                                    <li><span>Decision tools</span><span>Vote + Judge + AI</span></li>
-                                    <li><span>History</span><span>Book of Bets</span></li>
-                                </ul>
-                                <p class="compare-card-cta"><a href="#cta-section">Join Tester Program</a></p>
-                            </article>
-                        </div>
-                    </div>
-                </div>
+                <h1 id="download-title">
+                    <span class="hero__title">Oops! Betsie Mobile is not available on this device yet.</span>
+                    <span class="hero__kicker accent-handwriting" role="presentation">iPhone&nbsp;users&nbsp;go&nbsp;to&nbsp;TestFlight.</span>
+                </h1>
+                <p class="lead">If you're not on iPhone, join the tester program for updates and early access.</p>
+                <p class="hero__cta-wrap download-cta">
+                    <a href="https://forms.gle/FX1gWv5h8jjkVJo86" class="btn btn-primary">Join Tester Program</a>
+                </p>
+                <p class="download-cta-divider" aria-hidden="true">- OR -</p>
+                <p class="download-cta-secondary"><a href="quick-bet.html">Try Betsie Quick Bet</a></p>
             </div>
-            <div class="hero__visual">
-                <figure class="device-frame device-frame--captioned">
-                    <img id="quick-bet-preview" src="images/betsie-quick-bet-screen.png" alt="Betsie app preview on iPhone" width="502" height="1014" onerror="this.onerror=null; this.src='https://placehold.co/300x450/1c1c1e/ffffff?text=Betsie';">
-                    <figcaption class="device-frame__caption">Betsie Quick Bet</figcaption>
-                </figure>
-            </div>
-            <div class="compare-below-preview">
-                <div class="download-compare" aria-label="Quick Bet and iOS app comparison">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Compare</th>
-                                <th scope="col">
-                                    <span class="compare-col-title">Quick Bet</span>
-                                </th>
-                                <th scope="col">
-                                    <span class="compare-col-title">Mobile App</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="compare-row-label">Best for</td>
-                                <td class="compare-value is-strong">Instant bets</td>
-                                <td class="compare-value">Power users</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Works on</td>
-                                <td class="compare-value">Desktop + Mobile Web</td>
-                                <td class="compare-value">iOS (TestFlight)</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Account setup</td>
-                                <td class="compare-value">None</td>
-                                <td class="compare-value">Regsiter with Email</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Playing with</td>
-                                <td class="compare-value">1-on-1</td>
-                                <td class="compare-value">1-to-many</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Bet Visibility</td>
-                                <td class="compare-value">Anyone with link</td>
-                                <td class="compare-value">Public or private</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">Decision tools</td>
-                                <td class="compare-value">Vote</td>
-                                <td class="compare-value">Vote + Judge + AI</td>
-                            </tr>
-                            <tr>
-                                <td class="compare-row-label">History</td>
-                                <td class="compare-value">Bet Reciept</td>
-                                <td class="compare-value is-strong">Book of Bets</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="compare-mobile" aria-hidden="true">
-                        <div class="compare-card-wrap">
-                            <article class="compare-card">
-                                <div class="compare-card-head">
-                                    <strong>Quick Bet</strong>
-                                    <span class="compare-chip alt">Fast Start</span>
-                                </div>
-                                <ul class="compare-card-list">
-                                    <li><span>Best for</span><span>Instant bets</span></li>
-                                    <li><span>Works on</span><span>Desktop + Mobile Web</span></li>
-                                    <li><span>Account setup</span><span>None</span></li>
-                                    <li><span>Playing with</span><span>1-on-1</span></li>
-                                    <li><span>Bet Visibility</span><span>Anyone with link</span></li>
-                                    <li><span>Decision tools</span><span>Vote</span></li>
-                                    <li><span>History</span><span>Bet Reciept</span></li>
-                                </ul>
-                                <p class="compare-card-cta"><a href="https://try.betsie.app">Try Quick Bet now</a></p>
-                            </article>
-                            <article class="compare-card recommended">
-                                <div class="compare-card-head">
-                                    <strong>Mobile App</strong>
-                                    <span class="compare-chip">Full Experience</span>
-                                </div>
-                                <ul class="compare-card-list">
-                                    <li><span>Best for</span><span>Power users</span></li>
-                                    <li><span>Works on</span><span>iOS (TestFlight)</span></li>
-                                    <li><span>Account setup</span><span>Regsiter with Email</span></li>
-                                    <li><span>Playing with</span><span>1-to-many</span></li>
-                                    <li><span>Bet Visibility</span><span>Public or private</span></li>
-                                    <li><span>Decision tools</span><span>Vote + Judge + AI</span></li>
-                                    <li><span>History</span><span>Book of Bets</span></li>
-                                </ul>
-                                <p class="compare-card-cta"><a href="#cta-section">Join Tester Program</a></p>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="cta-section" class="content-container cta-panel" aria-labelledby="tester-signup-title">
-            <h2 id="tester-signup-title">Want to help shape what comes next?</h2>
-            <p class="cta-panel__lede">Sign up to be an early tester and share feedback as improve how Betsie works on more devices.</p>
-            <a href="https://forms.gle/FX1gWv5h8jjkVJo86" class="btn btn-primary">Sign up as an early tester</a>
         </section>
     </main>
 
@@ -533,85 +164,5 @@
     </footer>
 
     <script src="JS/ga-events.js" defer></script>
-    <script>
-        (function () {
-            function initPreviewCycle() {
-                var previewImage = document.getElementById("quick-bet-preview");
-                if (!previewImage) return;
-
-                var screenshots = [
-                    "images/betsie-quick-bet-screen.png",
-                    "images/betsie-quick-bet-chat.png"
-                ];
-                var screenshotIndex = 0;
-                var isAnimating = false;
-
-                // Preload screenshots so slide transitions stay smooth.
-                screenshots.forEach(function (src) {
-                    var preloadImage = new Image();
-                    preloadImage.src = src;
-                });
-
-                function fadeToNextScreenshot() {
-                    if (isAnimating) return;
-                    isAnimating = true;
-                    screenshotIndex = (screenshotIndex + 1) % screenshots.length;
-
-                    previewImage.style.transition = "opacity 350ms ease";
-                    previewImage.style.opacity = "0";
-
-                    window.setTimeout(function () {
-                        previewImage.src = screenshots[screenshotIndex];
-                        previewImage.style.opacity = "1";
-
-                        window.setTimeout(function () {
-                            isAnimating = false;
-                        }, 380);
-                    }, 360);
-                }
-
-                window.setInterval(fadeToNextScreenshot, 4000);
-            }
-
-            if (document.readyState === "loading") {
-                document.addEventListener("DOMContentLoaded", initPreviewCycle);
-            } else {
-                initPreviewCycle();
-            }
-        })();
-    </script>
-    <script>
-        (function () {
-            function updateCompareScrollState(compareEl) {
-                var maxScroll = compareEl.scrollWidth - compareEl.clientWidth;
-                var hasOverflow = maxScroll > 6;
-                var isAtEnd = compareEl.scrollLeft >= maxScroll - 6;
-
-                compareEl.classList.toggle("is-end", !hasOverflow || isAtEnd);
-            }
-
-            function initCompareHints() {
-                var compareTables = document.querySelectorAll(".download-compare");
-                if (!compareTables.length) return;
-
-                compareTables.forEach(function (compareEl) {
-                    updateCompareScrollState(compareEl);
-                    if (!compareEl.dataset.compareHintBound) {
-                        compareEl.addEventListener("scroll", function () {
-                            updateCompareScrollState(compareEl);
-                        }, { passive: true });
-                        compareEl.dataset.compareHintBound = "true";
-                    }
-                });
-            }
-
-            if (document.readyState === "loading") {
-                document.addEventListener("DOMContentLoaded", initCompareHints);
-            } else {
-                initCompareHints();
-            }
-            window.addEventListener("resize", initCompareHints);
-        })();
-    </script>
 </body>
 </html>

@@ -878,6 +878,23 @@ footer a:hover {
     margin: 16px auto 24px;
 }
 
+.about-founders-frame {
+    position: relative;
+    max-width: 460px;
+    margin: 16px auto 24px;
+}
+
+.about-founders-frame .about-hero-img {
+    margin: 0;
+}
+
+.about-founders-frame .device-frame__caption {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0 0 20px 20px;
+}
+
 .about-hero .device-frame {
     padding: 10px;
     border-radius: 28px;

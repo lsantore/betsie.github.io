@@ -51,6 +51,8 @@
             border-radius: 12px;
             overflow: hidden;
             position: relative;
+            border: 1px solid rgba(28, 28, 30, 0.08);
+            box-shadow: 0 14px 28px rgba(28, 28, 30, 0.08);
         }
         .download-compare table {
             width: 100%;
@@ -67,6 +69,8 @@
             background: transparent;
             font-weight: 600;
             text-align: center;
+            padding-top: 0.8rem;
+            padding-bottom: 0.85rem;
         }
         .download-compare td:first-child {
             text-align: center;
@@ -94,6 +98,113 @@
         .download-compare tbody td:first-child {
             font-weight: 700;
         }
+        .download-compare tbody tr:nth-child(odd) td {
+            background: rgba(245, 68, 78, 0.03);
+        }
+        .download-compare tbody tr:nth-child(odd) td:first-child {
+            background: rgba(245, 68, 78, 0.06);
+        }
+        .compare-row-label {
+            color: #1c1c1e;
+            letter-spacing: 0.01em;
+        }
+        .compare-value {
+            color: #3a3a3c;
+            font-weight: 500;
+        }
+        .compare-value.is-strong {
+            color: #1c1c1e;
+            font-weight: 700;
+        }
+        .compare-col-title {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .compare-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.16rem 0.45rem;
+            border-radius: 999px;
+            font-size: 0.69rem;
+            line-height: 1.25;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #7a252a;
+            background: rgba(245, 68, 78, 0.13);
+        }
+        .compare-chip.alt {
+            color: #1f4d23;
+            background: rgba(48, 209, 88, 0.16);
+        }
+        .compare-mobile {
+            display: none;
+        }
+        .compare-card-wrap {
+            display: grid;
+            gap: 0.7rem;
+            padding: 0.8rem 0.78rem 0.85rem;
+        }
+        .compare-card {
+            border: 1px solid rgba(28, 28, 30, 0.1);
+            border-radius: 10px;
+            padding: 0.75rem 0.72rem;
+            background: #ffffff;
+        }
+        .compare-card.recommended {
+            border-color: rgba(245, 68, 78, 0.35);
+            box-shadow: 0 8px 18px rgba(245, 68, 78, 0.12);
+        }
+        .compare-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .compare-card-head strong {
+            font-size: 1rem;
+            color: #1c1c1e;
+        }
+        .compare-card-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 0.45rem;
+        }
+        .compare-card-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.65rem;
+            font-size: 0.9rem;
+        }
+        .compare-card-list span:first-child {
+            color: #3a3a3c;
+            font-weight: 600;
+        }
+        .compare-card-list span:last-child {
+            text-align: right;
+            color: #1c1c1e;
+            font-weight: 600;
+        }
+        .compare-card-cta {
+            margin-top: 0.68rem;
+        }
+        .compare-card-cta a {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--color-primary-red);
+        }
+        .compare-card-cta a:hover,
+        .compare-card-cta a:focus-visible {
+            text-decoration: underline;
+        }
         .compare-below-preview {
             display: none;
         }
@@ -117,35 +228,11 @@
             }
         }
         @media (max-width: 768px) {
-            .download-compare {
-                overflow-x: auto;
-                overflow-y: hidden;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-            .download-compare::-webkit-scrollbar {
-                display: none;
-                width: 0;
-                height: 0;
-            }
             .download-compare table {
-                min-width: 540px;
+                display: none;
             }
-            .download-compare::after {
-                content: "";
-                position: sticky;
-                right: 0;
-                top: 0;
-                width: 38px;
-                height: 100%;
-                float: right;
-                pointer-events: none;
-                background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff 72%);
-                opacity: 1;
-                transition: opacity 180ms ease;
-            }
-            .download-compare.is-end::after {
-                opacity: 0;
+            .compare-mobile {
+                display: block;
             }
         }
     </style>
@@ -223,7 +310,7 @@
                 <h1 id="download-title">
                     <span class="hero__title">Betsie is still being built</span>
                     <span class="hero__title">for this platform.</span>
-                    <span class="hero__kicker accent-handwriting" role="presentation">You can still jump in today.</span>
+                    <span class="hero__kicker accent-handwriting" role="presentation">You&nbsp;can&nbsp;still jump&nbsp;in&nbsp;today.</span>
                 </h1>
                 <p class="lead">We are actively working on the best Betsie experience for your current device.</p>
                 <ul class="hero__bullets" aria-label="Download options">
@@ -239,48 +326,93 @@
                         <thead>
                             <tr>
                                 <th scope="col">Compare</th>
-                                <th scope="col">Quick Bet</th>
-                                <th scope="col">iOS App</th>
+                                <th scope="col">
+                                    <span class="compare-col-title">Quick Bet</span>
+                                </th>
+                                <th scope="col">
+                                    <span class="compare-col-title">Mobile App</span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Availability</td>
-                                <td>Web</td>
-                                <td>TestFlight</td>
+                                <td class="compare-row-label">Best for</td>
+                                <td class="compare-value is-strong">Instant bets</td>
+                                <td class="compare-value">Power users</td>
                             </tr>
                             <tr>
-                                <td>Needs Account</td>
-                                <td>Never</td>
-                                <td>Required</td>
+                                <td class="compare-row-label">Works on</td>
+                                <td class="compare-value">Desktop + Mobile Web</td>
+                                <td class="compare-value">iOS (TestFlight)</td>
                             </tr>
                             <tr>
-                                <td>Multi-Player</td>
-                                <td>1-on-1</td>
-                                <td>1-to-Many</td>
+                                <td class="compare-row-label">Account setup</td>
+                                <td class="compare-value">No account</td>
+                                <td class="compare-value">Account required</td>
                             </tr>
                             <tr>
-                                <td>Decision Method</td>
-                                <td>Vote</td>
-                                <td>Vote, Judge, AI</td>
+                                <td class="compare-row-label">Playing with</td>
+                                <td class="compare-value">1-on-1</td>
+                                <td class="compare-value">1-to-many</td>
                             </tr>
                             <tr>
-                                <td>Bet Visibility</td>
-                                <td>Anyone with Link</td>
-                                <td>Public or Private</td>
+                                <td class="compare-row-label">Privacy</td>
+                                <td class="compare-value">Anyone with link</td>
+                                <td class="compare-value">Public or private</td>
                             </tr>
                             <tr>
-                                <td>Bet History</td>
-                                <td>None</td>
-                                <td>Yes</td>
+                                <td class="compare-row-label">Decision tools</td>
+                                <td class="compare-value">Vote</td>
+                                <td class="compare-value">Vote + Judge + AI</td>
+                            </tr>
+                            <tr>
+                                <td class="compare-row-label">History</td>
+                                <td class="compare-value">No history</td>
+                                <td class="compare-value is-strong">Saved history</td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="compare-mobile" aria-hidden="true">
+                        <div class="compare-card-wrap">
+                            <article class="compare-card">
+                                <div class="compare-card-head">
+                                    <strong>Quick Bet</strong>
+                                    <span class="compare-chip alt">Fast Start</span>
+                                </div>
+                                <ul class="compare-card-list">
+                                    <li><span>Best for</span><span>Instant bets</span></li>
+                                    <li><span>Works on</span><span>Desktop + Mobile Web</span></li>
+                                    <li><span>Account setup</span><span>No account</span></li>
+                                    <li><span>Playing with</span><span>1-on-1</span></li>
+                                    <li><span>Privacy</span><span>Anyone with link</span></li>
+                                    <li><span>Decision tools</span><span>Vote</span></li>
+                                    <li><span>History</span><span>No history</span></li>
+                                </ul>
+                                <p class="compare-card-cta"><a href="https://try.betsie.app">Try Quick Bet now</a></p>
+                            </article>
+                            <article class="compare-card recommended">
+                                <div class="compare-card-head">
+                                    <strong>iOS App</strong>
+                                    <span class="compare-chip">Full Experience</span>
+                                </div>
+                                <ul class="compare-card-list">
+                                    <li><span>Best for</span><span>Power users</span></li>
+                                    <li><span>Works on</span><span>iOS (TestFlight)</span></li>
+                                    <li><span>Account setup</span><span>Account required</span></li>
+                                    <li><span>Playing with</span><span>1-to-many</span></li>
+                                    <li><span>Privacy</span><span>Public or private</span></li>
+                                    <li><span>Decision tools</span><span>Vote + Judge + AI</span></li>
+                                    <li><span>History</span><span>Saved history</span></li>
+                                </ul>
+                                <p class="compare-card-cta"><a href="#cta-section">Join iOS testers</a></p>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="hero__visual">
                 <figure class="device-frame">
-                    <img src="images/betsie-quick-bet-screen.png" alt="Betsie app preview on iPhone" width="502" height="1014" onerror="this.onerror=null; this.src='https://placehold.co/300x450/1c1c1e/ffffff?text=Betsie';">
+                    <img id="quick-bet-preview" src="images/betsie-quick-bet-screen.png" alt="Betsie app preview on iPhone" width="502" height="1014" onerror="this.onerror=null; this.src='https://placehold.co/300x450/1c1c1e/ffffff?text=Betsie';">
                 </figure>
             </div>
             <div class="compare-below-preview">
@@ -289,43 +421,88 @@
                         <thead>
                             <tr>
                                 <th scope="col">Compare</th>
-                                <th scope="col">Quick Bet</th>
-                                <th scope="col">iOS App</th>
+                                <th scope="col">
+                                    <span class="compare-col-title">Quick Bet</span>
+                                </th>
+                                <th scope="col">
+                                    <span class="compare-col-title">Mobile App</span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Availability</td>
-                                <td>Web</td>
-                                <td>TestFlight</td>
+                                <td class="compare-row-label">Best for</td>
+                                <td class="compare-value is-strong">Instant bets</td>
+                                <td class="compare-value">Power users</td>
                             </tr>
                             <tr>
-                                <td>Needs Account</td>
-                                <td>Never</td>
-                                <td>Required</td>
+                                <td class="compare-row-label">Works on</td>
+                                <td class="compare-value">Desktop + Mobile Web</td>
+                                <td class="compare-value">iOS (TestFlight)</td>
                             </tr>
                             <tr>
-                                <td>Multi-Player</td>
-                                <td>1-on-1</td>
-                                <td>1-to-Many</td>
+                                <td class="compare-row-label">Account setup</td>
+                                <td class="compare-value">No account</td>
+                                <td class="compare-value">Account required</td>
                             </tr>
                             <tr>
-                                <td>Decision Method</td>
-                                <td>Vote</td>
-                                <td>Vote, Judge, AI</td>
+                                <td class="compare-row-label">Playing with</td>
+                                <td class="compare-value">1-on-1</td>
+                                <td class="compare-value">1-to-many</td>
                             </tr>
                             <tr>
-                                <td>Bet Visibility</td>
-                                <td>Anyone with Link</td>
-                                <td>Public or Private</td>
+                                <td class="compare-row-label">Privacy</td>
+                                <td class="compare-value">Anyone with link</td>
+                                <td class="compare-value">Public or private</td>
                             </tr>
                             <tr>
-                                <td>Bet History</td>
-                                <td>None</td>
-                                <td>Yes</td>
+                                <td class="compare-row-label">Decision tools</td>
+                                <td class="compare-value">Vote</td>
+                                <td class="compare-value">Vote + Judge + AI</td>
+                            </tr>
+                            <tr>
+                                <td class="compare-row-label">History</td>
+                                <td class="compare-value">No history</td>
+                                <td class="compare-value is-strong">Saved history</td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="compare-mobile" aria-hidden="true">
+                        <div class="compare-card-wrap">
+                            <article class="compare-card">
+                                <div class="compare-card-head">
+                                    <strong>Quick Bet</strong>
+                                    <span class="compare-chip alt">Fast Start</span>
+                                </div>
+                                <ul class="compare-card-list">
+                                    <li><span>Best for</span><span>Instant bets</span></li>
+                                    <li><span>Works on</span><span>Desktop + Mobile Web</span></li>
+                                    <li><span>Account setup</span><span>No account</span></li>
+                                    <li><span>Playing with</span><span>1-on-1</span></li>
+                                    <li><span>Privacy</span><span>Anyone with link</span></li>
+                                    <li><span>Decision tools</span><span>Vote</span></li>
+                                    <li><span>History</span><span>No history</span></li>
+                                </ul>
+                                <p class="compare-card-cta"><a href="https://try.betsie.app">Try Quick Bet now</a></p>
+                            </article>
+                            <article class="compare-card recommended">
+                                <div class="compare-card-head">
+                                    <strong>iOS App</strong>
+                                    <span class="compare-chip">Full Experience</span>
+                                </div>
+                                <ul class="compare-card-list">
+                                    <li><span>Best for</span><span>Power users</span></li>
+                                    <li><span>Works on</span><span>iOS (TestFlight)</span></li>
+                                    <li><span>Account setup</span><span>Account required</span></li>
+                                    <li><span>Playing with</span><span>1-to-many</span></li>
+                                    <li><span>Privacy</span><span>Public or private</span></li>
+                                    <li><span>Decision tools</span><span>Vote + Judge + AI</span></li>
+                                    <li><span>History</span><span>Saved history</span></li>
+                                </ul>
+                                <p class="compare-card-cta"><a href="#cta-section">Join iOS testers</a></p>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -351,6 +528,53 @@
     </footer>
 
     <script src="JS/ga-events.js" defer></script>
+    <script>
+        (function () {
+            function initPreviewCycle() {
+                var previewImage = document.getElementById("quick-bet-preview");
+                if (!previewImage) return;
+
+                var screenshots = [
+                    "images/betsie-quick-bet-screen.png",
+                    "images/betsie-quick-bet-chat.png"
+                ];
+                var screenshotIndex = 0;
+                var isAnimating = false;
+
+                // Preload screenshots so slide transitions stay smooth.
+                screenshots.forEach(function (src) {
+                    var preloadImage = new Image();
+                    preloadImage.src = src;
+                });
+
+                function fadeToNextScreenshot() {
+                    if (isAnimating) return;
+                    isAnimating = true;
+                    screenshotIndex = (screenshotIndex + 1) % screenshots.length;
+
+                    previewImage.style.transition = "opacity 350ms ease";
+                    previewImage.style.opacity = "0";
+
+                    window.setTimeout(function () {
+                        previewImage.src = screenshots[screenshotIndex];
+                        previewImage.style.opacity = "1";
+
+                        window.setTimeout(function () {
+                            isAnimating = false;
+                        }, 380);
+                    }, 360);
+                }
+
+                window.setInterval(fadeToNextScreenshot, 4000);
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", initPreviewCycle);
+            } else {
+                initPreviewCycle();
+            }
+        })();
+    </script>
     <script>
         (function () {
             function updateCompareScrollState(compareEl) {

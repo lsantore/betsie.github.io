@@ -32,11 +32,7 @@
     <link rel="stylesheet" href="CSS/styles.css">
     <style>
         body {
-            opacity: 0;
-            transition: opacity 120ms ease;
-        }
-        .download-cta .btn-ghost {
-            margin-left: 0;
+            opacity: 1;
         }
         .redirecting-note {
             display: none;
@@ -55,22 +51,190 @@
         body.is-iphone .redirecting-note {
             display: block;
         }
-        .download-cta-secondary {
-            margin-top: 0.6rem;
+        .download-cta {
             margin-bottom: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
         }
-        .download-cta-secondary a {
-            font-size: 0.9rem;
-        }
-        .download-cta-divider {
-            margin: 0.9rem 0 0;
-            font-size: 0.82rem;
+        .download-cta-or {
+            font-size: 0.74rem;
             letter-spacing: 0.08em;
             font-weight: 700;
             color: #6e6e73;
+            white-space: nowrap;
+        }
+        .download-cta-secondary {
+            margin-top: 0.55rem;
+            margin-bottom: 0;
+        }
+        .download-cta-secondary a {
+            font-size: 0.92rem;
+        }
+        .btn-tonal {
+            background: rgba(245, 68, 78, 0.12);
+            color: #7a252a;
+            border: 1px solid rgba(245, 68, 78, 0.28);
+            box-shadow: none;
+        }
+        .btn-tonal:hover,
+        .btn-tonal:focus-visible {
+            background: rgba(245, 68, 78, 0.18);
+            color: #651f24;
+            text-decoration: none;
+        }
+        .download-hero-copy {
+            max-width: 100%;
+        }
+        .download-hero-points {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.72rem;
+            margin-top: 0.9rem;
+        }
+        .download-hero-point {
+            background: #ffffff;
+            border: 1px solid rgba(28, 28, 30, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 18px rgba(28, 28, 30, 0.08);
+            padding: 0.74rem 0.78rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .download-hero-point__icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 8px;
+            display: block;
+            flex-shrink: 0;
+        }
+        .download-hero-point__content {
+            min-width: 0;
+        }
+        .download-hero-point__title {
+            margin: 0;
+            font-size: 0.93rem;
+            color: #1c1c1e;
+        }
+        .download-hero-point p {
+            margin: 0.35rem 0 0;
+            color: #3a3a3c;
+            font-size: 0.88rem;
+            line-height: 1.4;
+        }
+        .download-hero-point a {
+            color: var(--color-primary-red);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .download-hero-point a:hover,
+        .download-hero-point a:focus-visible {
+            text-decoration: underline;
+        }
+        @media (max-width: 900px) {
+            .download-hero-points {
+                grid-template-columns: 1fr;
+            }
+            .download-hero-point {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.2rem;
+            }
+            .download-hero-point__content {
+                text-align: center;
+            }
+        }
+        .platform-panel {
+            margin-top: 1.2rem;
+            background: #ffffff;
+            border: 1px solid rgba(28, 28, 30, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 12px 24px rgba(28, 28, 30, 0.08);
+            padding: 1rem;
+        }
+        .platform-panel h2 {
+            margin-top: 0;
+            margin-bottom: 0.35rem;
+            font-size: 1.2rem;
+        }
+        .platform-panel__lede {
+            margin-top: 0;
+            margin-bottom: 0.9rem;
+            color: #3a3a3c;
+        }
+        .platform-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 0.72rem;
+        }
+        .platform-item {
+            border: 1px solid rgba(28, 28, 30, 0.1);
+            border-radius: 10px;
+            padding: 0.75rem;
+            background: #ffffff;
+        }
+        .platform-item__head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.7rem;
+            margin-bottom: 0.45rem;
+        }
+        .platform-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        .platform-icon {
+            width: 18px;
+            height: 18px;
+            color: #3a3a3c;
+            flex-shrink: 0;
+        }
+        .platform-item__head strong {
+            color: #1c1c1e;
+            font-size: 1rem;
+        }
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.16rem 0.48rem;
+            border-radius: 999px;
+            font-size: 0.73rem;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #1f4d23;
+            background: rgba(48, 209, 88, 0.16);
+        }
+        .platform-badge.is-blocked {
+            color: #7a252a;
+            background: rgba(245, 68, 78, 0.13);
+        }
+        .platform-item p {
+            margin: 0;
+            color: #3a3a3c;
+        }
+        .platform-item__action {
+            margin-top: 0.55rem;
+            margin-bottom: 0;
+        }
+        .platform-item__action a {
+            color: var(--color-primary-red);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .platform-item__action a:hover,
+        .platform-item__action a:focus-visible {
+            text-decoration: underline;
         }
     </style>
-    <noscript><style>body { opacity: 1 !important; }</style></noscript>
     <script>
         (function () {
             function runRedirect() {
@@ -84,7 +248,6 @@
                 if (isIPhone && !isIPad) {
                     document.body.classList.add("is-iphone");
                 }
-                document.body.style.opacity = "1";
 
                 // Only iPhone visitors should redirect to TestFlight.
                 // iPad and all non-iPhone platforms stay on-page.
@@ -130,23 +293,105 @@
 
     <main id="main">
         <section id="hero-section" class="content-container hero" aria-labelledby="download-title">
-            <div class="hero__copy">
-                <p class="eyebrow">Platform update</p>
+            <div class="hero__copy download-hero-copy">
+                <p class="eyebrow">Download Betsie</p>
                 <p class="redirecting-note">
                     Redirecting iPhone visitors to TestFlight. If nothing happens,
                     <a href="https://testflight.apple.com/join/5RtfWwJN">open TestFlight directly</a>.
                 </p>
                 <h1 id="download-title">
-                    <span class="hero__title">Oops! Betsie Mobile is not available on this device yet.</span>
-                    <span class="hero__kicker accent-handwriting" role="presentation">iPhone users go to TestFlight.</span>
+                    <span class="hero__title">Make Bets with your Besties</span>
+                    <span class="hero__kicker accent-handwriting" role="presentation">Try Betsie on iPhone today</span>
                 </h1>
-                <p class="lead">If you're not on iPhone, join the tester program for updates and early access.</p>
+                <p class="lead">Betsie is currently on iPhone via TestFlight. For other devices, you can create a Quick Bet in your browser right now!</p>
                 <p class="hero__cta-wrap download-cta">
-                    <a href="https://forms.gle/FX1gWv5h8jjkVJo86" class="btn btn-primary">Join Tester Program</a>
+                    <a href="https://testflight.apple.com/join/5RtfWwJN" class="btn btn-primary">Get Betsie for iPhone</a>
+                    <span class="download-cta-or" aria-hidden="true">- OR -</span>
+                    <a href="https://try.betsie.app" class="btn btn-tonal" target="_blank" rel="noopener noreferrer">Try a Quick Bet</a>
                 </p>
-                <p class="download-cta-divider" aria-hidden="true">- OR -</p>
-                <p class="download-cta-secondary"><a href="quick-bet.html">Try Betsie Quick Bet</a></p>
+                <div class="download-hero-points" aria-label="Product options">
+                    <article class="download-hero-point">
+                        <img class="download-hero-point__icon" src="images/betsie-app-logo.png" alt="" width="56" height="56" onerror="this.onerror=null; this.src='https://placehold.co/56x56/f5444e/ffffff?text=B';">
+                        <div class="download-hero-point__content">
+                            <p class="download-hero-point__title"><strong>Betsie App</strong></p>
+                            <p>Full Betsie experience for iPhone through TestFlight with group bets, deeper tools, and your Book of Bets.</p>
+                        </div>
+                    </article>
+                    <article class="download-hero-point">
+                        <img class="download-hero-point__icon" src="images/betsie-app-logo.png" alt="" width="56" height="56" onerror="this.onerror=null; this.src='https://placehold.co/56x56/f5444e/ffffff?text=B';">
+                        <div class="download-hero-point__content">
+                            <p class="download-hero-point__title"><strong>Quick Bet</strong></p>
+                            <p>Works in any browser including iPad, Android, and Desktop with no app install. <a href="https://try.betsie.app" target="_blank" rel="noopener noreferrer">Launch Quick Bet</a>.</p>
+                        </div>
+                    </article>
+                </div>
             </div>
+        </section>
+
+        <section class="content-container platform-panel" aria-labelledby="platform-title">
+            <h2 id="platform-title">Available ways to play by platform</h2>
+            <p class="platform-panel__lede">Betsie App is the full experience. A Quick Bet is an easy way to play on devices where the Betsie App is not yet available.</p>
+            <ul class="platform-list">
+                <li class="platform-item">
+                    <div class="platform-item__head">
+                        <span class="platform-label">
+                            <svg class="platform-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <rect x="7" y="2.5" width="10" height="19" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+                                <circle cx="12" cy="18.5" r="1" fill="currentColor"></circle>
+                            </svg>
+                            <strong>iPhone</strong>
+                        </span>
+                        <span class="platform-badge">Available now</span>
+                    </div>
+                    <p><strong>Betsie App</strong> is available to early testers via TestFlight.</p>
+                    <p class="platform-item__action"><a href="https://testflight.apple.com/join/5RtfWwJN">Get Betsie for iPhone</a></p>
+                </li>
+                <li class="platform-item">
+                    <div class="platform-item__head">
+                        <span class="platform-label">
+                            <svg class="platform-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <rect x="5" y="2.5" width="14" height="19" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+                                <circle cx="12" cy="18.3" r="0.95" fill="currentColor"></circle>
+                            </svg>
+                            <strong>iPad</strong>
+                        </span>
+                        <span class="platform-badge is-blocked">Not supported yet</span>
+                    </div>
+                    <p><strong>Betsie App</strong> is not supported yet. <strong>Quick Bet</strong> works now in a web browser.</p>
+                    <p class="platform-item__action"><a href="https://try.betsie.app" target="_blank" rel="noopener noreferrer">Try Quick Bet on iPad</a> <a href="quick-bet.html">(learn more)</a></p>
+                </li>
+                <li class="platform-item">
+                    <div class="platform-item__head">
+                        <span class="platform-label">
+                            <svg class="platform-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M8 9.2h8a2 2 0 0 1 2 2v6.3H6v-6.3a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8"></path>
+                                <path d="M9 6.7l-1.4-1.7M15 6.7l1.4-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+                                <circle cx="10.2" cy="12.2" r="0.7" fill="currentColor"></circle>
+                                <circle cx="13.8" cy="12.2" r="0.7" fill="currentColor"></circle>
+                            </svg>
+                            <strong>Android</strong>
+                        </span>
+                        <span class="platform-badge is-blocked">Not supported yet</span>
+                    </div>
+                    <p><strong>Betsie App</strong> is not supported yet. <strong>Quick Bet</strong> works now in a web browser.</p>
+                    <p class="platform-item__action"><a href="https://try.betsie.app" target="_blank" rel="noopener noreferrer">Try Quick Bet on Android</a> <a href="quick-bet.html">(learn more)</a></p>
+                </li>
+                <li class="platform-item">
+                    <div class="platform-item__head">
+                        <span class="platform-label">
+                            <svg class="platform-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <rect x="3" y="4" width="18" height="12" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+                                <path d="M9 20h6M12 16v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+                            </svg>
+                            <strong>Desktop</strong>
+                        </span>
+                        <span class="platform-badge is-blocked">Not supported yet</span>
+                    </div>
+                    <p><strong>Betsie App</strong> is not supported yet on desktop (Windows, macOS, Linux). <strong>Quick Bet</strong> works now in a web browser.</p>
+                    <p class="platform-item__action"><a href="https://try.betsie.app" target="_blank" rel="noopener noreferrer">Try Quick Bet on Desktop</a> <a href="quick-bet.html">(learn more)</a></p>
+                </li>
+            </ul>
+            <p class="download-cta-secondary"><a href="https://forms.gle/FX1gWv5h8jjkVJo86">Join the Betsie tester program</a></p>
         </section>
     </main>
 

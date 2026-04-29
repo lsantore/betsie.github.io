@@ -240,28 +240,27 @@
             function runRedirect() {
                 var userAgent = navigator.userAgent || navigator.vendor || window.opera;
                 var testFlightUrl = "https://testflight.apple.com/join/5RtfWwJN";
+                var testerSignupUrl = "https://forms.gle/FX1gWv5h8jjkVJo86";
                 var hasTouch = (navigator.maxTouchPoints || 0) > 1;
                 var isIPad = /iPad/i.test(userAgent) || (/Macintosh/i.test(userAgent) && hasTouch);
                 var isIPhone = /iPhone/i.test(userAgent);
+                var isIOS = isIPhone || isIPad;
+                var redirectUrl = isIOS ? testFlightUrl : testerSignupUrl;
                 var done = false;
 
                 if (isIPhone && !isIPad) {
                     document.body.classList.add("is-iphone");
                 }
 
-                // Only iPhone visitors should redirect to TestFlight.
-                // iPad and all non-iPhone platforms stay on-page.
-                if (!isIPhone || isIPad) return;
-
                 function go() {
                     if (done) return;
                     done = true;
-                    window.location.replace(testFlightUrl);
+                    window.location.replace(redirectUrl);
                 }
                 if (typeof gtag === "function") {
                     gtag("event", "betsie_download_redirect", {
-                        link_url: testFlightUrl,
-                        store_target: "iphone_testflight",
+                        link_url: redirectUrl,
+                        store_target: isIOS ? "ios_testflight" : "tester_signup",
                         engagement_time_msec: 1,
                         event_callback: go,
                         event_timeout: 1600
